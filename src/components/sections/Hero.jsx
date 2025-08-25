@@ -3,6 +3,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { heroImages } from '@/constants/images'
 
 export default function Hero() {
   return (
@@ -42,7 +43,7 @@ export default function Hero() {
               <div className="absolute -inset-4 bg-primary-100 rounded-2xl rotate-3"></div>
               <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
                 <img 
-                  src="/images/hero-placeholder.jpg" 
+                  src={heroImages.heroPlaceholder} 
                   alt="Team collaboration" 
                   className="w-full h-80 object-cover"
                 />
