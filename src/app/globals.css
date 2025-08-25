@@ -9,6 +9,11 @@ html {
 
 body {
   font-feature-settings: 'rlig' 1, 'calt' 1, 'ss01' 1;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 /* Custom selection color */

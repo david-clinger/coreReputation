@@ -115,7 +115,7 @@ export default function RootLayout({ children }) {
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased overflow-x-hidden`}>
         {/* Skip to main content for accessibility */}
         <a
           href="#main-content"
@@ -124,9 +124,9 @@ export default function RootLayout({ children }) {
           Skip to main content
         </a>
 
-        <div className="flex flex-col min-h-screen">
+        <div className="flex flex-col min-h-screen overflow-x-hidden">
           <Navbar />
-          <main id="main-content" className="flex-grow">
+          <main id="main-content" className="flex-grow overflow-x-hidden">
             {children}
           </main>
           <Footer />

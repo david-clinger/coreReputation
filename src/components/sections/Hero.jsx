@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 export default function Hero() {
   return (
-    <section className="relative bg-gradient-to-br from-white to-primary-50 py-20">
+    <section className="relative bg-gradient-to-br from-white to-primary-50 py-20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -60,12 +60,12 @@ export default function Hero() {
         </div>
       </div>
       
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 -z-10">
-        <div className="bg-primary-200 opacity-20 rounded-full w-96 h-96 -mt-48 -mr-48"></div>
+      {/* Background decoration - fixed to not overflow */}
+      <div className="absolute top-0 right-0 -z-10 opacity-20">
+        <div className="bg-primary-200 rounded-full w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 -mt-24 -mr-24 sm:-mt-32 sm:-mr-32 md:-mt-40 md:-mr-40 lg:-mt-48 lg:-mr-48"></div>
       </div>
-      <div className="absolute bottom-0 left-0 -z-10">
-        <div className="bg-secondary-200 opacity-20 rounded-full w-80 h-80 -mb-40 -ml-40"></div>
+      <div className="absolute bottom-0 left-0 -z-10 opacity-20">
+        <div className="bg-secondary-200 rounded-full w-40 h-40 sm:w-48 sm:h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 -mb-20 -ml-20 sm:-mb-24 sm:-ml-24 md:-mb-32 md:-ml-32 lg:-mb-40 lg:-ml-40"></div>
       </div>
     </section>
   )

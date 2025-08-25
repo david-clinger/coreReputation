@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import withAuth from '@/lib/withAuth'
 
 const allServices = [
   {
@@ -179,7 +180,7 @@ const itemVariants = {
   }
 }
 
-export default function Services() {
+function Services() {
   const [activeService, setActiveService] = useState(allServices[0])
 
   return (
@@ -416,3 +417,5 @@ export default function Services() {
     </div>
   )
 }
+
+export default withAuth(Services)

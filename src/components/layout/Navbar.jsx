@@ -1,12 +1,57 @@
 // src/components/layout/Navbar.jsx
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { AUTH_EVENTS, addAuthListener, removeAuthListener, dispatchAuthEvent } from '@/lib/auth-events'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userEmail, setUserEmail] = useState('')
+  const [userName, setUserName] = useState('')
+  const router = useRouter()
+
+  useEffect(() => {
+    // Check authentication status
+    const checkAuth = () => {
+      const loggedIn = localStorage.getItem('isLoggedIn')
+      const email = localStorage.getItem('userEmail')
+      const name = localStorage.getItem('userName')
+      setIsLoggedIn(loggedIn === 'true')
+      setUserEmail(email || '')
+      setUserName(name || '')
+    }
+
+    checkAuth()
+    
+    // Listen for custom auth events (immediate updates)
+    const handleAuthChange = () => checkAuth()
+    addAuthListener(AUTH_EVENTS.LOGIN, handleAuthChange)
+    addAuthListener(AUTH_EVENTS.LOGOUT, handleAuthChange)
+    
+    // Listen for storage changes (other tabs)
+    window.addEventListener('storage', checkAuth)
+    
+    return () => {
+      removeAuthListener(AUTH_EVENTS.LOGIN, handleAuthChange)
+      removeAuthListener(AUTH_EVENTS.LOGOUT, handleAuthChange)
+      window.removeEventListener('storage', checkAuth)
+    }
+  }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn')
+    localStorage.removeItem('userEmail')
+    localStorage.removeItem('userName')
+    setIsLoggedIn(false)
+    setUserEmail('')
+    setUserName('')
+    dispatchAuthEvent(AUTH_EVENTS.LOGOUT)
+    router.push('/login')
+  }
 
   const menuItems = [
     { name: 'Home', href: '/' },
@@ -45,12 +90,46 @@ export default function Navbar() {
           
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/login" className="text-gray-700 hover:text-primary-600 font-medium">
-              Login
-            </Link>
-            <Link href="/register" className="btn-primary text-sm">
-              Sign Up
-            </Link>
+            {isLoggedIn ? (
+              <div className="flex items-center space-x-4">
+                {/* User Profile */}
+                <div className="flex items-center space-x-3 bg-gray-50 rounded-lg px-3 py-2">
+                  <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm font-bold">
+                      {(userName || userEmail).charAt(0).toUpperCase()}
+                    </span>
+                  </div>
+                  <div className="hidden sm:block">
+                    <div className="text-sm font-medium text-gray-900">
+                      {userName || userEmail.split('@')[0]}
+                    </div>
+                    <div className="text-xs text-gray-500">
+                      {userEmail}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Logout Button */}
+                <button
+                  onClick={handleLogout}
+                  className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-400 transition-colors"
+                >
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link href="/login" className="text-gray-700 hover:text-primary-600 font-medium">
+                  Login
+                </Link>
+                <Link href="/register" className="btn-primary text-sm">
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
           
           {/* Mobile Menu Button */}
@@ -92,20 +171,57 @@ export default function Navbar() {
                   </Link>
                 ))}
                 <div className="pt-4 pb-2 border-t border-gray-200">
-                  <Link
-                    href="/login"
-                    className="block px-3 py-2 text-gray-700 hover:text-primary-600 rounded-md font-medium"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    href="/register"
-                    className="block px-3 py-2 mt-2 bg-primary-600 text-white rounded-md font-medium text-center"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    Sign Up
-                  </Link>
+                  {isLoggedIn ? (
+                    <>
+                      {/* Mobile User Profile */}
+                      <div className="flex items-center px-3 py-3 bg-gray-50 rounded-lg mx-3 mb-3">
+                        <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center mr-3">
+                          <span className="text-white text-sm font-bold">
+                            {(userName || userEmail).charAt(0).toUpperCase()}
+                          </span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-sm font-medium text-gray-900 truncate">
+                            {userName || userEmail.split('@')[0]}
+                          </div>
+                          <div className="text-xs text-gray-500 truncate">
+                            {userEmail}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {/* Mobile Logout Button */}
+                      <button
+                        onClick={() => {
+                          handleLogout()
+                          setIsOpen(false)
+                        }}
+                        className="flex items-center w-full px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 rounded-md font-medium"
+                      >
+                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                        </svg>
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                        href="/login"
+                        className="block px-3 py-2 text-gray-700 hover:text-primary-600 rounded-md font-medium"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Login
+                      </Link>
+                      <Link
+                        href="/register"
+                        className="block px-3 py-2 mt-2 bg-primary-600 text-white rounded-md font-medium text-center"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        Sign Up
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </motion.div>
