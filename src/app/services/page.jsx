@@ -8,153 +8,154 @@ import withAuth from '@/lib/withAuth'
 
 const allServices = [
   {
-    id: 'consulting',
-    title: "Business Consulting",
-    description: "Strategic guidance to help your business grow and overcome challenges.",
-    fullDescription: "Our business consulting services provide expert guidance to help you navigate complex business challenges and achieve sustainable growth. We work closely with you to develop customized strategies that align with your goals and drive measurable results.",
+    id: 'review-management',
+    title: "Smart Review Management",
+    description: "QR review funnels that route 4-5★ reviews to Google while handling lower ratings privately.",
+    fullDescription: "Our intelligent review management system uses QR codes and smart routing to ensure only positive reviews (4-5 stars) are posted publicly to Google, while 3-star and below reviews are captured privately for internal feedback and improvement opportunities.",
+    icon: (
+      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+      </svg>
+    ),
+    features: [
+      "QR Code Review Collection",
+      "Smart Review Filtering",
+      "Private Feedback Capture",
+      "Google Review Optimization",
+      "Review Alert Notifications",
+      "Customer Feedback Analytics"
+    ],
+    benefits: [
+      "Higher Google star ratings",
+      "More positive online reviews",
+      "Better customer feedback insights",
+      "Protected brand reputation"
+    ]
+  },
+  {
+    id: 'nap-sync',
+    title: "Business Listings & NAP Sync",
+    description: "Keep your contact info consistent across Google, Apple Maps, Yelp, Bing, and dozens of directories.",
+    fullDescription: "Our NAP (Name, Address, Phone) synchronization service ensures your business information is consistent across all major directories and platforms. This improves your local SEO and helps customers find accurate information about your business.",
+    icon: (
+      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+    features: [
+      "Google My Business Optimization",
+      "Apple Maps Listing Management",
+      "Yelp Business Profile",
+      "Bing Places for Business",
+      "Facebook Business Page",
+      "50+ Directory Submissions"
+    ],
+    benefits: [
+      "Improved local search visibility",
+      "Consistent business information",
+      "Better customer trust",
+      "Enhanced local SEO"
+    ]
+  },
+  {
+    id: 'ai-responses',
+    title: "AI-Powered Response Management",
+    description: "Intelligent review responses, automated reply suggestions, and 24/7 monitoring.",
+    fullDescription: "Our AI-powered system monitors your online reviews 24/7 and provides intelligent response suggestions tailored to your brand voice. It can also auto-respond to reviews when configured, ensuring no review goes unanswered.",
+    icon: (
+      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+    features: [
+      "AI-Drafted Response Suggestions",
+      "24/7 Review Monitoring",
+      "Auto-Response Configuration",
+      "Brand Voice Customization",
+      "Response Reminder System",
+      "Sentiment Analysis"
+    ],
+    benefits: [
+      "Faster response times",
+      "Consistent brand messaging",
+      "Improved customer relationships",
+      "Reduced manual workload"
+    ]
+  },
+  {
+    id: 'outbound-campaigns',
+    title: "Outbound Review Campaigns",
+    description: "Custom review request forms and templates via email, SMS, or WhatsApp.",
+    fullDescription: "Proactively request reviews from your satisfied customers through personalized outbound campaigns. Our system sends targeted review requests via email, SMS, or WhatsApp to maximize response rates.",
+    icon: (
+      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+      </svg>
+    ),
+    features: [
+      "Email Review Campaigns",
+      "SMS Review Requests",
+      "WhatsApp Integration",
+      "Custom Review Forms",
+      "Automated Follow-ups",
+      "Campaign Performance Tracking"
+    ],
+    benefits: [
+      "Increased review volume",
+      "Higher customer engagement",
+      "More positive feedback",
+      "Better online reputation"
+    ]
+  },
+  {
+    id: 'google-posts',
+    title: "Google Posts Scheduling",
+    description: "Professionally drafted and automatically published Google My Business posts.",
+    fullDescription: "Keep your Google My Business profile active with regular, professionally written posts. Our content team creates engaging posts that showcase your business and improve your local search visibility.",
+    icon: (
+      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+      </svg>
+    ),
+    features: [
+      "Professional Content Creation",
+      "Automated Publishing",
+      "Content Calendar Planning",
+      "Visual Content Integration",
+      "Call-to-Action Optimization",
+      "Performance Analytics"
+    ],
+    benefits: [
+      "Improved local visibility",
+      "Regular customer engagement",
+      "Professional online presence",
+      "Higher conversion rates"
+    ]
+  },
+  {
+    id: 'analytics-reporting',
+    title: "Analytics & Performance Reporting",
+    description: "Track review performance, customer feedback trends, and reputation growth.",
+    fullDescription: "Get detailed insights into your online reputation with comprehensive analytics and reporting. Track review volume, rating trends, response times, and competitor performance to make data-driven decisions.",
     icon: (
       <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
       </svg>
     ),
     features: [
-      "Strategic Planning",
-      "Market Analysis",
-      "Business Process Optimization",
-      "Financial Consulting",
-      "Organizational Development",
-      "Change Management"
+      "Review Volume Tracking",
+      "Rating Trend Analysis",
+      "Response Time Metrics",
+      "Competitor Monitoring",
+      "Customer Sentiment Analysis",
+      "Monthly Performance Reports"
     ],
     benefits: [
-      "Increased operational efficiency",
-      "Improved decision-making",
-      "Enhanced competitive advantage",
-      "Sustainable growth strategies"
-    ]
-  },
-  {
-    id: 'development',
-    title: "Web Development",
-    description: "Custom websites and applications built with modern technologies.",
-    fullDescription: "We create stunning, responsive websites and powerful web applications using the latest technologies. Our development process focuses on user experience, performance, and scalability to ensure your digital presence stands out.",
-    icon: (
-      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
-    features: [
-      "Custom Website Development",
-      "E-commerce Solutions",
-      "Web Application Development",
-      "API Integration",
-      "Progressive Web Apps",
-      "Performance Optimization"
-    ],
-    benefits: [
-      "Enhanced user experience",
-      "Mobile-responsive design",
-      "Fast loading times",
-      "SEO-friendly architecture"
-    ]
-  },
-  {
-    id: 'marketing',
-    title: "Digital Marketing",
-    description: "Comprehensive marketing strategies to increase your online presence.",
-    fullDescription: "Our digital marketing services help you reach and engage your target audience through data-driven strategies. We combine creativity with analytics to drive traffic, generate leads, and increase conversions.",
-    icon: (
-      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
-    features: [
-      "SEO Optimization",
-      "Content Marketing",
-      "Social Media Management",
-      "PPC Advertising",
-      "Email Marketing",
-      "Analytics & Reporting"
-    ],
-    benefits: [
-      "Increased brand visibility",
-      "Higher conversion rates",
-      "Better ROI on marketing spend",
-      "Data-driven decision making"
-    ]
-  },
-  {
-    id: 'design',
-    title: "UI/UX Design",
-    description: "Beautiful and intuitive designs that enhance user experience.",
-    fullDescription: "We create user-centered designs that are not only visually appealing but also highly functional. Our design process focuses on understanding user behavior to create intuitive and engaging experiences.",
-    icon: (
-      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
-      </svg>
-    ),
-    features: [
-      "User Research",
-      "Wireframing & Prototyping",
-      "Visual Design",
-      "Interaction Design",
-      "Usability Testing",
-      "Design Systems"
-    ],
-    benefits: [
-      "Improved user satisfaction",
-      "Higher conversion rates",
-      "Reduced development costs",
-      "Consistent brand experience"
-    ]
-  },
-  {
-    id: 'cloud',
-    title: "Cloud Solutions",
-    description: "Scalable cloud infrastructure and migration services.",
-    fullDescription: "We help businesses leverage cloud technologies to improve scalability, reliability, and cost-efficiency. Our cloud solutions are tailored to your specific needs and business objectives.",
-    icon: (
-      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-      </svg>
-    ),
-    features: [
-      "Cloud Migration",
-      "Infrastructure Setup",
-      "DevOps Implementation",
-      "Cloud Security",
-      "Cost Optimization",
-      "24/7 Monitoring"
-    ],
-    benefits: [
-      "Scalable infrastructure",
-      "Reduced IT costs",
-      "Improved reliability",
-      "Enhanced security"
-    ]
-  },
-  {
-    id: 'support',
-    title: "Technical Support",
-    description: "Reliable technical support and maintenance services.",
-    fullDescription: "Our technical support team provides ongoing maintenance and troubleshooting to ensure your systems run smoothly. We offer flexible support packages to meet your specific needs.",
-    icon: (
-      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-      </svg>
-    ),
-    features: [
-      "24/7 Technical Support",
-      "System Maintenance",
-      "Security Updates",
-      "Performance Monitoring",
-      "Backup Solutions",
-      "Emergency Response"
-    ],
-    benefits: [
-      "Minimal downtime",
-      "Proactive issue resolution",
-      "Regular system updates",
-      "Peace of mind"
+      "Data-driven insights",
+      "Performance optimization",
+      "Competitive advantage",
+      "ROI measurement"
     ]
   }
 ]
@@ -198,8 +199,8 @@ function Services() {
               Our <span className="text-gradient">Services</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive solutions designed to help your business thrive in the digital age. 
-              From strategy to execution, we've got you covered.
+              Comprehensive online reputation management solutions to help you get more 5-star reviews, 
+              manage customer feedback, and grow your business with AI-powered tools.
             </p>
           </motion.div>
 
@@ -215,10 +216,10 @@ function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className={`card p-6 text-center cursor-pointer transition-all duration-300 ${
+                className={`card p-6 text-center cursor-pointer transition-all duration-300 hover:border-primary-100 hover:shadow-xl ${
                   activeService.id === service.id 
-                    ? 'border-primary-600 bg-primary-50 transform scale-105' 
-                    : 'hover:border-primary-100 hover:shadow-xl'
+                    ? 'border-primary-600 bg-primary-50' 
+                    : 'border-gray-200'
                 }`}
                 onClick={() => setActiveService(service)}
               >
@@ -246,10 +247,10 @@ function Services() {
           <motion.div
             key={activeService.id}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
-          >
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+            >
             {/* Service Details */}
             <div>
               <div className="flex items-center mb-6">
@@ -334,7 +335,7 @@ function Services() {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Process</h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We follow a proven process to ensure successful project delivery and client satisfaction.
+              We follow a proven process to set up and manage your online reputation effectively.
             </p>
           </motion.div>
 
@@ -348,27 +349,27 @@ function Services() {
             {[
               {
                 step: "01",
-                title: "Discovery",
-                description: "We start by understanding your business goals, challenges, and requirements.",
-                icon: "🔍"
+                title: "Setup & Integration",
+                description: "We set up your QR review funnels, sync your business listings, and configure monitoring.",
+                icon: "⚙️"
               },
               {
                 step: "02",
-                title: "Planning",
-                description: "We create a detailed project plan with timelines, milestones, and deliverables.",
-                icon: "📋"
+                title: "AI Configuration",
+                description: "We customize AI response templates, set up review routing, and train the system on your brand voice.",
+                icon: "🤖"
               },
               {
                 step: "03",
-                title: "Execution",
-                description: "Our team implements the solution with regular updates and collaboration.",
-                icon: "⚡"
+                title: "Launch & Monitor",
+                description: "Your reputation management system goes live with 24/7 monitoring and automated workflows.",
+                icon: "🚀"
               },
               {
                 step: "04",
-                title: "Delivery",
-                description: "We deliver the final product and provide ongoing support and maintenance.",
-                icon: "🎯"
+                title: "Optimize & Report",
+                description: "We continuously optimize performance and provide detailed analytics and monthly reports.",
+                icon: "📊"
               }
             ].map((step, index) => (
               <motion.div
@@ -398,10 +399,10 @@ function Services() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Business?
+              Ready to Boost Your Online Reputation?
             </h2>
             <p className="text-xl text-primary-100 mb-8">
-              Let's discuss how our services can help you achieve your business goals.
+              Let's help you get more 5-star reviews and manage your online reputation like a pro.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact" className="btn-secondary">

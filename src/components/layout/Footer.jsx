@@ -11,12 +11,12 @@ export default function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <div className="h-8 w-8 bg-primary-600 rounded-md flex items-center justify-center mr-2">
-                <span className="text-white font-bold text-lg">N</span>
+                <span className="text-white font-bold text-lg">AI</span>
               </div>
-              <span className="font-bold text-xl text-gray-900">Nexus</span>
+              <span className="font-bold text-xl text-gray-900">get<span className="text-primary-600">AIIQ</span></span>
             </div>
             <p className="text-gray-600 mb-4">
-              Providing exceptional professional services with a focus on quality and customer satisfaction.
+              Professional online reputation management solutions to help businesses get more 5-star reviews and manage customer feedback like a pro.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-primary-600 transition-colors">
@@ -43,20 +43,22 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><Link href="/services#consulting" className="text-gray-600 hover:text-primary-600">Business Consulting</Link></li>
-              <li><Link href="/services#development" className="text-gray-600 hover:text-primary-600">Web Development</Link></li>
-              <li><Link href="/services#marketing" className="text-gray-600 hover:text-primary-600">Digital Marketing</Link></li>
-              <li><Link href="/services#design" className="text-gray-600 hover:text-primary-600">UI/UX Design</Link></li>
+              <li><Link href="/services#review-management" className="text-gray-600 hover:text-primary-600">Review Management</Link></li>
+              <li><Link href="/services#nap-sync" className="text-gray-600 hover:text-primary-600">Business Listings</Link></li>
+              <li><Link href="/services#ai-responses" className="text-gray-600 hover:text-primary-600">AI Response Management</Link></li>
+              <li><Link href="/services#outbound-campaigns" className="text-gray-600 hover:text-primary-600">Review Campaigns</Link></li>
+              <li><Link href="/services#google-posts" className="text-gray-600 hover:text-primary-600">Google Posts</Link></li>
+              <li><Link href="/services#analytics-reporting" className="text-gray-600 hover:text-primary-600">Analytics & Reports</Link></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Company</h3>
+            <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider mb-4">Plans</h3>
             <ul className="space-y-2">
-              <li><Link href="/about" className="text-gray-600 hover:text-primary-600">About Us</Link></li>
-              <li><Link href="/reviews" className="text-gray-600 hover:text-primary-600">Testimonials</Link></li>
-              <li><Link href="/careers" className="text-gray-600 hover:text-primary-600">Careers</Link></li>
-              <li><Link href="/blog" className="text-gray-600 hover:text-primary-600">Blog</Link></li>
+              <li><Link href="/pricing" className="text-gray-600 hover:text-primary-600">Core Plan</Link></li>
+              <li><Link href="/pricing" className="text-gray-600 hover:text-primary-600">Pro Plan</Link></li>
+              <li><Link href="/pricing" className="text-gray-600 hover:text-primary-600">Enterprise</Link></li>
+              <li><Link href="/reviews" className="text-gray-600 hover:text-primary-600">Customer Reviews</Link></li>
             </ul>
           </div>
           
@@ -72,7 +74,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm">© {currentYear} Nexus. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">© {currentYear} getAIIQ. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link href="/privacy" className="text-gray-500 hover:text-primary-600 text-sm">Privacy Policy</Link>
             <Link href="/terms" className="text-gray-500 hover:text-primary-600 text-sm">Terms of Service</Link>
