@@ -232,9 +232,12 @@ function Services() {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
-                <button className="text-primary-600 font-semibold hover:text-primary-700">
+                <Link 
+                  href={`/serviceDetails?id=${service.id}`}
+                  className="text-primary-600 font-semibold hover:text-primary-700"
+                >
                   Learn more →
-                </button>
+                </Link>
               </motion.div>
             ))}
           </motion.div>

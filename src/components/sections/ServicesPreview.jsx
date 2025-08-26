@@ -6,6 +6,7 @@ import Link from 'next/link'
 
 const services = [
   {
+    id: 'review-management',
     title: "Review Management",
     description: "Smart QR review funnels that route 4-5★ reviews to Google and handle lower ratings privately.",
     icon: (
@@ -15,6 +16,7 @@ const services = [
     )
   },
   {
+    id: 'nap-sync',
     title: "Business Listings & NAP Sync",
     description: "Keep your contact info consistent across Google, Apple Maps, Yelp, Bing, and dozens of directories.",
     icon: (
@@ -25,6 +27,7 @@ const services = [
     )
   },
   {
+    id: 'ai-responses',
     title: "AI-Powered Response Management",
     description: "Intelligent review responses, automated reply suggestions, and 24/7 monitoring to protect your reputation.",
     icon: (
@@ -91,7 +94,7 @@ export default function ServicesPreview() {
               </div>
               <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
               <p className="text-gray-600 mb-6">{service.description}</p>
-              <Link href="/services" className="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center">
+              <Link href={`/serviceDetails?id=${service.id}`} className="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center">
                 Learn more
                 <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
