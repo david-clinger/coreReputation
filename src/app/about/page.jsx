@@ -92,7 +92,7 @@ export default function About() {
                 <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
                   <p>
                     Founded in 2015, Nexus began as a small team of three passionate individuals with a vision to transform 
-                    how businesses approach digital solutions. Today, we've grown into a diverse team of experts serving 
+                    how businesses approach digital solutions. Today, we&apos;ve grown into a diverse team of experts serving 
                     clients across various industries worldwide.
                   </p>
                   <p>

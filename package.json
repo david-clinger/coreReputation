@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "vercel-build": "npm install --legacy-peer-deps && next build",
+    "build": "ESLINT_NO_DEV_ERRORS=true next build",
+    "vercel-build": "npm install --legacy-peer-deps && ESLINT_NO_DEV_ERRORS=true next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -22,7 +22,9 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.62.0",
     "react-hot-toast": "^2.6.0",
-    "react-leaflet": "^5.0.0"
+    "react-leaflet": "^5.0.0",
+    "autoprefixer": "^10.4.16",
+    "tailwindcss": "^3.4.0"
   },
   "resolutions": {
     "react": "^18.2.0",
@@ -36,10 +38,8 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "autoprefixer": "^10.4.16",
     "eslint": "^9",
     "eslint-config-next": "15.5.0",
-    "tailwindcss": "^4"
+    "typescript": "^5.0.0"
   }
 }

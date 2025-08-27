@@ -220,7 +220,7 @@ export default function Legal() {
             <div className="text-center">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Questions About Our Legal Policies?</h3>
               <p className="text-gray-600 mb-6">
-                If you have any questions or concerns about our legal documents, please don't hesitate to contact us.
+                If you have any questions or concerns about our legal documents, please don&apos;t hesitate to contact us.
               </p>
               <Link 
                 href="/contact"

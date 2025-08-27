@@ -198,7 +198,7 @@ function ServiceDetailsContent() {
                         ))}
                       </div>
                       <blockquote className="text-lg text-gray-900 mb-4 italic">
-                        "{service.testimonial.quote}"
+                        &quot;{service.testimonial.quote}&quot;
                       </blockquote>
                       <div className="text-sm">
                         <p className="text-gray-900 font-medium">{service.testimonial.author}</p>
@@ -326,7 +326,7 @@ function ServiceDetailsContent() {
                   <div className="text-6xl mb-4">❓</div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-3">FAQs Coming Soon</h3>
                   <p className="text-gray-600 mb-6">
-                    We're working on adding frequently asked questions for this service. 
+                    We&apos;re working on adding frequently asked questions for this service. 
                     In the meantime, feel free to contact us with any questions you may have.
                   </p>
                   <Button 

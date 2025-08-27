@@ -50,7 +50,7 @@ export default function Contact() {
               Get in <span className="text-gradient">Touch</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Have questions or ready to start your project? Reach out to our team and we'll get back to you promptly.
+              Have questions or ready to start your project? Reach out to our team and we&apos;ll get back to you promptly.
             </p>
           </motion.div>
 

@@ -299,7 +299,7 @@ export default function Register() {
           <h3 className="text-sm font-semibold text-green-900 mb-2">Demo Mode - Registration Works!</h3>
           <div className="text-sm text-green-800">
             <p className="mb-2">Your account will be created and stored locally. You can then login with your new credentials!</p>
-            <p><strong>Note:</strong> Data is stored in your browser's localStorage until database is connected.</p>
+            <p><strong>Note:</strong> Data is stored in your browser&apos;s localStorage until database is connected.</p>
           </div>
         </motion.div>
 

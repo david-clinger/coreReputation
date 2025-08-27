@@ -50,7 +50,7 @@ export default function ContactForm({ onSuccess }) {
       <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Get in Touch</h2>
-          <p className="text-gray-600">We'll get back to you within 24 hours</p>
+          <p className="text-gray-600">We&apos;ll get back to you within 24 hours</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

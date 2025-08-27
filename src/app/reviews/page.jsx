@@ -123,7 +123,7 @@ export default function Reviews() {
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Discover what our clients have to say about their experience working with us. 
-              Real stories from real businesses we've helped succeed.
+              Real stories from real businesses we&apos;ve helped succeed.
             </p>
           </motion.div>
 
@@ -222,7 +222,7 @@ export default function Reviews() {
                 </div>
 
                 {/* Review Content */}
-                <p className="text-gray-700 mb-6 italic">"{review.content}"</p>
+                <p className="text-gray-700 mb-6 italic">&quot;{review.content}&quot;</p>
 
                 {/* Reviewer Info */}
                 <div className="flex items-center">

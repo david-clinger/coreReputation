@@ -20,7 +20,7 @@ export default function Hero() {
               <span className="text-gradient">Professional Solutions</span> for Your Business
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              We provide top-quality services that help your business grow and succeed in today's competitive market.
+              We provide top-quality services that help your business grow and succeed in today&apos;s competitive market.
               Our expert team delivers results that matter.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">

@@ -59,7 +59,7 @@ export default function TestimonialsPreview() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our clients have to say about our services.
+            Don&apos;t just take our word for it. Here&apos;s what our clients have to say about our services.
           </p>
         </motion.div>
         
@@ -87,7 +87,7 @@ export default function TestimonialsPreview() {
                   <p className="text-gray-600 text-sm">{testimonial.role}</p>
                 </div>
               </div>
-              <p className="text-gray-700 italic">"{testimonial.content}"</p>
+              <p className="text-gray-700 italic">&quot;{testimonial.content}&quot;</p>
               <div className="flex mt-6">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg key={star} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
