@@ -67,8 +67,8 @@ export default function Navbar() {
     // Dispatch auth event for other components
     dispatchAuthEvent(AUTH_EVENTS.LOGOUT)
     
-    // Redirect to home page (not login)
-    router.push('/')
+    // Redirect to login page
+    router.push('/login')
   }
 
   const menuItems = [

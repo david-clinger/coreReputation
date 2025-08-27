@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { getServiceById } from '../../sections/servicesData'
 import Button from '../../components/ui/Button'
 import Card from '../../components/ui/Card'
+import withAuth from '@/lib/withAuth'
 
 function ServiceDetailsContent() {
   const searchParams = useSearchParams()
@@ -389,10 +390,12 @@ function LoadingFallback() {
   )
 }
 
-export default function ServiceDetails() {
+function ServiceDetails() {
   return (
     <Suspense fallback={<LoadingFallback />}>
       <ServiceDetailsContent />
     </Suspense>
   )
 }
+
+export default withAuth(ServiceDetails)

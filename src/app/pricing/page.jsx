@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import withAuth from '@/lib/withAuth'
 
 const pricingPlans = [
   {
@@ -153,7 +154,7 @@ const itemVariants = {
   }
 }
 
-export default function Pricing() {
+function Pricing() {
   const [billingPeriod, setBillingPeriod] = useState('monthly')
   const [showEssential, setShowEssential] = useState(false)
   const [hoveredCard, setHoveredCard] = useState(null)
@@ -460,3 +461,5 @@ export default function Pricing() {
     </div>
   )
 }
+
+export default withAuth(Pricing)

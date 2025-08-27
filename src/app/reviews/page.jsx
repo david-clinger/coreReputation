@@ -3,6 +3,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import withAuth from '@/lib/withAuth'
 
 const reviews = [
   {
@@ -95,7 +96,7 @@ const itemVariants = {
   }
 }
 
-export default function Reviews() {
+function Reviews() {
   const [activeFilter, setActiveFilter] = useState('all')
   const [visibleReviews, setVisibleReviews] = useState(6)
 
@@ -362,3 +363,5 @@ export default function Reviews() {
     </div>
   )
 }
+
+export default withAuth(Reviews)

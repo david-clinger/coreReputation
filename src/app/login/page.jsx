@@ -218,22 +218,7 @@ export default function Login() {
           </div>
         </motion.form>
 
-        {/* Demo Credentials */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-blue-50 border border-blue-200 rounded-xl p-4 mt-6"
-        >
-          <h3 className="text-sm font-semibold text-blue-900 mb-2">Demo Credentials</h3>
-          <div className="text-sm text-blue-800 space-y-1">
-            <p><strong>Default Email:</strong> abdulraheemfiverr69@gmail.com</p>
-            <p><strong>Default Password:</strong> Dave@123</p>
-            <p className="text-xs mt-2 text-blue-700">
-              You can also register a new account and login with those credentials!
-            </p>
-          </div>
-        </motion.div>
+       
 
         {/* Sign Up Link */}
         <motion.div
