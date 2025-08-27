@@ -7,7 +7,10 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { AUTH_EVENTS, dispatchAuthEvent } from '@/lib/auth-events'
 
-export default function Login() {
+
+import { Suspense } from 'react'
+
+function LoginContent() {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -218,8 +221,6 @@ export default function Login() {
           </div>
         </motion.form>
 
-       
-
         {/* Sign Up Link */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -236,5 +237,13 @@ export default function Login() {
         </motion.div>
       </motion.div>
     </div>
+  )
+}
+
+export default function Login() {
+  return (
+    <Suspense>
+      <LoginContent />
+    </Suspense>
   )
 }
