@@ -2,10 +2,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { validateCredentials, initializeUsers } from '@/lib/userStorage'
 import { AUTH_EVENTS, dispatchAuthEvent } from '@/lib/auth-events'
 
 export default function Login() {
@@ -15,12 +14,16 @@ export default function Login() {
   })
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [successMessage, setSuccessMessage] = useState('')
   const router = useRouter()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
-    // Initialize users on component mount
-    initializeUsers()
-  }, [])
+    // Check if user just registered
+    if (searchParams.get('registered') === 'true') {
+      setSuccessMessage('Registration successful! Please log in with your credentials.')
+    }
+  }, [searchParams])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -36,30 +39,40 @@ export default function Login() {
     e.preventDefault()
     setIsLoading(true)
     setError('')
+    setSuccessMessage('')
 
     try {
-      // Simulate loading delay
-      await new Promise(resolve => setTimeout(resolve, 1000))
+      // Call the login API
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      // Validate credentials using the storage system
-      const user = validateCredentials(formData.email, formData.password)
-      
-      if (user) {
-        // Store login status in localStorage
-        localStorage.setItem('isLoggedIn', 'true')
-        localStorage.setItem('userEmail', formData.email)
-        localStorage.setItem('userName', user.name)
-        
-        // Dispatch auth event for immediate UI updates
-        dispatchAuthEvent(AUTH_EVENTS.LOGIN, { user })
-        
-        // Redirect to home page
-        router.push('/')
-      } else {
-        setError('Invalid email or password. Please try again.')
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Login failed')
       }
+
+      console.log('Login successful:', data.message)
+      
+      // Store user info in localStorage for UI purposes
+      localStorage.setItem('isLoggedIn', 'true')
+      localStorage.setItem('userEmail', data.user.email)
+      localStorage.setItem('userName', data.user.name)
+      localStorage.setItem('userId', data.user._id)
+      
+      // Dispatch login event for navbar updates
+      dispatchAuthEvent(AUTH_EVENTS.LOGIN)
+      
+      // Redirect to home page
+      router.push('/')
     } catch (err) {
-      setError('An error occurred. Please try again.')
+      console.error('Login error:', err)
+      setError(err.message || 'Invalid email or password. Please try again.')
     } finally {
       setIsLoading(false)
     }
@@ -103,6 +116,21 @@ export default function Login() {
           onSubmit={handleSubmit}
         >
           <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+            {successMessage && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-green-50 border border-green-200 rounded-lg p-4"
+              >
+                <div className="flex">
+                  <svg className="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <p className="text-green-800 text-sm">{successMessage}</p>
+                </div>
+              </motion.div>
+            )}
+
             {error && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}

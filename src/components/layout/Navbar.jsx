@@ -42,15 +42,33 @@ export default function Navbar() {
     }
   }, [])
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      // Call logout API to clear server-side cookie
+      await fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include'
+      })
+    } catch (error) {
+      console.error('Logout API error:', error)
+    }
+
+    // Clear local storage
     localStorage.removeItem('isLoggedIn')
     localStorage.removeItem('userEmail')
     localStorage.removeItem('userName')
+    localStorage.removeItem('userId')
+    
+    // Update state
     setIsLoggedIn(false)
     setUserEmail('')
     setUserName('')
+    
+    // Dispatch auth event for other components
     dispatchAuthEvent(AUTH_EVENTS.LOGOUT)
-    router.push('/login')
+    
+    // Redirect to home page (not login)
+    router.push('/')
   }
 
   const menuItems = [

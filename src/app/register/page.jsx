@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { addUser, userExists } from '@/lib/userStorage'
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -51,12 +50,6 @@ export default function Register() {
       return false
     }
 
-    // Check if user already exists using the storage system
-    if (userExists(formData.email)) {
-      setError('An account with this email already exists')
-      return false
-    }
-
     return true
   }
 
@@ -71,31 +64,34 @@ export default function Register() {
     }
 
     try {
-      // Simulate API delay
-      await new Promise(resolve => setTimeout(resolve, 1500))
+      // Call the registration API
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-      // Create new user object
-      const newUser = {
-        email: formData.email,
-        password: formData.password, // In reality, this would be hashed
-        name: formData.name
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Registration failed')
       }
-      
-      // Add user to storage system
-      addUser(newUser)
-      
-      console.log('New user registered and saved:', newUser)
+
+      console.log('Registration successful:', data.message)
       
       // Show success message
       setSuccess(true)
       
       // Auto-redirect to login after 3 seconds
       setTimeout(() => {
-        router.push('/login')
+        router.push('/login?registered=true')
       }, 3000)
 
     } catch (err) {
-      setError('Registration failed. Please try again.')
+      console.error('Registration error:', err)
+      setError(err.message || 'Registration failed. Please try again.')
     } finally {
       setIsLoading(false)
     }
