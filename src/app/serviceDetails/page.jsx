@@ -1,16 +1,12 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { getServiceById } from '../../sections/servicesData'
-import Navbar from '../../components/layout/Navbar'
-import Footer from '../../components/layout/Footer'
 import Button from '../../components/ui/Button'
 import Card from '../../components/ui/Card'
-// Temporarily removing heroicons import to fix runtime error
-// import { ChevronLeftIcon, CheckIcon, StarIcon } from '@heroicons/react/24/outline'
 
-export default function ServiceDetails() {
+function ServiceDetailsContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const serviceId = searchParams.get('id')
@@ -36,11 +32,9 @@ export default function ServiceDetails() {
   if (loading) {
     return (
       <div className="min-h-screen bg-white">
-        <Navbar />
         <div className="flex items-center justify-center min-h-screen">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
         </div>
-        <Footer />
       </div>
     )
   }
@@ -271,16 +265,16 @@ export default function ServiceDetails() {
               <h2 className="text-3xl font-bold text-white mb-8">Pricing Information</h2>
               <Card className="bg-slate-800/50 border-slate-700 p-8 max-w-2xl">
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-blue-400 mb-2">
+                  <p className="text-4xl font-bold text-blue-600 mb-2">
                     Starting at {service.pricing.startsAt}/month
                   </p>
-                  <p className="text-gray-300 mb-6">{service.pricing.note}</p>
+                  <p className="text-gray-700 mb-6">{service.pricing.note}</p>
                   
                   <div className="space-y-4 mb-8">
                     <h4 className="text-lg font-semibold text-white">Available In:</h4>
                     <div className="flex justify-center gap-4">
                       {service.pricing.includedIn.map((plan, index) => (
-                        <span key={index} className="bg-blue-600/20 text-blue-300 px-3 py-1 rounded-full text-sm">
+                        <span key={index} className="bg-blue-600/20 text-blue-800 px-3 py-1 rounded-full text-sm">
                           {plan}
                         </span>
                       ))}
@@ -381,8 +375,24 @@ export default function ServiceDetails() {
           </motion.div>
         </div>
       </section>
-
-     
     </div>
+  )
+}
+
+function LoadingFallback() {
+  return (
+    <div className="min-h-screen bg-white">
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+      </div>
+    </div>
+  )
+}
+
+export default function ServiceDetails() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ServiceDetailsContent />
+    </Suspense>
   )
 }

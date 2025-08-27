@@ -1,11 +1,8 @@
 // src/app/legal/page.jsx
+'use client'
+
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-
-export const metadata = {
-  title: 'Legal - Terms of Service & Privacy Policy',
-  description: 'Review our Terms of Service, Privacy Policy, and other legal documents that govern your use of our services and website.',
-}
 
 const legalSections = [
   {
