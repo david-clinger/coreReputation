@@ -51,7 +51,7 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
             >
-              About <span className="text-gradient bg-gradient-to-r from-primary-600 to-secondary-600">Nexus</span>
+              About <span className="text-gradient bg-gradient-to-r from-primary-600 to-secondary-600">NovaAIQ</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}

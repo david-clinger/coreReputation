@@ -89,7 +89,7 @@ export default function Navbar() {
               <div className="h-8 w-8 bg-primary-600 rounded-md flex items-center justify-center mr-2">
                 <span className="text-white font-bold text-lg">N</span>
               </div>
-              <span className="font-bold text-xl text-gray-900">Nexus</span>
+              <span className="font-bold text-xl text-gray-900">NovaAIQ</span>
             </Link>
           </div>
           
