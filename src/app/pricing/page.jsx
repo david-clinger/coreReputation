@@ -8,27 +8,11 @@ import withAuth from '@/lib/withAuth'
 
 const pricingPlans = [
   {
-    name: 'Essential',
-    tagline: 'For the owner who just wants reviews on Google—nothing else.',
-    price: '$99',
-    period: '/month',
-    popular: false,
-    hidden: true,
-    features: [
-      'QR Review Capture Only: Customers scan your QR code and post directly to Google',
-      'No Filtering, No Dashboard, No Extras',
-      'Email-Only Support'
-    ],
-    cta: 'Get Essential',
-    href: '/contact?plan=essential',
-    note: 'Hidden "back pocket" plan'
-  },
-  {
     name: 'Core',
     tagline: 'The right starting point for serious reputation management.',
     price: '$199',
     period: '/month',
-    popular: true,
+    popular: false,
     hidden: false,
     features: [
       'QR Review Funnel: 4–5★ reviews go public on Google, while 3★ and below are routed privately',
@@ -59,7 +43,8 @@ const pricingPlans = [
     tagline: 'Automation plus the tools to actively grow your reputation.',
     price: '$399',
     period: '/month',
-    popular: false,
+    popular: true,
+    recommended: true,
     hidden: false,
     features: [
       'Everything in Core, plus:',
@@ -156,7 +141,6 @@ const itemVariants = {
 
 function Pricing() {
   const [billingPeriod, setBillingPeriod] = useState('monthly')
-  const [showEssential, setShowEssential] = useState(false)
   const [hoveredCard, setHoveredCard] = useState(null)
 
   const getPrice = (basePrice) => {
@@ -172,8 +156,6 @@ function Pricing() {
   const getPeriod = () => {
     return billingPeriod === 'annual' ? '/year' : '/month'
   }
-
-  const visiblePlans = pricingPlans.filter(plan => !plan.hidden || showEssential)
 
   return (
     <div className="min-h-screen bg-white">
@@ -218,16 +200,6 @@ function Pricing() {
                 </span>
               </div>
             </div>
-
-            {/* Essential Plan Toggle */}
-            <div className="mb-8">
-              <button
-                onClick={() => setShowEssential(!showEssential)}
-                className="text-primary-600 hover:text-primary-700 font-medium text-sm"
-              >
-                {showEssential ? 'Hide Essential plan' : 'Looking for something simpler? Show Essential plan'}
-              </button>
-            </div>
           </motion.div>
 
           {/* Pricing Cards */}
@@ -236,19 +208,18 @@ function Pricing() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center items-stretch max-w-6xl mx-auto"
-            style={{ gridTemplateRows: 'auto' }}
+            className="grid grid-cols-1 lg:grid-cols-3 gap-8 justify-items-center items-stretch max-w-6xl mx-auto"
           >
-            {visiblePlans.map((plan) => (
+            {pricingPlans.map((plan) => (
               <motion.div
                 key={plan.name}
                 variants={itemVariants}
                 className={`relative rounded-2xl p-8 transition-all duration-300 ${
                   plan.popular
-                    ? 'border-2 border-blue-500 shadow-2xl'
-                    : 'border border-gray-200 shadow-lg'
-                } bg-white ${plan.hidden ? 'bg-gray-50 border-dashed' : ''} ${
-                  hoveredCard === plan.name ? 'shadow-xl border-blue-400 transform scale-[1.02]' : ''
+                    ? 'border-2 border-deep-teal shadow-2xl bg-gradient-to-br from-deep-teal/5 to-white'
+                    : 'border border-cool-gray/20 shadow-lg bg-white'
+                } ${
+                  hoveredCard === plan.name ? 'shadow-xl border-deep-teal transform scale-[1.02]' : ''
                 } flex flex-col h-full`}
                 onMouseEnter={() => setHoveredCard(plan.name)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -257,56 +228,48 @@ function Pricing() {
                 }}
               >
                 {plan.popular && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                {plan.hidden && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gray-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                      Hidden Plan
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                    <span className="bg-deep-teal text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
+                      ⭐ RECOMMENDED
                     </span>
                   </div>
                 )}
 
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{plan.name}</h3>
-                  <p className="text-gray-600 text-sm h-12 flex items-center justify-center">{plan.tagline}</p>
+                  <h3 className="text-2xl font-bold text-charcoal mb-2">{plan.name}</h3>
+                  <p className="text-slate-gray text-sm h-12 flex items-center justify-center">{plan.tagline}</p>
                 </div>
 
                 <div className="text-center mb-8">
                   <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-bold text-gray-900">{getPrice(plan.price)}</span>
+                    <span className="text-4xl font-bold text-charcoal">{getPrice(plan.price)}</span>
                     {plan.price !== 'Custom' && (
-                      <span className="text-gray-600 ml-2">{getPeriod()}</span>
+                      <span className="text-slate-gray ml-2">{getPeriod()}</span>
                     )}
                   </div>
                   {plan.note && (
-                    <p className="text-sm text-gray-500 mt-2 italic">{plan.note}</p>
+                    <p className="text-sm text-cool-gray mt-2 italic">{plan.note}</p>
                   )}
                 </div>
 
                 <ul className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
-                      <svg className="w-5 h-5 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      <svg className="w-5 h-5 text-deep-teal mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-gray-600 text-sm leading-relaxed">{feature}</span>
+                      <span className="text-slate-gray text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 {plan.addons && (
-                  <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-                    <h4 className="font-semibold text-gray-900 text-sm mb-2">Optional Add-On:</h4>
+                  <div className="mb-6 p-4 bg-ultra-light-gray rounded-lg">
+                    <h4 className="font-semibold text-charcoal text-sm mb-2">Optional Add-On:</h4>
                     {plan.addons.map((addon, addonIndex) => (
                       <div key={addonIndex} className="text-sm">
-                        <p className="font-medium text-gray-900">{addon.name} {addon.price}</p>
-                        <p className="text-gray-600 text-xs">{addon.description}</p>
+                        <p className="font-medium text-charcoal">{addon.name} {addon.price}</p>
+                        <p className="text-slate-gray text-xs">{addon.description}</p>
                       </div>
                     ))}
                   </div>
@@ -316,10 +279,8 @@ function Pricing() {
                   href={plan.href}
                   className={`w-full block text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
                     plan.popular
-                      ? 'btn-primary'
-                      : plan.hidden
-                      ? 'bg-gray-600 text-white hover:bg-gray-700'
-                      : 'btn-outline'
+                      ? 'bg-deep-teal text-white hover:bg-bright-gold shadow-lg'
+                      : 'bg-white border-2 border-cool-gray/30 text-slate-gray hover:border-deep-teal hover:text-deep-teal'
                   } mt-auto`}
                 >
                   {plan.cta}
@@ -340,8 +301,8 @@ function Pricing() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Feature Comparison</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-charcoal">Feature Comparison</h2>
+            <p className="text-xl text-slate-gray max-w-3xl mx-auto">
               See how our plans stack up against each other to find your perfect fit.
             </p>
           </motion.div>
@@ -353,45 +314,75 @@ function Pricing() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="overflow-x-auto"
           >
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
               <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-4 px-6 font-semibold text-gray-900">Feature</th>
-                  {visiblePlans.map((plan, index) => (
-                    <th key={index} className="text-center py-4 px-6 font-semibold text-gray-900">
+                <tr className="bg-deep-teal">
+                  <th className="text-left py-6 px-6 font-bold text-white text-lg">Feature</th>
+                  {pricingPlans.map((plan, index) => (
+                    <th key={index} className="text-center py-6 px-6 font-bold text-white text-lg">
                       {plan.name}
+                      {plan.popular && <span className="block text-xs text-bright-gold mt-1">⭐ RECOMMENDED</span>}
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { feature: 'QR Review Capture', essential: '✓', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'Review Filtering', essential: '✗', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'Dashboard Access', essential: '✗', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'NAP Sync', essential: '✗', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'AI Response Suggestions', essential: '✗', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'Outbound Review Campaigns', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Google Posts', essential: '✗', core: 'Add-on', pro: '✓', enterprise: '✓' },
-                  { feature: 'AI-Assisted Responses', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Response Fail-Safe', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Q&A Monitoring', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Photo/Video Uploads', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Performance Reports', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Quarterly Optimization', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Competitor Analysis', essential: '✗', core: '✗', pro: '✓ (3 competitors)', enterprise: '✓ (Unlimited)' },
-                  { feature: 'Custom Review Pages', essential: '✗', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'API Access', essential: '✗', core: '✗', pro: '✗', enterprise: '✓' },
-                  { feature: 'Dedicated Account Manager', essential: '✗', core: '✗', pro: '✗', enterprise: '✓' },
-                  { feature: 'Support', essential: 'Email', core: 'Phone + Email', pro: 'Priority (4hr)', enterprise: '24/7 Dedicated' }
+                  { feature: 'QR Review Capture', core: '✓', pro: '✓', enterprise: '✓' },
+                  { feature: 'Review Filtering', core: '✓', pro: '✓', enterprise: '✓' },
+                  { feature: 'Dashboard Access', core: '✓', pro: '✓', enterprise: '✓' },
+                  { feature: 'NAP Sync', core: '✓', pro: '✓', enterprise: '✓' },
+                  { feature: 'AI Response Suggestions', core: '✓', pro: '✓', enterprise: '✓' },
+                  { feature: 'Outbound Review Campaigns', core: '✗', pro: '✓', enterprise: '✓' },
+                  { feature: 'Google Posts', core: 'Add-on (+$99)', pro: '✓ Included', enterprise: '✓ Included' },
+                  { feature: 'AI-Assisted Responses', core: '✗', pro: '✓', enterprise: '✓' },
+                  { feature: 'Response Fail-Safe', core: '✗', pro: '✓', enterprise: '✓' },
+                  { feature: 'Q&A Monitoring', core: '✗', pro: '✓', enterprise: '✓' },
+                  { feature: 'Photo/Video Uploads', core: '✗', pro: '✓ (10/month)', enterprise: '✓ (Unlimited)' },
+                  { feature: 'Performance Reports', core: 'Basic', pro: '✓ Monthly', enterprise: '✓ Advanced' },
+                  { feature: 'Quarterly Optimization', core: '✗', pro: '✓', enterprise: '✓' },
+                  { feature: 'Competitor Analysis', core: '✗', pro: '✓ (3 competitors)', enterprise: '✓ (Unlimited)' },
+                  { feature: 'Custom Review Pages', core: '✗', pro: '✓', enterprise: '✓' },
+                  { feature: 'API Access', core: '✗', pro: '✗', enterprise: '✓' },
+                  { feature: 'Dedicated Account Manager', core: '✗', pro: '✗', enterprise: '✓' },
+                  { feature: 'Support Level', core: 'Phone + Email', pro: 'Priority (4hr)', enterprise: '24/7 Dedicated' }
                 ].map((row, rowIndex) => (
-                  <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
-                    <td className="py-4 px-6 font-medium text-gray-900">{row.feature}</td>
-                    {visiblePlans.map((plan, index) => (
-                      <td key={index} className="py-4 px-6 text-center text-gray-600">
-                        {row[plan.name.toLowerCase()]}
-                      </td>
-                    ))}
+                  <tr key={rowIndex} className={`border-b border-cool-gray/20 hover:bg-deep-teal/5 transition-colors ${rowIndex % 2 === 0 ? 'bg-ultra-light-gray' : 'bg-white'}`}>
+                    <td className="py-4 px-6 font-semibold text-charcoal border-r border-cool-gray/20">{row.feature}</td>
+                    {pricingPlans.map((plan, index) => {
+                      const value = row[plan.name.toLowerCase()]
+                      const isCheck = value === '✓' || (typeof value === 'string' && value.includes('✓'))
+                      const isX = value === '✗'
+                      
+                      return (
+                        <td key={index} className={`py-4 px-6 text-center ${plan.popular ? 'bg-deep-teal/5 border-l-2 border-r-2 border-deep-teal/20' : ''}`}>
+                          {isCheck && (
+                            <div className="flex items-center justify-center">
+                              <div className="w-6 h-6 bg-gradient-to-br from-bright-gold to-deep-teal rounded-full flex items-center justify-center">
+                                <svg className="w-4 h-4 text-white font-bold" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                                </svg>
+                              </div>
+                              {value.includes('(') && (
+                                <span className="ml-2 text-xs text-slate-gray">{value.match(/\(([^)]+)\)/)?.[1]}</span>
+                              )}
+                            </div>
+                          )}
+                          {isX && (
+                            <div className="flex items-center justify-center">
+                              <div className="w-6 h-6 bg-cool-gray rounded-full flex items-center justify-center">
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                                </svg>
+                              </div>
+                            </div>
+                          )}
+                          {!isCheck && !isX && (
+                            <span className="text-slate-gray font-medium text-sm">{value}</span>
+                          )}
+                        </td>
+                      )
+                    })}
                   </tr>
                 ))}
               </tbody>

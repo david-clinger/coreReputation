@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Hero from '@/components/sections/Hero'
+import WhyNovaAIQ from '@/components/sections/WhyNovaAIQ'
 import ServicesPreview from '@/components/sections/ServicesPreview'
 import TestimonialsPreview from '@/components/sections/TestimonialsPreview'
 import CTASection from '@/components/sections/CTASection'
@@ -61,6 +62,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <WhyNovaAIQ />
       <ServicesPreview />
       <TestimonialsPreview />
       <CTASection />

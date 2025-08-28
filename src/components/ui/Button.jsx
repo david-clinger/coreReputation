@@ -15,10 +15,10 @@ const Button = ({
   const baseClasses = 'inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
   
   const variants = {
-    primary: 'bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 shadow-lg hover:shadow-xl',
-    secondary: 'bg-white text-blue-600 border border-blue-600 hover:bg-blue-50 focus:ring-blue-500',
-    outline: 'bg-transparent text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white focus:ring-blue-500',
-    ghost: 'bg-transparent text-gray-600 hover:bg-gray-100 focus:ring-gray-500',
+    primary: 'bg-deep-teal text-white hover:bg-deep-teal/90 focus:ring-deep-teal shadow-lg hover:shadow-xl',
+    secondary: 'bg-white text-deep-teal border border-deep-teal hover:bg-ultra-light-gray focus:ring-deep-teal',
+    outline: 'bg-transparent text-deep-teal border border-deep-teal hover:bg-deep-teal hover:text-white focus:ring-deep-teal',
+    ghost: 'bg-transparent text-slate-gray hover:bg-ultra-light-gray focus:ring-cool-gray',
     danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 shadow-lg hover:shadow-xl',
   }
   

@@ -9,29 +9,38 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // NovaAIQ Brand Colors
+        'deep-teal': '#008080',
+        'bright-gold': '#FFD700',
+        'charcoal': '#111827',
+        'slate-gray': '#374151',
+        'cool-gray': '#9CA3AF',
+        'ultra-light-gray': '#F3F4F6',
+        
+        // Legacy compatibility
         primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
-          300: '#7dd3fc',
-          400: '#38bdf8',
-          500: '#0ea5e9',
-          600: '#0284c7',
-          700: '#0369a1',
-          800: '#075985',
-          900: '#0c4a6e',
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#008080',
+          600: '#007a7a',
+          700: '#006666',
+          800: '#005252',
+          900: '#003d3d',
         },
         secondary: {
-          50: '#faf7f5',
-          100: '#f2e9e1',
-          200: '#e5d4c8',
-          300: '#d6b9a5',
-          400: '#c4987d',
-          500: '#b07f5e',
-          600: '#996a4f',
-          700: '#7d5641',
-          800: '#674638',
-          900: '#553b30',
+          50: '#fffdf0',
+          100: '#fffacc',
+          200: '#fff599',
+          300: '#ffed5e',
+          400: '#ffe32d',
+          500: '#FFD700',
+          600: '#e6c200',
+          700: '#cca800',
+          800: '#b38f00',
+          900: '#997500',
         }
       },
       animation: {

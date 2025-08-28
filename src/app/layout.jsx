@@ -13,34 +13,34 @@ const inter = Inter({
 
 export const metadata = {
   title: {
-    default: 'Nexus - Professional Services & Business Solutions',
-    template: '%s | Nexus'
+    default: 'NovaAIQ – AI-Powered Reviews and Reputation Management',
+    template: '%s | NovaAIQ'
   },
-  description: 'Nexus provides top-quality professional services with competitive pricing and exceptional customer support. Business consulting, web development, digital marketing, and more.',
-  keywords: 'professional services, business consulting, web development, digital marketing, SEO, cloud solutions, UI/UX design, technical support',
-  authors: [{ name: 'Nexus Team' }],
-  creator: 'Nexus',
-  publisher: 'Nexus',
+  description: 'Collect more 5-Star reviews, respond instantly with AI, and keep your Google Business Profile active. NovaAIQ helps businesses stay visible in the AI-driven future of search.',
+  keywords: 'AI reviews, reputation management, Google Business Profile, review collection, AI responses, business visibility, online reputation, review management software, AI-powered reviews, Google reviews',
+  authors: [{ name: 'NovaAIQ Team' }],
+  creator: 'NovaAIQ',
+  publisher: 'NovaAIQ',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://nexus.example.com'),
+  metadataBase: new URL('https://novaaiiq.com'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Nexus - Professional Services & Business Solutions',
-    description: 'Top-quality professional services with competitive pricing and exceptional customer support.',
-    url: 'https://nexus.example.com',
-    siteName: 'Nexus',
+    title: 'NovaAIQ – Visibility Beyond Google',
+    description: 'Reviews, reputation, and presence simplified with AI. See how NovaAIQ keeps your business ahead.',
+    url: 'https://novaaiiq.com',
+    siteName: 'NovaAIQ',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Nexus - Professional Services',
+        alt: 'NovaAIQ - AI-Powered Reviews and Reputation Management',
       },
     ],
     locale: 'en_US',
@@ -48,10 +48,10 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Nexus - Professional Services & Business Solutions',
-    description: 'Top-quality professional services with competitive pricing and exceptional customer support.',
+    title: 'NovaAIQ – Visibility Beyond Google',
+    description: 'Reviews, reputation, and presence simplified with AI. See how NovaAIQ keeps your business ahead.',
     images: ['/images/og-image.jpg'],
-    creator: '@nexus',
+    creator: '@novaaiiq',
   },
   robots: {
     index: true,
@@ -87,29 +87,33 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Nexus",
-              "url": "https://nexus.example.com",
-              "logo": "https://nexus.example.com/images/logo.png",
-              "description": "Professional services and business solutions provider",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "123 Business Ave",
-                "addressLocality": "New York",
-                "addressRegion": "NY",
-                "postalCode": "10001",
-                "addressCountry": "US"
+              "@type": "SoftwareApplication",
+              "name": "NovaAIQ",
+              "url": "https://novaaiiq.com",
+              "logo": "https://novaaiiq.com/images/logo.png",
+              "description": "AI-Powered Reviews and Reputation Management Software",
+              "applicationCategory": "BusinessApplication",
+              "operatingSystem": "Web Browser",
+              "offers": {
+                "@type": "Offer",
+                "category": "SaaS"
               },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-555-123-4567",
-                "contactType": "customer service",
-                "email": "hello@nexus.example.com"
+              "publisher": {
+                "@type": "Organization",
+                "name": "NovaAIQ",
+                "url": "https://novaaiiq.com"
               },
+              "featureList": [
+                "AI-Powered Review Collection",
+                "Automated Review Responses",
+                "Google Business Profile Management",
+                "Reputation Monitoring",
+                "Review Analytics"
+              ],
               "sameAs": [
-                "https://twitter.com/nexus",
-                "https://linkedin.com/company/nexus",
-                "https://facebook.com/nexus"
+                "https://twitter.com/novaaiiq",
+                "https://linkedin.com/company/novaaiiq",
+                "https://facebook.com/novaaiiq"
               ]
             })
           }}

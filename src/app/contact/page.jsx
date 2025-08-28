@@ -5,7 +5,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import ContactForm from '@/components/forms/ContactForm'
 import ContactInfo from '@/components/sections/ContactInfo'
-import ContactMap from '@/components/sections/ContactMap'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -50,7 +49,8 @@ export default function Contact() {
               Get in <span className="text-gradient">Touch</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Have questions or ready to start your project? Reach out to our team and we&apos;ll get back to you promptly.
+              Ready to transform your online reputation? Contact our team to get started with NovaAIQ&apos;s 
+              AI-powered review management platform.
             </p>
           </motion.div>
 
@@ -67,7 +67,8 @@ export default function Contact() {
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Thank You!</h2>
               <p className="text-gray-600 mb-8">
-                Your message has been received. Our team will get back to you within 24 hours.
+                Your message has been received. Our NovaAIQ team will get back to you within 24 hours 
+                to discuss how we can help improve your online reputation.
               </p>
               <button
                 onClick={() => setFormSubmitted(false)}
@@ -96,89 +97,6 @@ export default function Contact() {
           )}
         </div>
       </section>
-
-      {/* Map Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Visit Our Office</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Feel free to stop by our office during business hours for a consultation.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <ContactMap />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Find quick answers to common questions about our services and processes.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
-          >
-            {faqItems.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="bg-white rounded-xl p-6 shadow-md"
-              >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
     </div>
   )
 }
-
-const faqItems = [
-  {
-    question: "How quickly do you respond to inquiries?",
-    answer: "We typically respond to all inquiries within 24 hours during business days. Urgent requests are prioritized."
-  },
-  {
-    question: "What information should I include in my project request?",
-    answer: "Please include your project goals, timeline, budget range, and any specific requirements you may have."
-  },
-  {
-    question: "Do you offer free consultations?",
-    answer: "Yes, we offer a free 30-minute consultation to discuss your project needs and how we can help."
-  },
-  {
-    question: "What are your business hours?",
-    answer: "Our office hours are Monday to Friday, 9:00 AM to 6:00 PM EST. We monitor emails after hours for urgent matters."
-  }
-]

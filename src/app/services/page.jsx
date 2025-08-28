@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Button from '@/components/ui/Button'
 import withAuth from '@/lib/withAuth'
 
 const allServices = [
@@ -393,7 +394,7 @@ function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary-600">
+      <section className="py-16 bg-deep-teal">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -402,18 +403,26 @@ function Services() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Boost Your Online Reputation?
+              Ready to Strengthen Your Reputation?
             </h2>
-            <p className="text-xl text-primary-100 mb-8">
-              Let&apos;s help you get more 5-star reviews and manage your online reputation like a pro.
+            <p className="text-xl text-white/80 mb-8">
+              Transform how customers see your business with AI-powered review management that builds trust and drives growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-secondary">
+              <Button 
+                href="/contact"
+                variant="secondary"
+                size="lg"
+                className="bg-white text-deep-teal hover:bg-ultra-light-gray"
+              >
                 Get Free Consultation
-              </Link>
-              <Link href="/pricing" className="btn-outline bg-transparent border-white text-white hover:bg-white hover:text-primary-600">
+              </Button>
+              <a
+                href="/pricing"
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-lg bg-transparent border border-white text-white hover:bg-white hover:text-deep-teal transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+              >
                 View Pricing
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>

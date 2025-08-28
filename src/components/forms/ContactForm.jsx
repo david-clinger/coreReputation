@@ -49,8 +49,8 @@ export default function ContactForm({ onSuccess }) {
     >
       <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Get in Touch</h2>
-          <p className="text-gray-600">We&apos;ll get back to you within 24 hours</p>
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Start Your Reputation Transformation</h2>
+          <p className="text-gray-600">Get a free consultation on how NovaAIQ can boost your reviews</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -142,11 +142,13 @@ export default function ContactForm({ onSuccess }) {
               {...register('subject', { required: 'Subject is required' })}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-white"
             >
-              <option value="">Select a subject</option>
-              <option value="general">General Inquiry</option>
-              <option value="quote">Request a Quote</option>
+              <option value="">What can we help you with?</option>
+              <option value="consultation">Free Consultation</option>
+              <option value="demo">Request Demo</option>
+              <option value="pricing">Pricing Information</option>
+              <option value="review-management">Review Management Setup</option>
+              <option value="multi-location">Multi-Location Business</option>
               <option value="support">Technical Support</option>
-              <option value="partnership">Partnership Opportunity</option>
               <option value="other">Other</option>
             </select>
             <AnimatePresence>
@@ -172,7 +174,7 @@ export default function ContactForm({ onSuccess }) {
               rows={5}
               {...register('message', { required: 'Message is required', minLength: { value: 10, message: 'Message must be at least 10 characters' } })}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 placeholder-gray-400 resize-vertical"
-              placeholder="Tell us about your project or inquiry..."
+              placeholder="Tell us about your business and how we can help improve your online reviews..."
             />
             <AnimatePresence>
               {errors.message && (
