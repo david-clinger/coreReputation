@@ -77,7 +77,7 @@ export const servicesData = {
 
     pricing: {
       startsAt: "$199",
-      includedIn: ["Core", "Pro", "Enterprise"],
+      includedIn: ["Launch", "Pro", "Enterprise"],
       note: "Available in all plans with advanced features in Pro and Enterprise"
     },
 
@@ -184,7 +184,7 @@ export const servicesData = {
 
     pricing: {
       startsAt: "$199",
-      includedIn: ["Core", "Pro", "Enterprise"],
+      includedIn: ["Launch", "Pro", "Enterprise"],
       note: "NAP sync included in all plans with enhanced monitoring in Pro/Enterprise"
     },
 
@@ -298,8 +298,8 @@ export const servicesData = {
 
     pricing: {
       startsAt: "$199",
-      includedIn: ["Core (basic)", "Pro (advanced)", "Enterprise (full AI)"],
-      note: "AI-drafted suggestions in Core, full automation available in Pro and Enterprise"
+      includedIn: ["Launch (basic)", "Pro (advanced)", "Enterprise (full AI)"],
+      note: "AI-drafted suggestions in Launch, full automation available in Pro and Enterprise"
     },
 
     faqs: [
@@ -545,7 +545,7 @@ export const servicesData = {
 
     pricing: {
       startsAt: "$99",
-      includedIn: ["Core (add-on +$99/month)", "Pro (included)", "Enterprise (included)"],
+      includedIn: ["Launch (add-on +$99/month)", "Pro (included)", "Enterprise (included)"],
       note: "4 posts per month included, additional posts available"
     },
 
@@ -680,8 +680,8 @@ export const servicesData = {
 
     pricing: {
       startsAt: "$199",
-      includedIn: ["Core (basic)", "Pro (advanced)", "Enterprise (comprehensive)"],
-      note: "Basic analytics in Core, advanced features in Pro, comprehensive reporting in Enterprise"
+      includedIn: ["Launch (basic)", "Pro (advanced)", "Enterprise (comprehensive)"],
+      note: "Basic analytics in Launch, advanced features in Pro, comprehensive reporting in Enterprise"
     },
 
     faqs: [

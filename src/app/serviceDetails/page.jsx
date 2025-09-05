@@ -117,14 +117,20 @@ function ServiceDetailsContent() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-        <div className="aspect-video bg-gradient-to-br from-primary-blue-100 to-primary-blue-200 backdrop-blur-sm border border-gray-200 flex items-center justify-center">
-                  <div className="text-center text-gray-600">
-          <div className="w-24 h-24 mx-auto mb-4 bg-primary-blue-100 rounded-full flex items-center justify-center">
-                      <span className="text-4xl">{service.features[0]?.icon || '🚀'}</span>
-                    </div>
-                    <p className="text-lg">{service.title} Preview</p>
-                  </div>
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-video border border-gray-200">
+                <img
+                  src={service.heroImage}
+                  alt={service.title}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={e => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=640&q=80';
+                  }}
+                />
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent p-6">
+                  <h3 className="text-2xl font-bold text-white mb-1">{service.title}</h3>
+                  <p className="text-white/80 text-sm">{service.subtitle}</p>
                 </div>
               </div>
             </motion.div>
@@ -223,7 +229,7 @@ function ServiceDetailsContent() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {service.features.map((feature, index) => (
                   <Card key={index} className="bg-white border-gray-200 p-6 hover:shadow-lg transition-shadow">
-                    <div className="text-4xl mb-4">{feature.icon}</div>
+                    {/* <div className="text-4xl mb-4">{feature.icon}</div> */}
                     <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
                     <p className="text-gray-600">{feature.description}</p>
                   </Card>

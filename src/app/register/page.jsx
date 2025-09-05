@@ -140,10 +140,10 @@ export default function Register() {
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <Link href="/" className="flex items-center">
-              <div className="h-12 w-12 bg-primary-600 rounded-md flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-2xl">N</span>
+              <div className="h-12 w-12 bg-primary-blue-600 rounded-md flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-2xl">CR</span>
               </div>
-              <span className="font-bold text-3xl text-gray-900">Nexus</span>
+              <span className="font-bold text-3xl text-gray-900">Core Reputation</span>
             </Link>
           </div>
           
@@ -251,15 +251,15 @@ export default function Register() {
                 name="terms"
                 type="checkbox"
                 required
-                className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                className="h-4 w-4 text-primary-blue-600 focus:ring-primary-blue-500 border-gray-300 rounded"
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
                 I agree to the{' '}
-                <Link href="/legal" className="text-primary-600 hover:text-primary-700 font-medium">
+                <Link href="/legal" className="text-primary-blue-600 hover:text-primary-blue-700 font-medium">
                   Terms of Service
                 </Link>
                 {' '}and{' '}
-                <Link href="/legal" className="text-primary-600 hover:text-primary-700 font-medium">
+                <Link href="/legal" className="text-primary-blue-600 hover:text-primary-blue-700 font-medium">
                   Privacy Policy
                 </Link>
               </label>
@@ -286,7 +286,7 @@ export default function Register() {
         </motion.form>
 
         {/* Demo Note */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -297,7 +297,7 @@ export default function Register() {
             <p className="mb-2">Your account will be created and stored locally. You can then login with your new credentials!</p>
             <p><strong>Note:</strong> Data is stored in your browser&apos;s localStorage until database is connected.</p>
           </div>
-        </motion.div>
+        </motion.div> */}
 
         {/* Sign In Link */}
         <motion.div
@@ -308,7 +308,7 @@ export default function Register() {
         >
           <p className="text-gray-600">
             Already have an account?{' '}
-            <Link href="/login" className="text-primary-600 hover:text-primary-700 font-medium">
+            <Link href="/login" className="text-primary-blue-600 hover:text-primary-blue-700 font-medium">
               Sign in here
             </Link>
           </p>
