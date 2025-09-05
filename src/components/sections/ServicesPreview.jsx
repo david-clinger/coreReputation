@@ -93,8 +93,12 @@ const itemVariants = {
 
 export default function ServicesPreview() {
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-teal-100 rounded-full blur-3xl opacity-20 -translate-y-32 -translate-x-32" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-blue-100 rounded-full blur-3xl opacity-20 translate-y-32 translate-x-32" />
+      
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,9 +106,20 @@ export default function ServicesPreview() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Core Services</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Complete AI-powered reputation management solutions to help you collect more 5-star reviews and maintain a stellar online presence.
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-blue-50 border border-primary-blue-200 mb-6">
+            <svg className="w-4 h-4 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            <span className="text-primary-blue-600 text-sm font-medium">Comprehensive Service Suite</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+            Core{' '}
+            <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+              Services
+            </span>
+          </h2>
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            Complete AI-powered reputation management solutions to help you collect more 5-star reviews and maintain a stellar online presence across all platforms.
           </p>
         </motion.div>
         
@@ -119,19 +134,24 @@ export default function ServicesPreview() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-white border border-gray-200 rounded-xl p-8 text-center hover:shadow-lg transition-all duration-300"
+              className="bg-white rounded-3xl p-10 shadow-2xl hover:shadow-3xl transition-all duration-500 border border-gray-100 hover:border-primary-blue-200 text-center group transform hover:-translate-y-2"
             >
-              <div className="flex justify-center mb-6">
-                <div className="bg-gray-100 rounded-full p-4">
-                  {service.icon}
+              <div className="flex justify-center mb-8">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-2xl p-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <div className="w-full h-full text-white">
+                    {service.icon}
+                  </div>
                 </div>
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-gray-900">{service.title}</h3>
-              <p className="text-gray-600 mb-6">{service.description}</p>
-              <Link href={`/serviceDetails?id=${service.id}`} className="text-primary-blue-600 font-semibold hover:text-opacity-80 inline-flex items-center">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900 group-hover:text-primary-blue-600 transition-colors duration-300">{service.title}</h3>
+              <p className="text-gray-600 mb-8 leading-relaxed text-lg">{service.description}</p>
+              <Link 
+                href={`/serviceDetails?id=${service.id}`} 
+                className="inline-flex items-center text-primary-blue-600 font-bold hover:text-primary-blue-700 group-hover:translate-x-2 transition-all duration-300"
+              >
                 Learn more
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </Link>
             </motion.div>
@@ -146,8 +166,13 @@ export default function ServicesPreview() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mb-16"
         >
-          <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">Additional Features</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h3 className="text-3xl font-bold text-center mb-12 text-gray-900">
+            Additional{' '}
+            <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+              Features
+            </span>
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {subServices.map((subService, index) => (
               <motion.div
                 key={index}
@@ -155,15 +180,15 @@ export default function ServicesPreview() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-gray-100 rounded-xl p-6 text-center hover:shadow-md transition-all duration-300"
+                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 text-center group border border-gray-100 hover:border-primary-blue-200 transform hover:-translate-y-1"
               >
-                <div className="flex justify-center mb-4">
-                  <div className="bg-white rounded-full p-3">
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary-blue-50 to-teal-50 rounded-2xl p-4 group-hover:scale-110 transition-transform duration-300 border border-primary-blue-100">
                     {subService.icon}
                   </div>
                 </div>
-                <h4 className="text-lg font-semibold mb-3 text-gray-900">{subService.title}</h4>
-                <p className="text-gray-600 text-sm">{subService.description}</p>
+                <h4 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-primary-blue-600 transition-colors duration-300">{subService.title}</h4>
+                <p className="text-gray-600 leading-relaxed">{subService.description}</p>
               </motion.div>
             ))}
           </div>
@@ -176,8 +201,14 @@ export default function ServicesPreview() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center"
         >
-          <Link href="/services" className="bg-primary-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-blue-700 transition-all duration-200">
+          <Link 
+            href="/services" 
+            className="bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white px-12 py-4 rounded-2xl font-bold text-lg hover:from-primary-blue-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl inline-flex items-center group"
+          >
             View All Services
+            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
           </Link>
         </motion.div>
       </div>

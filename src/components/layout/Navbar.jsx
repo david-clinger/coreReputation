@@ -81,17 +81,20 @@ export default function Navbar() {
   ]
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-20">
           <div className="flex items-center">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-                          <div className="flex items-center">
-              <div className="h-8 w-8 bg-primary-blue-600 rounded-md flex items-center justify-center mr-2">
-                <span className="text-white font-bold text-lg">CR</span>
+            <Link href="/" className="flex-shrink-0 flex items-center group">
+              <div className="flex items-center">
+                <div className="h-10 w-10 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-xl flex items-center justify-center mr-3 shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <span className="text-white font-bold text-xl">CR</span>
+                </div>
+                <div className="flex flex-col">
+                  <span className="font-bold text-xl text-gray-900 leading-tight">Core</span>
+                  <span className="font-bold text-xl text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent leading-tight">Reputation</span>
+                </div>
               </div>
-              <span className="font-bold text-xl text-gray-900">Core <span className="text-primary-blue-600">Reputation</span></span>
-            </div>
             </Link>
           </div>
           
@@ -101,9 +104,10 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-gray-600 hover:text-primary-blue-600 transition-colors font-medium"
+                className="relative text-gray-600 hover:text-primary-blue-600 transition-colors font-semibold text-lg py-2 group"
               >
                 {item.name}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-blue-600 to-teal-cyan transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
           </div>
@@ -113,14 +117,14 @@ export default function Navbar() {
             {isLoggedIn ? (
               <div className="flex items-center space-x-4">
                 {/* User Profile */}
-                <div className="flex items-center space-x-3 bg-gray-50 rounded-lg px-3 py-2">
-                  <div className="w-8 h-8 bg-primary-blue-600 rounded-full flex items-center justify-center">
+                <div className="flex items-center space-x-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl px-4 py-3 shadow-sm border border-gray-200">
+                  <div className="w-10 h-10 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-xl flex items-center justify-center shadow-lg">
                     <span className="text-white text-sm font-bold">
                       {(userName || userEmail).charAt(0).toUpperCase()}
                     </span>
                   </div>
                   <div className="hidden sm:block">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-bold text-gray-900">
                       {userName || 'User'}
                     </div>
                     <div className="text-xs text-gray-500">
@@ -132,9 +136,9 @@ export default function Navbar() {
                 {/* Logout Button */}
                 <button
                   onClick={handleLogout}
-                  className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 hover:border-primary-blue-600 transition-colors"
+                  className="inline-flex items-center px-4 py-3 border border-gray-300 rounded-2xl text-sm font-semibold text-gray-700 bg-white hover:bg-gradient-to-br hover:from-red-50 hover:to-red-100 hover:border-red-300 hover:text-red-600 transition-all duration-300 shadow-sm hover:shadow-md"
                 >
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                   </svg>
                   Logout
@@ -142,10 +146,10 @@ export default function Navbar() {
               </div>
             ) : (
               <>
-                <Link href="/login" className="text-gray-600 hover:text-primary-blue-600 font-medium">
+                <Link href="/login" className="text-gray-600 hover:text-primary-blue-600 font-semibold text-lg transition-colors duration-300">
                   Login
                 </Link>
-                <Link href="/register" className="bg-primary-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-200 text-sm">
+                <Link href="/register" className="bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white px-6 py-3 rounded-2xl font-bold hover:from-primary-blue-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
                   Sign Up
                 </Link>
               </>
@@ -156,10 +160,10 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-primary-blue-600 focus:outline-none"
+              className="text-gray-600 hover:text-primary-blue-600 focus:outline-none p-2 rounded-xl hover:bg-gray-50 transition-all duration-300"
               aria-label="Toggle menu"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
@@ -177,31 +181,31 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-light-gray/20"
+              className="md:hidden bg-white/95 backdrop-blur-sm border-t border-gray-100 rounded-b-2xl shadow-lg"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1">
+              <div className="px-4 pt-4 pb-6 space-y-2">
                 {menuItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-3 py-2 text-gray-600 hover:text-primary-blue-600 hover:bg-gray-50 rounded-md font-medium"
+                    className="block px-4 py-3 text-gray-600 hover:text-white hover:bg-gradient-to-r hover:from-primary-blue-600 hover:to-teal-cyan rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <div className="pt-4 pb-2 border-t border-gray-200">
+                <div className="pt-6 pb-2 border-t border-gray-200 mt-4">
                   {isLoggedIn ? (
                     <>
                       {/* Mobile User Profile */}
-                      <div className="flex items-center px-3 py-3 bg-gray-50 rounded-lg mx-3 mb-3">
-                        <div className="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center mr-3">
-                          <span className="text-white text-sm font-bold">
+                      <div className="flex items-center px-4 py-4 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl mx-1 mb-4 shadow-sm border border-gray-200">
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-xl flex items-center justify-center mr-4 shadow-lg">
+                          <span className="text-white text-lg font-bold">
                             {(userName || userEmail).charAt(0).toUpperCase()}
                           </span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-gray-900 truncate">
+                          <div className="text-sm font-bold text-gray-900 truncate">
                             {userName || userEmail.split('@')[0]}
                           </div>
                           <div className="text-xs text-gray-500 truncate">
@@ -216,9 +220,9 @@ export default function Navbar() {
                           handleLogout()
                           setIsOpen(false)
                         }}
-                        className="flex items-center w-full px-3 py-2 text-gray-600 hover:text-primary-blue-600 hover:bg-gray-50 rounded-md font-medium"
+                        className="flex items-center w-full px-4 py-3 text-gray-600 hover:text-white hover:bg-gradient-to-r hover:from-red-500 hover:to-red-600 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
                       >
-                        <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
                         Logout
@@ -228,14 +232,14 @@ export default function Navbar() {
                     <>
                       <Link
                         href="/login"
-                        className="block px-3 py-2 text-light-gray hover:text-primary-blue-600 rounded-md font-medium"
+                        className="block px-4 py-3 text-gray-600 hover:text-primary-blue-600 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
                         onClick={() => setIsOpen(false)}
                       >
                         Login
                       </Link>
                       <Link
                         href="/register"
-                        className="block px-3 py-2 mt-2 bg-primary-600 text-white rounded-md font-medium text-center"
+                        className="block px-4 py-3 mt-2 bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white rounded-xl font-bold text-center transition-all duration-300 transform hover:scale-105 shadow-lg"
                         onClick={() => setIsOpen(false)}
                       >
                         Sign Up

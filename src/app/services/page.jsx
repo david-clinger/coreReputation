@@ -165,23 +165,53 @@ const itemVariants = {
 function Services() {
   const [activeService, setActiveService] = useState(allServices[0])
 
+  // Function to handle service selection and smooth scroll
+  const handleServiceSelect = (service) => {
+    setActiveService(service)
+    // Smooth scroll to the detailed section
+    setTimeout(() => {
+      const detailedSection = document.getElementById('detailed-service-section')
+      if (detailedSection) {
+        detailedSection.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        })
+      }
+    }, 100)
+  }
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-  <section className="py-16 bg-gradient-to-br from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="min-h-screen flex items-center bg-gradient-to-br from-white via-gray-50 to-primary-blue-50 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 right-0 w-80 h-80 bg-teal-100 rounded-full blur-3xl opacity-20 -translate-y-40 translate-x-40" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-blue-100 rounded-full blur-3xl opacity-30 translate-y-48 -translate-x-48" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Our <span className="bg-gradient-to-r from-primary-blue-600 to-gold bg-clip-text text-transparent">Services</span>
+            {/* Professional Badge */}
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-blue-50 border border-primary-blue-200 mb-8">
+              <svg className="w-4 h-4 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+              <span className="text-primary-blue-600 text-sm font-medium">Comprehensive Service Suite</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900">
+              Our{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+                Services
+              </span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Comprehensive online reputation management solutions to help you get more 5-star reviews, 
-              manage customer feedback, and grow your business with AI-powered tools.
+            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Comprehensive AI-powered reputation management solutions to help you collect more 5-star reviews, 
+              manage customer feedback, and grow your business with intelligent automation.
             </p>
           </motion.div>
 
@@ -197,45 +227,54 @@ function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-        className={`card overflow-hidden cursor-pointer transition-all duration-300 hover:border-primary-blue-300 hover:shadow-xl ${
+                className={`bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 border cursor-pointer group transform hover:-translate-y-2 ${
                   activeService.id === service.id 
-          ? 'border-primary-blue-600 bg-primary-blue-50' 
-                    : 'border-gray-200'
+                    ? 'border-primary-blue-600 bg-gradient-to-br from-primary-blue-50 to-white ring-2 ring-primary-blue-200' 
+                    : 'border-gray-100 hover:border-primary-blue-200'
                 }`}
-                onClick={() => setActiveService(service)}
+                onClick={() => handleServiceSelect(service)}
               >
                 {/* Service Image */}
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden rounded-2xl mb-6">
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   <div className="absolute top-4 right-4">
-                    <div className={`p-2 rounded-lg backdrop-blur-sm ${
-                      activeService.id === service.id ? 'bg-primary-blue-600/80' : 'bg-white/80'
+                    <div className={`p-3 rounded-2xl shadow-lg backdrop-blur-sm transition-all duration-300 ${
+                      activeService.id === service.id ? 'bg-primary-blue-600/90 scale-110' : 'bg-white/90 group-hover:bg-primary-blue-600/90'
                     }`}>
-                      <div className={`${activeService.id === service.id ? 'text-white' : 'text-primary-blue-600'} w-8 h-8 flex items-center justify-center`}>
-                        <div className="w-6 h-6">
-                          {service.icon}
-                        </div>
+                      <div className={`transition-colors duration-300 w-6 h-6 ${activeService.id === service.id || 'group-hover:text-white' ? 'text-white' : 'text-primary-blue-600'}`}>
+                        {service.icon}
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 {/* Service Content */}
-                <div className="p-6 text-center">
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  <Link 
-                    href={`/serviceDetails?id=${service.id}`}
-                    className="text-primary-blue-600 font-semibold hover:text-primary-blue-700"
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-primary-blue-600 transition-colors duration-300">{service.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
+                  <button 
+                    onClick={() => handleServiceSelect(service)}
+                    className="inline-flex items-center text-primary-blue-600 font-bold hover:text-primary-blue-700 group-hover:translate-x-2 transition-all duration-300"
                   >
-                    Learn more →
-                  </Link>
+                    Learn more
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </button>
+                  <div className="mt-4">
+                    <Link 
+                      href={`/serviceDetails?id=${service.id}`}
+                      className="text-sm text-gray-500 hover:text-primary-blue-600 transition-colors duration-200"
+                    >
+                      View full details →
+                    </Link>
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -244,52 +283,68 @@ function Services() {
       </section>
 
       {/* Detailed Service Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="detailed-service-section" className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-teal-100 rounded-full blur-3xl opacity-20 -translate-y-32 -translate-x-32" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-blue-100 rounded-full blur-3xl opacity-20 translate-y-32 translate-x-32" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             key={activeService.id}
             initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start"
+              className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start"
             >
             {/* Service Details */}
             <div>
-              <div className="flex items-center mb-6">
-                  <div className="p-3 bg-primary-blue-100 rounded-lg mr-4">
-                  {activeService.icon}
+              <div className="flex items-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-2xl p-4 mr-6 shadow-lg">
+                  <div className="w-full h-full text-white">
+                    {activeService.icon}
+                  </div>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-900">{activeService.title}</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900">{activeService.title}</h2>
               </div>
               
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-600 text-lg mb-10 leading-relaxed">
                 {activeService.fullDescription}
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">What We Offer</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                    <svg className="w-6 h-6 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    What We Offer
+                  </h3>
                   <ul className="space-y-3">
                     {activeService.features.map((feature, index) => (
                       <li key={index} className="flex items-center">
-                        <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-5 h-5 text-primary-blue-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        <span className="text-gray-600">{feature}</span>
+                        <span className="text-gray-700 font-medium">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Benefits</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                    <svg className="w-6 h-6 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    Key Benefits
+                  </h3>
                   <ul className="space-y-3">
                     {activeService.benefits.map((benefit, index) => (
                       <li key={index} className="flex items-center">
-                        <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-5 h-5 text-teal-600 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
-                        <span className="text-gray-600">{benefit}</span>
+                        <span className="text-gray-700 font-medium">{benefit}</span>
                       </li>
                     ))}
                   </ul>
@@ -297,10 +352,22 @@ function Services() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/contact" className="btn-primary">
+                <Link 
+                  href="/contact" 
+                  className="bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white px-8 py-4 rounded-2xl font-bold text-lg hover:from-primary-blue-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl text-center flex items-center justify-center group"
+                >
                   Get Started
+                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
                 </Link>
-                <Link href="/pricing" className="btn-outline">
+                <Link 
+                  href="/pricing" 
+                  className="bg-white border-2 border-primary-blue-600 text-primary-blue-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-primary-blue-50 hover:border-primary-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center flex items-center justify-center group"
+                >
+                  <svg className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
                   View Pricing
                 </Link>
               </div>
@@ -308,7 +375,8 @@ function Services() {
 
             {/* Service Image/Preview */}
             <div className="relative">
-              <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+              <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 transform hover:scale-105 transition-transform duration-500">
+                <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-primary-blue-600 to-teal-cyan h-2"></div>
                 <div className="relative h-80">
                   <img
                     src={activeService.image}
@@ -316,11 +384,19 @@ function Services() {
                     className="absolute inset-0 w-full h-full object-cover"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-2xl font-bold text-white mb-1">{activeService.title}</h3>
-                    <p className="text-white/80 text-sm">Visual representation of our service</p>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <h3 className="text-2xl font-bold text-white mb-2">{activeService.title}</h3>
+                    <p className="text-white/90 text-sm">Professional service implementation</p>
                   </div>
+                </div>
+                <div className="p-8">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <div className="w-4 h-4 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="w-4 h-4 bg-primary-blue-600 rounded-full"></div>
+                    <div className="w-4 h-4 bg-teal-400 rounded-full"></div>
+                  </div>
+                  <p className="text-gray-600">AI-powered • Automated • Results-driven</p>
                 </div>
               </div>
             </div>
@@ -329,8 +405,12 @@ function Services() {
       </section>
 
       {/* Process Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-white via-gray-50 to-primary-blue-50 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary-blue-100 rounded-full blur-3xl opacity-30 -translate-y-32 translate-x-32" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 translate-y-32 -translate-x-32" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -338,9 +418,20 @@ function Services() {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Process</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We follow a proven process to set up and manage your online reputation effectively.
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-blue-50 border border-primary-blue-200 mb-8">
+              <svg className="w-4 h-4 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span className="text-primary-blue-600 text-sm font-medium">Proven Process</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+              Our{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+                Process
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              We follow a proven process to set up and manage your online reputation effectively with maximum results.
             </p>
           </motion.div>
 
@@ -349,60 +440,64 @@ function Services() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
             {[
               {
                 step: "01",
                 title: "Setup & Integration",
-                description: "We set up your QR review funnels, sync your business listings, and configure monitoring.",
-                iconUrl: "https://api.iconify.design/heroicons:cog-6-tooth?color=white&width=32&height=32"
+                description: "We set up your QR review funnels, sync your business listings, and configure monitoring systems.",
+                icon: (
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                )
               },
               {
                 step: "02",
                 title: "AI Configuration",
                 description: "We customize AI response templates, set up review routing, and train the system on your brand voice.",
-                iconUrl: "https://api.iconify.design/heroicons:cpu-chip?color=white&width=32&height=32"
+                icon: (
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                )
               },
               {
                 step: "03",
                 title: "Launch & Monitor",
                 description: "Your reputation management system goes live with 24/7 monitoring and automated workflows.",
-                iconUrl: "https://api.iconify.design/heroicons:rocket-launch?color=white&width=32&height=32"
+                icon: (
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                )
               },
               {
                 step: "04",
                 title: "Optimize & Report",
                 description: "We continuously optimize performance and provide detailed analytics and monthly reports.",
-                iconUrl: "https://api.iconify.design/heroicons:chart-bar?color=white&width=32&height=32"
+                icon: (
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                )
               }
             ].map((step, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="text-center"
+                className="text-center group"
               >
-                <div className="relative w-20 h-20 bg-gradient-to-br from-primary-blue-500 to-primary-blue-700 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    {index === 0 && (
-                      <path d="M11.828 2.25c-.916 0-1.699.663-1.85 1.567l-.091.549a.798.798 0 01-.517.608 7.45 7.45 0 00-.478.198.798.798 0 01-.796-.064l-.453-.324a1.875 1.875 0 00-2.416.2l-.243.243a1.875 1.875 0 00-.2 2.416l.324.453a.798.798 0 01.064.796 7.448 7.448 0 00-.198.478.798.798 0 01-.608.517l-.549.091A1.875 1.875 0 002.25 11.828v.344c0 .916.663 1.699 1.567 1.85l.549.091c.281.047.508.25.608.517.06.162.127.321.198.478a.798.798 0 01-.064.796l-.324.453a1.875 1.875 0 00.2 2.416l.243.243c.648.648 1.67.733 2.416.2l.453-.324a.798.798 0 01.796-.064c.157.071.316.137.478.198.267.1.47.327.517.608l.091.549a1.875 1.875 0 001.85 1.567h.344c.916 0 1.699-.663 1.85-1.567l.091-.549a.798.798 0 01.517-.608 7.52 7.52 0 00.478-.198.798.798 0 01.796.064l.453.324a1.875 1.875 0 002.416-.2l.243-.243c.648-.648.733-1.67.2-2.416l-.324-.453a.798.798 0 01-.064-.796c.071-.157.137-.316.198-.478.1-.267.327-.47.608-.517l.549-.091A1.875 1.875 0 0021.75 12.172v-.344c0-.916-.663-1.699-1.567-1.85l-.549-.091a.798.798 0 01-.608-.517 7.507 7.507 0 00-.198-.478.798.798 0 01.064-.796l.324-.453a1.875 1.875 0 00-.2-2.416l-.243-.243a1.875 1.875 0 00-2.416-.2l-.453.324a.798.798 0 01-.796.064 7.462 7.462 0 00-.478-.198.798.798 0 01-.517-.608l-.091-.549A1.875 1.875 0 0012.172 2.25h-.344zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" />
-                    )}
-                    {index === 1 && (
-                      <path d="M16.5 7.063l1.44-1.44a.75.75 0 111.061 1.061L17.561 8.124a.75.75 0 01-1.06 0l-1.44-1.44a.75.75 0 111.061-1.061l1.44 1.44zM13.736 2.25L6.75 9.236a3 3 0 000 4.243L9.514 16.25H6a.75.75 0 000 1.5h4.5a.75.75 0 00.53-.22l8.25-8.25a.75.75 0 000-1.06L13.736 2.25z" />
-                    )}
-                    {index === 2 && (
-                      <path d="M5.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM2.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM18.75 7.5a.75.75 0 00-1.5 0v2.25H15a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H21a.75.75 0 000-1.5h-2.25V7.5z" />
-                    )}
-                    {index === 3 && (
-                      <path d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.035-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z" />
-                    )}
-                  </svg>
-                  <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center text-xs font-bold text-white">
+                <div className="relative w-20 h-20 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl group-hover:scale-110 transition-transform duration-300">
+                  {step.icon}
+                  <div className="absolute -bottom-3 -right-3 w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-xs font-bold text-white shadow-lg">
                     {step.step}
                   </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-blue-600 transition-colors duration-300">{step.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{step.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -410,35 +505,52 @@ function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary-blue-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-gradient-to-br from-primary-blue-600 via-primary-blue-700 to-teal-600 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-80 h-80 bg-white/10 rounded-full blur-3xl -translate-y-40 -translate-x-40" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-teal-300/20 rounded-full blur-3xl translate-y-48 translate-x-48" />
+        
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 border border-white/20 mb-8">
+              <svg className="w-4 h-4 text-white mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span className="text-white text-sm font-medium">Transform Your Business Today</span>
+            </div>
+            
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Strengthen Your Reputation?
+              Ready to Strengthen Your{' '}
+              <span className="text-yellow-300">Reputation</span>?
             </h2>
-            <p className="text-xl text-white/80 mb-8">
-              Transform how customers see your business with AI-powered review management that builds trust and drives growth.
+            <p className="text-xl text-white/90 mb-10 leading-relaxed">
+              Transform how customers see your business with AI-powered review management that builds trust, 
+              drives growth, and keeps you ahead of the competition.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link
                 href="/contact"
-                variant="secondary"
-                size="lg"
-                className="bg-white text-primary-blue-600 hover:bg-gray-50"
+                className="bg-white text-primary-blue-600 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center justify-center group"
               >
+                <svg className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
                 Get Free Consultation
-              </Button>
-              <a
+              </Link>
+              <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-lg bg-transparent border border-white text-white hover:bg-white hover:text-primary-blue-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-primary-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center group"
               >
+                <svg className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                </svg>
                 View Pricing
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

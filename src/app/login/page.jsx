@@ -82,30 +82,47 @@ function LoginContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-blue-50 via-teal-50 to-white flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary-blue-200 rounded-full blur-3xl opacity-20 -translate-y-36 -translate-x-36" />
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-teal-200 rounded-full blur-3xl opacity-30 translate-y-32 translate-x-32" />
+      <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-primary-blue-100 rounded-full blur-3xl opacity-15 -translate-x-24 -translate-y-24" />
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="max-w-md w-full space-y-8"
+        className="relative max-w-md w-full space-y-4"
       >
         <div>
           {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <Link href="/" className="flex items-center">
-              <div className="h-12 w-12 bg-primary-blue-600 rounded-md flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-2xl">CR</span>
+          <div className="flex justify-center mb-4">
+            <Link href="/" className="flex items-center group">
+              <div className="h-12 w-12 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-xl flex items-center justify-center mr-3 shadow-xl group-hover:scale-105 transition-transform duration-300">
+                <span className="text-white font-bold text-xl">CR</span>
               </div>
-              <span className="font-bold text-3xl text-gray-900">Core Reputation</span>
+              <div className="flex flex-col">
+                <span className="font-bold text-2xl text-gray-900 leading-tight">Core</span>
+                <span className="font-bold text-2xl text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent leading-tight">Reputation</span>
+              </div>
             </Link>
           </div>
           
           <div className="text-center">
-            <h2 className="text-3xl font-bold text-gray-900 mb-2">
-              Welcome Back
+            <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-primary-blue-50 border border-primary-blue-200 mb-4">
+              <svg className="w-4 h-4 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <span className="text-primary-blue-600 text-sm font-medium">Member Access</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+              Welcome{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+                Back
+              </span>
             </h2>
-            <p className="text-gray-600">
-              Sign in to your account to continue
+            <p className="text-lg text-gray-600">
+              Sign in to continue managing your reputation
             </p>
           </div>
         </div>
@@ -115,21 +132,21 @@ function LoginContent() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-8 space-y-6"
+          className="mt-6 space-y-4"
           onSubmit={handleSubmit}
         >
-          <div className="bg-white rounded-2xl shadow-xl p-8 space-y-6">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 space-y-5 border border-white/50">
             {successMessage && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-green-50 border border-green-200 rounded-lg p-4"
+                className="bg-green-50 border border-green-200 rounded-xl p-4"
               >
                 <div className="flex">
-                  <svg className="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-green-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                  <p className="text-green-800 text-sm">{successMessage}</p>
+                  <p className="text-green-800 font-medium text-sm">{successMessage}</p>
                 </div>
               </motion.div>
             )}
@@ -138,19 +155,19 @@ function LoginContent() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-red-50 border border-red-200 rounded-lg p-4"
+                className="bg-red-50 border border-red-200 rounded-xl p-4"
               >
                 <div className="flex">
-                  <svg className="w-5 h-5 text-red-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-red-500 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <p className="text-red-800 text-sm">{error}</p>
+                  <p className="text-red-800 font-medium text-sm">{error}</p>
                 </div>
               </motion.div>
             )}
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2">
                 Email Address
               </label>
               <input
@@ -160,13 +177,13 @@ function LoginContent() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-400 text-base font-medium bg-white/50 backdrop-blur-sm"
                 placeholder="Enter your email"
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="password" className="block text-sm font-bold text-gray-700 mb-2">
                 Password
               </label>
               <input
@@ -176,7 +193,7 @@ function LoginContent() {
                 required
                 value={formData.password}
                 onChange={handleChange}
-                className="input-field w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-blue-500 focus:border-transparent transition-all duration-300 placeholder-gray-400 text-base font-medium bg-white/50 backdrop-blur-sm"
                 placeholder="Enter your password"
               />
             </div>
@@ -189,13 +206,13 @@ function LoginContent() {
                   type="checkbox"
                   className="h-4 w-4 text-primary-blue-600 focus:ring-primary-blue-500 border-gray-300 rounded"
                 />
-                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
+                <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700 font-medium">
                   Remember me
                 </label>
               </div>
 
               <div className="text-sm">
-                <Link href="#" className="text-primary-blue-600 hover:text-primary-blue-700 font-medium">
+                <Link href="#" className="text-primary-blue-600 hover:text-primary-blue-700 font-bold transition-colors duration-300">
                   Forgot password?
                 </Link>
               </div>
@@ -204,7 +221,7 @@ function LoginContent() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full btn-primary py-3 px-4 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+              className="w-full bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white py-3 px-6 rounded-xl font-bold text-lg hover:from-primary-blue-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {isLoading ? (
                 <>
@@ -215,7 +232,12 @@ function LoginContent() {
                   Signing in...
                 </>
               ) : (
-                'Sign In'
+                <>
+                  Sign In
+                  <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </>
               )}
             </button>
           </div>
@@ -228,9 +250,9 @@ function LoginContent() {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center"
         >
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-base">
             Don&apos;t have an account?{' '}
-            <Link href="/register" className="text-primary-blue-600 hover:text-primary-blue-700 font-medium">
+            <Link href="/register" className="text-primary-blue-600 hover:text-primary-blue-700 font-bold transition-colors duration-300 hover:underline">
               Sign up here
             </Link>
           </p>

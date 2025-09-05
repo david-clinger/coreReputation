@@ -128,7 +128,7 @@ function Pricing() {
     if (basePrice === 'Custom') return 'Custom'
     if (billingPeriod === 'annual') {
       const monthlyPrice = parseInt(basePrice.replace('$', ''))
-      const annualPrice = monthlyPrice * 10
+      const annualPrice = Math.round(monthlyPrice * 12 * 0.83) // 17% discount
       return `$${annualPrice}`
     }
     return basePrice
@@ -141,46 +141,85 @@ function Pricing() {
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <section className="py-16 bg-gradient-to-br from-white to-primary-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 overflow-hidden py-20">
+        {/* Background decorations */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary-blue-100 rounded-full blur-3xl opacity-30 -translate-y-32 translate-x-32" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 -translate-y-32 -translate-x-32" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Core Reputation <span className="text-gradient">Pricing</span>
-            </h1>
-            <p className="text-xl text-light-gray max-w-3xl mx-auto mb-8">
-              Choose the perfect plan to manage and grow your online reputation. 
-              Everything you need to get more 5-star reviews and handle feedback like a pro.
-            </p>
+            {/* Badge */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="inline-flex items-center px-4 py-2 rounded-full bg-primary-blue-50 border border-primary-blue-200 mb-8"
+            >
+              <svg className="w-4 h-4 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+              </svg>
+              <span className="text-primary-blue-600 text-sm font-medium">Premium Reputation Management Solutions</span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900"
+            >
+              Choose Your{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+                Reputation Plan
+              </span>
+            </motion.h1>
+            
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed"
+            >
+              Everything you need to get more 5-star reviews and handle feedback like a pro. 
+              From simple monitoring to enterprise-level reputation management.
+            </motion.p>
 
             {/* Billing Toggle */}
-            <div className="flex items-center justify-center space-x-4 mb-8">
-              <span className={`text-lg font-medium ${billingPeriod === 'monthly' ? 'text-gray-900' : 'text-gray-500'}`}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex items-center justify-center space-x-4 mb-12"
+            >
+              <span className={`text-lg font-semibold ${billingPeriod === 'monthly' ? 'text-gray-900' : 'text-gray-500'}`}>
                 Monthly
               </span>
               <button
                 onClick={() => setBillingPeriod(billingPeriod === 'monthly' ? 'annual' : 'monthly')}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                  billingPeriod === 'annual' ? 'bg-blue-500' : 'bg-gray-300'
+                className={`relative inline-flex h-8 w-14 items-center rounded-full transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-blue-200 transform hover:scale-110 ${
+                  billingPeriod === 'annual' ? 'bg-gradient-to-r from-primary-blue-600 to-teal-cyan shadow-lg' : 'bg-gray-300'
                 }`}
               >
                 <span className="sr-only">Toggle billing period</span>
                 <span
                   className={`${
-                    billingPeriod === 'annual' ? 'translate-x-6' : 'translate-x-1'
-                  } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
+                    billingPeriod === 'annual' ? 'translate-x-7' : 'translate-x-1'
+                  } inline-block h-6 w-6 transform rounded-full bg-white transition-transform duration-300 shadow-md`}
                 />
               </button>
               <div className="flex items-center">
-                <span className={`text-lg font-medium ${billingPeriod === 'annual' ? 'text-gray-900' : 'text-gray-500'}`}>
-                  Annual (10x Monthly)
+                <span className={`text-lg font-semibold ${billingPeriod === 'annual' ? 'text-gray-900' : 'text-gray-500'}`}>
+                  Annual 
+                </span>
+                <span className="ml-2 px-2 py-1 bg-green-100 text-green-600 rounded-full text-xs font-bold">
+                  Save 17%
                 </span>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           {/* Pricing Cards */}
@@ -195,65 +234,95 @@ function Pricing() {
               <motion.div
                 key={plan.name}
                 variants={itemVariants}
-                className={`relative rounded-2xl p-8 transition-all duration-300 ${
+                className={`relative rounded-3xl p-8 transition-all duration-500 ${
                   plan.popular
-                    ? 'border-2 border-blue-400 shadow-2xl bg-gradient-to-br from-deep-teal/5 to-white'
-                    : 'border border-cool-gray/20 shadow-lg bg-white'
+                    ? 'border-2 border-primary-blue-400 shadow-2xl bg-gradient-to-br from-primary-blue-50 via-white to-teal-50 scale-105'
+                    : 'border border-gray-200 shadow-xl bg-white hover:shadow-2xl'
                 } ${
-                  hoveredCard === plan.name ? 'shadow-xl border-blue-500 transform scale-[1.02]' : ''
-                } flex flex-col h-full`}
+                  hoveredCard === plan.name ? 'shadow-3xl border-primary-blue-500 transform scale-110' : ''
+                } flex flex-col h-full backdrop-blur-sm`}
                 onMouseEnter={() => setHoveredCard(plan.name)}
                 onMouseLeave={() => setHoveredCard(null)}
                 style={{ 
-                  width: '320px'
+                  width: '340px',
+                  background: plan.popular 
+                    ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(255, 255, 255, 1) 30%, rgba(6, 182, 212, 0.05) 100%)'
+                    : 'linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(249, 250, 251, 1) 100%)'
                 }}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <span className="inline-flex items-center gap-1.5 bg-primary-blue-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
-                      <svg className="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.802-2.034a1 1 0 00-1.176 0l-2.802 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                      RECOMMENDED
-                    </span>
+                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="relative">
+                      <span className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white px-6 py-2 rounded-full text-sm font-bold shadow-2xl whitespace-nowrap transform hover:scale-105 transition-transform duration-300">
+                        <svg className="w-5 h-5 text-white animate-pulse" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.802-2.034a1 1 0 00-1.176 0l-2.802 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        MOST POPULAR
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-blue-600 to-teal-cyan rounded-full blur opacity-20 animate-pulse" />
+                    </div>
                   </div>
                 )}
 
-                <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-charcoal mb-2">{plan.name}</h3>
-                  <p className="text-slate-gray text-sm h-12 flex items-center justify-center">{plan.tagline}</p>
-                </div>
-
-                <div className="text-center mb-8">
-                  <div className="flex items-baseline justify-center">
-                    <span className="text-4xl font-bold text-charcoal">{getPrice(plan.price)}</span>
-                    {plan.price !== 'Custom' && (
-                      <span className="text-slate-gray ml-2">{getPeriod()}</span>
+                <div className="text-center mb-8 pt-4">
+                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-full flex items-center justify-center shadow-lg">
+                    {plan.name === 'Launch' && (
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    )}
+                    {plan.name === 'Core' && (
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    )}
+                    {plan.name === 'Enterprise' && (
+                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                      </svg>
                     )}
                   </div>
-                  {plan.note && (
-                    <p className="text-sm text-cool-gray mt-2 italic">{plan.note}</p>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{plan.name}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed min-h-[3rem] flex items-center justify-center px-2">{plan.tagline}</p>
+                </div>
+
+                <div className="text-center mb-10">
+                  <div className="flex items-baseline justify-center mb-2">
+                    <span className="text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">{getPrice(plan.price)}</span>
+                    {plan.price !== 'Custom' && (
+                      <span className="text-gray-500 ml-2 text-lg">{getPeriod()}</span>
+                    )}
+                  </div>
+                  {billingPeriod === 'annual' && plan.price !== 'Custom' && (
+                    <p className="text-sm text-green-600 font-semibold">
+                      Save ${Math.round(parseInt(plan.price.replace('$', '')) * 12 * 0.17)} per year
+                    </p>
                   )}
                 </div>
 
-                <ul className="space-y-3 mb-8 flex-grow">
+                <ul className="space-y-4 mb-10 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
-                      <svg className="w-5 h-5 text-primary-blue-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                      </svg>
-                      <span className="text-slate-gray text-sm leading-relaxed">{feature}</span>
+                    <li key={featureIndex} className="flex items-start group">
+                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-primary-blue-600 to-teal-cyan flex items-center justify-center mr-3 mt-0.5 shadow-md group-hover:scale-110 transition-transform duration-200">
+                        <svg className="w-3.5 h-3.5 text-white font-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                      <span className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-900 transition-colors duration-200">{feature}</span>
                     </li>
                   ))}
                 </ul>
 
                 {plan.addons && (
-                  <div className="mb-6 p-4 bg-ultra-light-gray rounded-lg">
-                    <h4 className="font-semibold text-charcoal text-sm mb-2">Optional Add-On:</h4>
+                  <div className="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border border-gray-100">
+                    <h4 className="font-bold text-gray-900 text-sm mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-gradient-to-r from-primary-blue-600 to-teal-cyan rounded-full mr-2"></span>
+                      Optional Add-On:
+                    </h4>
                     {plan.addons.map((addon, addonIndex) => (
                       <div key={addonIndex} className="text-sm">
-                        <p className="font-medium text-charcoal">{addon.name} {addon.price}</p>
-                        <p className="text-slate-gray text-xs">{addon.description}</p>
+                        <p className="font-semibold text-gray-900">{addon.name} {addon.price}</p>
+                        <p className="text-gray-600 text-xs leading-relaxed mt-1">{addon.description}</p>
                       </div>
                     ))}
                   </div>
@@ -261,13 +330,18 @@ function Pricing() {
 
                 <Link
                   href={plan.href}
-                  className={`w-full block text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
+                  className={`w-full block text-center py-4 px-8 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                     plan.popular
-                      ? 'bg-primary-blue-500 text-white hover:bg-blue-600 shadow-lg'
-                      : 'bg-white border-2 border-cool-gray/30 text-slate-gray hover:border-blue-600 hover:text-blue-600'
-                  } mt-auto`}
+                      ? 'bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white shadow-lg hover:shadow-xl hover:from-primary-blue-700 hover:to-teal-700'
+                      : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-primary-blue-600 hover:text-primary-blue-600 hover:bg-primary-blue-50'
+                  } mt-auto group`}
                 >
-                  {plan.cta}
+                  <span className="flex items-center justify-center">
+                    {plan.cta}
+                    <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
                 </Link>
               </motion.div>
             ))}
@@ -276,17 +350,32 @@ function Pricing() {
       </section>
 
       {/* Comparison Table */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-64 h-64 bg-teal-100 rounded-full blur-3xl opacity-20 -translate-y-32 -translate-x-32" />
+        <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary-blue-100 rounded-full blur-3xl opacity-20 translate-y-32 translate-x-32" />
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-charcoal">Feature Comparison</h2>
-            <p className="text-xl text-slate-gray max-w-3xl mx-auto">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-blue-50 border border-primary-blue-200 mb-6">
+              <svg className="w-4 h-4 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+              <span className="text-primary-blue-600 text-sm font-medium">Detailed Feature Comparison</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              Choose What's{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+                Right for You
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               See how our plans stack up against each other to find your perfect fit.
             </p>
           </motion.div>
@@ -298,14 +387,33 @@ function Pricing() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="overflow-x-auto"
           >
-            <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
+            <table className="w-full border-collapse bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100">
               <thead>
-                <tr className="bg-blue-600">
-                  <th className="text-left py-6 px-6 font-bold text-white text-lg">Feature</th>
+                <tr className="bg-gradient-to-r from-primary-blue-600 to-teal-cyan">
+                  <th className="text-left py-8 px-8 font-bold text-white text-xl">Feature</th>
                   {pricingPlans.map((plan, index) => (
-                    <th key={index} className="text-center py-6 px-6 font-bold text-white text-lg">
-                      {plan.name}
-                      {plan.popular && <span className="block text-xs text-bright-gold mt-1"> RECOMMENDED</span>}
+                    <th key={index} className="text-center py-8 px-8 font-bold text-white text-xl">
+                      <div className="flex flex-col items-center">
+                        <div className="w-10 h-10 mb-2 bg-white/20 rounded-full flex items-center justify-center">
+                          {plan.name === 'Launch' && (
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                          )}
+                          {plan.name === 'Core' && (
+                            <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                          )}
+                          {plan.name === 'Enterprise' && (
+                            <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                          )}
+                        </div>
+                        {plan.name}
+                        {plan.popular && <span className="block text-xs text-yellow-200 mt-2 px-2 py-1 bg-white/20 rounded-full">MOST POPULAR</span>}
+                      </div>
                     </th>
                   ))}
                 </tr>
@@ -331,38 +439,38 @@ function Pricing() {
                   { feature: 'Dedicated Account Manager', launch: '✗', core: '✗', enterprise: '✓' },
                   { feature: 'Custom Integrations', launch: '✗', core: '✗', enterprise: '✓' }
                 ].map((row, rowIndex) => (
-                  <tr key={rowIndex} className={`border-b border-cool-gray/20 hover:bg-deep-teal/5 transition-colors ${rowIndex % 2 === 0 ? 'bg-ultra-light-gray' : 'bg-white'}`}>
-                    <td className="py-4 px-6 font-semibold text-charcoal border-r border-cool-gray/20">{row.feature}</td>
+                  <tr key={rowIndex} className={`border-b border-gray-100 hover:bg-gradient-to-r hover:from-primary-blue-50 hover:to-teal-50 transition-all duration-300 ${rowIndex % 2 === 0 ? 'bg-gray-50/50' : 'bg-white'}`}>
+                    <td className="py-6 px-8 font-bold text-gray-900 border-r border-gray-100 text-base">{row.feature}</td>
                     {pricingPlans.map((plan, index) => {
                       const value = row[plan.name.toLowerCase()]
                       const isCheck = value === '✓' || (typeof value === 'string' && value.includes('✓'))
                       const isX = value === '✗'
                       
                       return (
-                        <td key={index} className={`py-4 px-6 text-center ${plan.popular ? 'bg-deep-teal/5 border-l-2 border-r-2 border-deep-teal/20' : ''}`}>
+                        <td key={index} className={`py-6 px-8 text-center ${plan.popular ? 'bg-gradient-to-b from-primary-blue-50/30 to-teal-50/30 border-l-2 border-r-2 border-primary-blue-200/50' : ''}`}>
                           {isCheck && (
-                            <div className="relative flex items-center justify-center min-h-[24px] min-w-[100px]">
-                              <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-orange-300 to-blue-600 rounded-full flex items-center justify-center">
-                                <svg className="w-4 h-4 text-white font-bold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                            <div className="relative flex items-center justify-center min-h-[32px] min-w-[120px]">
+                              <div className="absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200">
+                                <svg className="w-5 h-5 text-white font-bold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                 </svg>
                               </div>
                               {value.includes('(') && (
-                                <span className="absolute left-1/2 translate-x-4 text-xs text-slate-gray whitespace-nowrap">{value.match(/\(([^)]+)\)/)?.[1]}</span>
+                                <span className="absolute left-1/2 translate-x-6 text-sm text-gray-600 whitespace-nowrap font-medium">{value.match(/\(([^)]+)\)/)?.[1]}</span>
                               )}
                             </div>
                           )}
                           {isX && (
                             <div className="flex items-center justify-center">
-                              <div className="w-6 h-6 bg-cool-gray rounded-full flex items-center justify-center">
-                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                              <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center hover:bg-gray-400 transition-colors duration-200">
+                                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                                 </svg>
                               </div>
                             </div>
                           )}
                           {!isCheck && !isX && (
-                            <span className="text-slate-gray font-medium text-sm">{value}</span>
+                            <span className="text-gray-700 font-semibold text-sm">{value}</span>
                           )}
                         </td>
                       )
@@ -376,17 +484,32 @@ function Pricing() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gradient-to-br from-white to-gray-50 relative overflow-hidden">
+        {/* Background decorations */}
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary-blue-100 rounded-full blur-3xl opacity-20 -translate-y-32 translate-x-32" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-100 rounded-full blur-3xl opacity-20 translate-y-32 -translate-x-32" />
+        
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-blue-50 border border-primary-blue-200 mb-6">
+              <svg className="w-4 h-4 text-primary-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-primary-blue-600 text-sm font-medium">Got Questions? We've Got Answers</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              Frequently Asked{' '}
+              <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
+                Questions
+              </span>
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
               Everything you need to know about getAIIQ pricing and plans.
             </p>
           </motion.div>
@@ -402,10 +525,13 @@ function Pricing() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-xl p-6 shadow-md"
+                className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 hover:shadow-2xl hover:border-primary-blue-200 transition-all duration-300 group"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{item.question}</h3>
-                <p className="text-gray-600">{item.answer}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-primary-blue-600 transition-colors duration-300 flex items-center">
+                  <span className="w-2 h-2 bg-gradient-to-r from-primary-blue-600 to-teal-cyan rounded-full mr-3 group-hover:scale-150 transition-transform duration-300"></span>
+                  {item.question}
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-lg">{item.answer}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -416,19 +542,34 @@ function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-center mt-16"
+            className="text-center mt-20"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Still have questions?</h3>
-            <p className="text-gray-600 mb-8">
-              Our team is here to help you choose the right reputation management plan for your business.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary">
-                Contact Sales
-              </Link>
-              <a href="tel:+15551234567" className="btn-outline">
-                Call Now
-              </a>
+            <div className="bg-gradient-to-r from-primary-blue-600 to-teal-cyan rounded-3xl p-12 text-white shadow-2xl">
+              <h3 className="text-3xl md:text-4xl font-bold mb-6">Still have questions?</h3>
+              <p className="text-xl mb-10 opacity-90 max-w-2xl mx-auto leading-relaxed">
+                Our team is here to help you choose the right reputation management plan for your business.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <Link 
+                  href="/contact" 
+                  className="bg-white text-primary-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center group"
+                >
+                  Contact Sales
+                  <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+                <a 
+                  href="tel:+15551234567" 
+                  className="bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/20 transition-all duration-300 transform hover:scale-105 flex items-center justify-center group"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  Call Now
+                  <span className="ml-2 group-hover:animate-pulse">→</span>
+                </a>
+              </div>
             </div>
           </motion.div>
         </div>
