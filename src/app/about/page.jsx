@@ -35,7 +35,7 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-br from-white via-primary-50 to-secondary-50 overflow-hidden">
         {/* Background decorations */}
-        <div className="absolute top-0 right-0 w-72 h-72 bg-primary-200 rounded-full blur-3xl opacity-20 -translate-y-32 translate-x-32" />
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary-blue-500-200 rounded-full blur-3xl opacity-20 -translate-y-32 translate-x-32" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-200 rounded-full blur-3xl opacity-20 -translate-y-32 -translate-x-32" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -71,9 +71,9 @@ export default function About() {
             className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
           >
             <motion.div variants={itemVariants} className="relative">
-              <div className="absolute -inset-6 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-3xl rotate-2 transform-gpu"></div>
+              <div className="absolute -inset-6 bg-gradient-to-br from-blue-400 to-green-400 rounded-3xl rotate-2 transform-gpu"></div>
               <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 transform-gpu">
-                <div className="aspect-video bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center p-8">
+                <div className="aspect-video bg-gradient-to-br from-primary-blue-600 to-green-400 flex items-center justify-center p-8">
                   <div className="text-center text-white">
                     <div className="w-32 h-32 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
                       <span className="text-6xl font-bold text-white">N</span>

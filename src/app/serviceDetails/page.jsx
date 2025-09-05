@@ -34,7 +34,7 @@ function ServiceDetailsContent() {
     return (
       <div className="min-h-screen bg-white">
         <div className="flex items-center justify-center min-h-screen">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue-600"></div>
         </div>
       </div>
     )
@@ -57,13 +57,13 @@ function ServiceDetailsContent() {
     
       {/* Hero Section */}
       <section className="relative pt-20 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-primary-100/50 to-white"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-blue-50 via-primary-blue-100/50 to-white"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Back Button */}
           <motion.button
             onClick={() => router.back()}
-            className="flex items-center gap-2 text-primary-600 hover:text-primary-700 mb-8 transition-colors"
+            className="flex items-center gap-2 text-primary-blue-600 hover:text-primary-blue-700 mb-8 transition-colors"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -85,7 +85,7 @@ function ServiceDetailsContent() {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                 {service.title}
               </h1>
-              <p className="text-xl text-primary-600 mb-6">
+              <p className="text-xl text-primary-blue-600 mb-6">
                 {service.subtitle}
               </p>
               <p className="text-gray-600 text-lg leading-relaxed mb-8">
@@ -118,9 +118,9 @@ function ServiceDetailsContent() {
               transition={{ duration: 0.8 }}
             >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <div className="aspect-video bg-gradient-to-br from-primary-100 to-primary-200 backdrop-blur-sm border border-gray-200 flex items-center justify-center">
+        <div className="aspect-video bg-gradient-to-br from-primary-blue-100 to-primary-blue-200 backdrop-blur-sm border border-gray-200 flex items-center justify-center">
                   <div className="text-center text-gray-600">
-                    <div className="w-24 h-24 mx-auto mb-4 bg-primary-100 rounded-full flex items-center justify-center">
+          <div className="w-24 h-24 mx-auto mb-4 bg-primary-blue-100 rounded-full flex items-center justify-center">
                       <span className="text-4xl">{service.features[0]?.icon || '🚀'}</span>
                     </div>
                     <p className="text-lg">{service.title} Preview</p>
@@ -140,9 +140,9 @@ function ServiceDetailsContent() {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`py-4 px-2 whitespace-nowrap font-medium text-sm border-b-2 transition-colors ${
+        className={`py-4 px-2 whitespace-nowrap font-medium text-sm border-b-2 transition-colors ${
                   activeTab === tab.id
-                    ? 'border-primary-600 text-primary-600'
+          ? 'border-primary-blue-600 text-primary-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300'
                 }`}
               >
@@ -172,7 +172,7 @@ function ServiceDetailsContent() {
                   {service.benefits.map((benefit, index) => (
                     <div key={index} className="flex items-start gap-3">
                       {/* Check icon */}
-                      <svg className="w-6 h-6 text-green-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-6 h-6 text-blue-500 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       <p className="text-gray-600">{benefit}</p>
@@ -186,7 +186,7 @@ function ServiceDetailsContent() {
                 <Card className="bg-gray-50 border-gray-200 p-8">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-bold">
+                      <div className="w-12 h-12 bg-gradient-to-br from-primary-blue-500 to-primary-blue-600 rounded-full flex items-center justify-center text-white font-bold">
                         {service.testimonial.author.charAt(0)}
                       </div>
                     </div>
@@ -219,13 +219,13 @@ function ServiceDetailsContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold text-white mb-8">Features & Capabilities</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Features & Capabilities</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {service.features.map((feature, index) => (
-                  <Card key={index} className="bg-slate-800/50 border-slate-700 p-6 hover:scale-105 transition-transform">
+                  <Card key={index} className="bg-white border-gray-200 p-6 hover:shadow-lg transition-shadow">
                     <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-semibold text-black mb-3">{feature.title}</h3>
-                    <p className="text-black-300">{feature.description}</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
+                    <p className="text-gray-600">{feature.description}</p>
                   </Card>
                 ))}
               </div>
@@ -243,7 +243,7 @@ function ServiceDetailsContent() {
               <div className="space-y-8">
                 {service.howItWorks.map((step, index) => (
                   <div key={index} className="flex items-start gap-6">
-                    <div className="flex-shrink-0 w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
+                    <div className="flex-shrink-0 w-12 h-12 bg-primary-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">
                       {step.step}
                     </div>
                     <div>
@@ -263,19 +263,19 @@ function ServiceDetailsContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl font-bold text-white mb-8">Pricing Information</h2>
-              <Card className="bg-slate-800/50 border-slate-700 p-8 max-w-2xl">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8">Pricing Information</h2>
+              <Card className="bg-white border-gray-200 p-8 max-w-2xl">
                 <div className="text-center">
-                  <p className="text-4xl font-bold text-blue-600 mb-2">
+                  <p className="text-4xl font-bold text-primary-blue-600 mb-2">
                     Starting at {service.pricing.startsAt}/month
                   </p>
                   <p className="text-gray-700 mb-6">{service.pricing.note}</p>
                   
                   <div className="space-y-4 mb-8">
-                    <h4 className="text-lg font-semibold text-white">Available In:</h4>
+                    <h4 className="text-lg font-semibold text-gray-900">Available In:</h4>
                     <div className="flex justify-center gap-4">
                       {service.pricing.includedIn.map((plan, index) => (
-                        <span key={index} className="bg-blue-600/20 text-blue-800 px-3 py-1 rounded-full text-sm">
+                        <span key={index} className="bg-primary-blue-50 text-primary-blue-700 px-3 py-1 rounded-full text-sm">
                           {plan}
                         </span>
                       ))}
@@ -344,7 +344,7 @@ function ServiceDetailsContent() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-primary-50 to-primary-100">
+  <section className="py-16 bg-gradient-to-r from-primary-blue-50 to-primary-blue-100">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -384,7 +384,7 @@ function LoadingFallback() {
   return (
     <div className="min-h-screen bg-white">
       <div className="flex items-center justify-center min-h-screen">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue-600"></div>
       </div>
     </div>
   )

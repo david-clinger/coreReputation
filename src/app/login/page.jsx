@@ -93,10 +93,10 @@ function LoginContent() {
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <Link href="/" className="flex items-center">
-              <div className="h-12 w-12 bg-primary-600 rounded-md flex items-center justify-center mr-3">
-                <span className="text-white font-bold text-2xl">N</span>
+              <div className="h-12 w-12 bg-primary-blue-600 rounded-md flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-2xl">CR</span>
               </div>
-              <span className="font-bold text-3xl text-gray-900">Nexus</span>
+              <span className="font-bold text-3xl text-gray-900">Core Reputation</span>
             </Link>
           </div>
           
@@ -126,7 +126,7 @@ function LoginContent() {
                 className="bg-green-50 border border-green-200 rounded-lg p-4"
               >
                 <div className="flex">
-                  <svg className="w-5 h-5 text-green-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-blue-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                   <p className="text-green-800 text-sm">{successMessage}</p>
@@ -187,7 +187,7 @@ function LoginContent() {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
+                  className="h-4 w-4 text-primary-blue-600 focus:ring-primary-blue-500 border-gray-300 rounded"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-700">
                   Remember me
@@ -195,7 +195,7 @@ function LoginContent() {
               </div>
 
               <div className="text-sm">
-                <Link href="#" className="text-primary-600 hover:text-primary-700 font-medium">
+                <Link href="#" className="text-primary-blue-600 hover:text-primary-blue-700 font-medium">
                   Forgot password?
                 </Link>
               </div>
@@ -230,7 +230,7 @@ function LoginContent() {
         >
           <p className="text-gray-600">
             Don&apos;t have an account?{' '}
-            <Link href="/register" className="text-primary-600 hover:text-primary-700 font-medium">
+            <Link href="/register" className="text-primary-blue-600 hover:text-primary-blue-700 font-medium">
               Sign up here
             </Link>
           </p>

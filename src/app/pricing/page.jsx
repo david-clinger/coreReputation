@@ -197,10 +197,10 @@ function Pricing() {
                 variants={itemVariants}
                 className={`relative rounded-2xl p-8 transition-all duration-300 ${
                   plan.popular
-                    ? 'border-2 border-deep-teal shadow-2xl bg-gradient-to-br from-deep-teal/5 to-white'
+                    ? 'border-2 border-blue-400 shadow-2xl bg-gradient-to-br from-deep-teal/5 to-white'
                     : 'border border-cool-gray/20 shadow-lg bg-white'
                 } ${
-                  hoveredCard === plan.name ? 'shadow-xl border-deep-teal transform scale-[1.02]' : ''
+                  hoveredCard === plan.name ? 'shadow-xl border-blue-500 transform scale-[1.02]' : ''
                 } flex flex-col h-full`}
                 onMouseEnter={() => setHoveredCard(plan.name)}
                 onMouseLeave={() => setHoveredCard(null)}
@@ -210,8 +210,11 @@ function Pricing() {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-                    <span className="bg-deep-teal text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
-                      ⭐ RECOMMENDED
+                    <span className="inline-flex items-center gap-1.5 bg-primary-blue-500 text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-lg whitespace-nowrap">
+                      <svg className="w-4 h-4 text-white" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.802 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.802-2.034a1 1 0 00-1.176 0l-2.802 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                      RECOMMENDED
                     </span>
                   </div>
                 )}
@@ -236,7 +239,7 @@ function Pricing() {
                 <ul className="space-y-3 mb-8 flex-grow">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
-                      <svg className="w-5 h-5 text-deep-teal mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <svg className="w-5 h-5 text-primary-blue-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
                       <span className="text-slate-gray text-sm leading-relaxed">{feature}</span>
@@ -260,8 +263,8 @@ function Pricing() {
                   href={plan.href}
                   className={`w-full block text-center py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
                     plan.popular
-                      ? 'bg-deep-teal text-white hover:bg-bright-gold shadow-lg'
-                      : 'bg-white border-2 border-cool-gray/30 text-slate-gray hover:border-deep-teal hover:text-deep-teal'
+                      ? 'bg-primary-blue-500 text-white hover:bg-blue-600 shadow-lg'
+                      : 'bg-white border-2 border-cool-gray/30 text-slate-gray hover:border-blue-600 hover:text-blue-600'
                   } mt-auto`}
                 >
                   {plan.cta}
@@ -297,12 +300,12 @@ function Pricing() {
           >
             <table className="w-full border-collapse bg-white rounded-2xl overflow-hidden shadow-lg">
               <thead>
-                <tr className="bg-deep-teal">
+                <tr className="bg-blue-600">
                   <th className="text-left py-6 px-6 font-bold text-white text-lg">Feature</th>
                   {pricingPlans.map((plan, index) => (
                     <th key={index} className="text-center py-6 px-6 font-bold text-white text-lg">
                       {plan.name}
-                      {plan.popular && <span className="block text-xs text-bright-gold mt-1">⭐ RECOMMENDED</span>}
+                      {plan.popular && <span className="block text-xs text-bright-gold mt-1"> RECOMMENDED</span>}
                     </th>
                   ))}
                 </tr>
@@ -338,14 +341,14 @@ function Pricing() {
                       return (
                         <td key={index} className={`py-4 px-6 text-center ${plan.popular ? 'bg-deep-teal/5 border-l-2 border-r-2 border-deep-teal/20' : ''}`}>
                           {isCheck && (
-                            <div className="flex items-center justify-center">
-                              <div className="w-6 h-6 bg-gradient-to-br from-bright-gold to-deep-teal rounded-full flex items-center justify-center">
-                                <svg className="w-4 h-4 text-white font-bold" fill="currentColor" viewBox="0 0 20 20">
+                            <div className="relative flex items-center justify-center min-h-[24px] min-w-[100px]">
+                              <div className="absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-gradient-to-br from-orange-300 to-blue-600 rounded-full flex items-center justify-center">
+                                <svg className="w-4 h-4 text-white font-bold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                 </svg>
                               </div>
                               {value.includes('(') && (
-                                <span className="ml-2 text-xs text-slate-gray">{value.match(/\(([^)]+)\)/)?.[1]}</span>
+                                <span className="absolute left-1/2 translate-x-4 text-xs text-slate-gray whitespace-nowrap">{value.match(/\(([^)]+)\)/)?.[1]}</span>
                               )}
                             </div>
                           )}

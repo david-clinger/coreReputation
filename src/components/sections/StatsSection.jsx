@@ -64,7 +64,7 @@ export default function StatsSection() {
           <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 group-hover:transform group-hover:scale-105">
             <motion.div
               variants={numberVariants}
-              className="text-3xl md:text-4xl font-bold text-primary-600 mb-2"
+              className="text-3xl md:text-4xl font-bold text-primary-blue-600 mb-2"
             >
               {stat.number}
             </motion.div>

@@ -114,7 +114,7 @@ export default function Navbar() {
               <div className="flex items-center space-x-4">
                 {/* User Profile */}
                 <div className="flex items-center space-x-3 bg-gray-50 rounded-lg px-3 py-2">
-                  <div className="w-8 h-8 bg-primary-600 rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-primary-blue-600 rounded-full flex items-center justify-center">
                     <span className="text-white text-sm font-bold">
                       {(userName || userEmail).charAt(0).toUpperCase()}
                     </span>
