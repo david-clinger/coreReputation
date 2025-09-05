@@ -9,7 +9,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // NovaAIQ Brand Colors
+        // Core Reputation Brand Colors
+        'primary-blue': {
+          50: '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1d4ed8',
+          800: '#1e40af',
+          900: '#1e3a8a',
+        },
+        'teal-cyan': '#14b8a6',
+        'gold': '#f59e0b',
+        'dark-gray': '#374151',
+        'light-gray': '#9ca3af',
+        'white': '#ffffff',
+        
+        // Legacy NovaAIQ Brand Colors
         'deep-teal': '#008080',
         'bright-gold': '#FFD700',
         'charcoal': '#111827',

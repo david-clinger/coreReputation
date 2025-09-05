@@ -9,31 +9,6 @@ import withAuth from '@/lib/withAuth'
 
 const allServices = [
   {
-    id: 'review-management',
-    title: "Smart Review Management",
-    description: "QR review funnels that route 4-5★ reviews to Google while handling lower ratings privately.",
-    fullDescription: "Our intelligent review management system uses QR codes and smart routing to ensure only positive reviews (4-5 stars) are posted publicly to Google, while 3-star and below reviews are captured privately for internal feedback and improvement opportunities.",
-    icon: (
-      <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-      </svg>
-    ),
-    features: [
-      "QR Code Review Collection",
-      "Smart Review Filtering",
-      "Private Feedback Capture",
-      "Google Review Optimization",
-      "Review Alert Notifications",
-      "Customer Feedback Analytics"
-    ],
-    benefits: [
-      "Higher Google star ratings",
-      "More positive online reviews",
-      "Better customer feedback insights",
-      "Protected brand reputation"
-    ]
-  },
-  {
     id: 'nap-sync',
     title: "Business Listings & NAP Sync",
     description: "Keep your contact info consistent across Google, Apple Maps, Yelp, Bing, and dozens of directories.",
@@ -188,7 +163,7 @@ function Services() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-white to-primary-50">
+      <section className="py-16 bg-gradient-to-br from-white to-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -196,8 +171,8 @@ function Services() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Our <span className="text-gradient">Services</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+              Our <span className="bg-gradient-to-r from-primary-blue-600 to-gold bg-clip-text text-transparent">Services</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Comprehensive online reputation management solutions to help you get more 5-star reviews, 
@@ -217,16 +192,16 @@ function Services() {
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className={`card p-6 text-center cursor-pointer transition-all duration-300 hover:border-primary-100 hover:shadow-xl ${
+                className={`card p-6 text-center cursor-pointer transition-all duration-300 hover:border-primary-blue-200 hover:shadow-xl ${
                   activeService.id === service.id 
-                    ? 'border-primary-600 bg-primary-50' 
+                    ? 'border-primary-blue-600 bg-primary-blue-50' 
                     : 'border-gray-200'
                 }`}
                 onClick={() => setActiveService(service)}
               >
                 <div className="flex justify-center mb-4">
                   <div className={`p-3 rounded-lg ${
-                    activeService.id === service.id ? 'bg-primary-100' : 'bg-gray-100'
+                    activeService.id === service.id ? 'bg-primary-blue-100' : 'bg-gray-100'
                   }`}>
                     {service.icon}
                   </div>
@@ -235,7 +210,7 @@ function Services() {
                 <p className="text-gray-600 mb-4">{service.description}</p>
                 <Link 
                   href={`/serviceDetails?id=${service.id}`}
-                  className="text-primary-600 font-semibold hover:text-primary-700"
+                  className="text-primary-blue-600 font-semibold hover:text-primary-blue-700"
                 >
                   Learn more →
                 </Link>
@@ -258,7 +233,7 @@ function Services() {
             {/* Service Details */}
             <div>
               <div className="flex items-center mb-6">
-                <div className="p-3 bg-primary-100 rounded-lg mr-4">
+                <div className="p-3 bg-primary-blue-100 rounded-lg mr-4">
                   {activeService.icon}
                 </div>
                 <h2 className="text-3xl font-bold text-gray-900">{activeService.title}</h2>
@@ -381,10 +356,10 @@ function Services() {
                 variants={itemVariants}
                 className="text-center"
               >
-                <div className="w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+                <div className="w-16 h-16 bg-primary-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
                   {step.icon}
                 </div>
-                <div className="text-sm text-primary-600 font-semibold mb-2">Step {step.step}</div>
+                <div className="text-sm text-primary-blue-600 font-semibold mb-2">Step {step.step}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{step.title}</h3>
                 <p className="text-gray-600">{step.description}</p>
               </motion.div>
@@ -394,7 +369,7 @@ function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-deep-teal">
+      <section className="py-16 bg-primary-blue-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -413,13 +388,13 @@ function Services() {
                 href="/contact"
                 variant="secondary"
                 size="lg"
-                className="bg-white text-deep-teal hover:bg-ultra-light-gray"
+                className="bg-white text-primary-blue-600 hover:bg-gray-50"
               >
                 Get Free Consultation
               </Button>
               <a
                 href="/pricing"
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-lg bg-transparent border border-white text-white hover:bg-white hover:text-deep-teal transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+                className="inline-flex items-center justify-center px-6 py-3 text-lg font-medium rounded-lg bg-transparent border border-white text-white hover:bg-white hover:text-primary-blue-600 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
               >
                 View Pricing
               </a>

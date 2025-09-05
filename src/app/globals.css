@@ -18,18 +18,18 @@ html {
   overflow-x: hidden;
 }
 
-/* Custom selection color - NovaAIQ brand colors */
+/* Custom selection color - Core Reputation brand colors */
 ::selection {
-  background-color: #FFD700;
+  background-color: #f59e0b;
   color: #111827;
 }
 
 ::-moz-selection {
-  background-color: #FFD700;
+  background-color: #f59e0b;
   color: #111827;
 }
 
-/* Custom scrollbar - NovaAIQ colors */
+/* Custom scrollbar - Core Reputation colors */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -39,12 +39,12 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #008080;
+  background-color: #2563eb;
   border-radius: 0.5rem;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #006666;
+  background-color: #1d4ed8;
 }
 
 /* Custom animations */
@@ -170,13 +170,13 @@ html {
   width: 100%;
 }
 
-/* NovaAIQ Button Styles */
+/* Core Reputation Button Styles */
 .btn-primary {
-  @apply bg-deep-teal text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-200 inline-flex items-center justify-center;
+  @apply bg-primary-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-blue-700 transition-all duration-200 inline-flex items-center justify-center;
 }
 
 .btn-outline {
-  @apply border-2 border-deep-teal text-deep-teal px-6 py-3 rounded-lg font-semibold hover:bg-deep-teal hover:text-white transition-all duration-200 inline-flex items-center justify-center;
+  @apply border-2 border-primary-blue-600 text-primary-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-primary-blue-600 hover:text-white transition-all duration-200 inline-flex items-center justify-center;
 }
 
 /* Animation delays */
@@ -232,7 +232,7 @@ html {
 }
 
 .gradient-text-animated {
-  background: linear-gradient(45deg, #008080, #FFD700, #006666, #374151);
+  background: linear-gradient(45deg, #2563eb, #f59e0b, #1d4ed8, #374151);
   background-size: 300% 300%;
   background-clip: text;
   -webkit-background-clip: text;

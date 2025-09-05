@@ -8,38 +8,29 @@ import withAuth from '@/lib/withAuth'
 
 const pricingPlans = [
   {
-    name: 'Core',
-    tagline: 'The right starting point for serious reputation management.',
+    name: 'Launch',
+    tagline: 'The starting point for managing your reputation.',
     price: '$199',
     period: '/month',
     popular: false,
     hidden: false,
     features: [
-      'QR Review Funnel: 4–5★ reviews go public on Google, while 3★ and below are routed privately',
-      'NAP Sync: Keeps your contact info consistent across Google, Apple Maps, Yelp, Bing, and dozens of directories',
-      'Review Monitoring Dashboard: View and manage all reviews in one place',
-      'AI-Drafted Response Suggestions: Ready-made reply templates',
-      'Phone + Email Support',
-      'Basic Analytics: Track review volume and ratings trends',
-      '1 Business Day Support Response Time',
-      'Review Alert Notifications: Get notified when new reviews are posted',
-      'Basic Review Filtering: Automatically route reviews based on star ratings',
-      'Customer Feedback Collection: Simple forms to gather customer insights',
-      'Monthly Review Summary: Basic reporting on review performance',
-      'Standard Security: SSL encryption and secure data handling'
+      'QR Review Funnel – Push 4–5★ reviews to Google; route 3★ and below privately',
+      'Review Monitoring Dashboard – Manage all reviews in one place',
+      'AI-Drafted Response Suggestions – Smart, ready-to-use reply templates',
+      'Review Alert Notifications – Instant email/text alerts for every new review',
+      'Basic Review Filtering – Route reviews automatically based on star rating',
+      'Monthly Review Summary – Simple reporting on review activity',
+      'Support Library Access – Step-by-step guides & tutorials for your team',
+      'Monthly Tips Email – Expert strategies to keep reviews flowing',
+      'Secure Cloud Hosting – All your data encrypted and backed up',
+      'Phone & Email Support – 1 business day response time'
     ],
-    addons: [
-      {
-        name: 'Google Posts Scheduling',
-        price: '+$99/month',
-        description: 'Up to 4 posts per month professionally drafted and published automatically'
-      }
-    ],
-    cta: 'Start with Core',
-    href: '/contact?plan=core'
+    cta: 'Start with Launch',
+    href: '/contact?plan=launch'
   },
   {
-    name: 'Pro',
+    name: 'Core',
     tagline: 'Automation plus the tools to actively grow your reputation.',
     price: '$399',
     period: '/month',
@@ -47,44 +38,34 @@ const pricingPlans = [
     recommended: true,
     hidden: false,
     features: [
-      'Everything in Core, plus:',
-      'Outbound Review Campaigns: Custom review request forms & templates via email, SMS, or WhatsApp',
-      'Google Posts Scheduling: Included — 4 posts per month professionally drafted',
-      'AI-Assisted Review Responses: Intelligent, customized replies in your brand\'s voice',
-      'Review Response Reminder & Fail-Safe: Auto-responses if unanswered after 72 hours',
-      'Q&A Monitoring & Alerts: Instant notifications for customer questions',
-      'Photo/Video Uploads: Up to 10 per month optimized and posted',
-      'Monthly Performance Report: Track calls, clicks, reviews, and growth',
-      'Quarterly Optimization: Fine-tuning every 90 days',
-      'Priority Support: Responses within 4 business hours',
-      'Competitor Analysis: Monitor up to 3 competitors\' review performance',
-      'Custom Review Generation Pages: Branded landing pages for review collection'
+      'Includes everything in Launch, plus:',
+      'Outbound Review Campaigns – Custom review request forms via email, SMS, or WhatsApp',
+      'Custom Review Generation Pages – Branded landing pages for collecting reviews',
+      'AI Response Assist (Expanded) – Intelligent drafts tuned to your brand\'s tone',
+      'Branded SMS/Email Templates – Pre-built, customizable campaigns to fit your look',
+      'Review Trend Graphs – Visualize growth, volume, and ratings in one dashboard',
+      'Customer Sentiment Snapshot – Instant breakdown of positive vs negative feedback',
+      'Staff Notifications – Send review alerts to the right team members automatically',
+      'Quarterly Check-In Call – Scheduled optimization session every 90 days',
+      'Reputation Benchmarking – Compare your reviews to local competitors & industry averages',
+      'Priority Support – Responses within 4 business hours'
     ],
-    cta: 'Go Pro',
-    href: '/contact?plan=pro'
+    cta: 'Go Core',
+    href: '/contact?plan=core'
   },
   {
     name: 'Enterprise',
-    tagline: 'For franchises, multi-location businesses, or high-touch support needs.',
+    tagline: 'Tailored solutions for companies with multiple locations or specialized needs.',
     price: 'Custom',
-    period: '',
+    period: 'Pricing',
     popular: false,
     hidden: false,
     features: [
-      'Includes everything in Pro',
-      'Enterprise-level customization',
-      'Multi-location management',
-      'Dedicated account manager',
-      'Custom integration support',
-      'Advanced analytics & reporting',
-      'White-label options',
-      'Training & onboarding support',
-      '24/7 priority support',
-      'Unlimited competitor tracking',
-      'API Access for custom workflows',
-      'Dedicated IP address for secure access',
-      'SLA with 99.9% uptime guarantee',
-      'Custom data retention policies'
+      'Includes everything in Core, plus:',
+      'Multi-Location Management – Consolidated oversight across all locations',
+      'Advanced Reporting – Cross-location insights and exportable reports',
+      'Dedicated Account Manager – One point of contact for strategy and support',
+      'Custom Integrations – Connect with your existing tools and workflows'
     ],
     cta: 'Contact Sales',
     href: '/contact?plan=enterprise'
@@ -169,9 +150,9 @@ function Pricing() {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              get<span className="text-gradient">AIIQ</span> Pricing
+              Core Reputation <span className="text-gradient">Pricing</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-light-gray max-w-3xl mx-auto mb-8">
               Choose the perfect plan to manage and grow your online reputation. 
               Everything you need to get more 5-star reviews and handle feedback like a pro.
             </p>
@@ -328,24 +309,24 @@ function Pricing() {
               </thead>
               <tbody>
                 {[
-                  { feature: 'QR Review Capture', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'Review Filtering', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'Dashboard Access', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'NAP Sync', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'AI Response Suggestions', core: '✓', pro: '✓', enterprise: '✓' },
-                  { feature: 'Outbound Review Campaigns', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Google Posts', core: 'Add-on (+$99)', pro: '✓ Included', enterprise: '✓ Included' },
-                  { feature: 'AI-Assisted Responses', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Response Fail-Safe', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Q&A Monitoring', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Photo/Video Uploads', core: '✗', pro: '✓ (10/month)', enterprise: '✓ (Unlimited)' },
-                  { feature: 'Performance Reports', core: 'Basic', pro: '✓ Monthly', enterprise: '✓ Advanced' },
-                  { feature: 'Quarterly Optimization', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'Competitor Analysis', core: '✗', pro: '✓ (3 competitors)', enterprise: '✓ (Unlimited)' },
-                  { feature: 'Custom Review Pages', core: '✗', pro: '✓', enterprise: '✓' },
-                  { feature: 'API Access', core: '✗', pro: '✗', enterprise: '✓' },
-                  { feature: 'Dedicated Account Manager', core: '✗', pro: '✗', enterprise: '✓' },
-                  { feature: 'Support Level', core: 'Phone + Email', pro: 'Priority (4hr)', enterprise: '24/7 Dedicated' }
+                  { feature: 'QR Review Funnel', launch: '✓', core: '✓', enterprise: '✓' },
+                  { feature: 'Review Monitoring Dashboard', launch: '✓', core: '✓', enterprise: '✓' },
+                  { feature: 'AI Response Suggestions', launch: '✓', core: '✓ (Expanded)', enterprise: '✓ (Expanded)' },
+                  { feature: 'Review Alert Notifications', launch: '✓', core: '✓', enterprise: '✓' },
+                  { feature: 'Basic Review Filtering', launch: '✓', core: '✓', enterprise: '✓' },
+                  { feature: 'Monthly Review Summary', launch: '✓', core: '✓', enterprise: '✓' },
+                  { feature: 'Phone & Email Support', launch: '✓ (1 business day)', core: '✓ (4 hours)', enterprise: '✓ (Dedicated)' },
+                  { feature: 'Outbound Review Campaigns', launch: '✗', core: '✓', enterprise: '✓' },
+                  { feature: 'Custom Review Pages', launch: '✗', core: '✓', enterprise: '✓' },
+                  { feature: 'Review Trend Graphs', launch: '✗', core: '✓', enterprise: '✓' },
+                  { feature: 'Customer Sentiment Snapshot', launch: '✗', core: '✓', enterprise: '✓' },
+                  { feature: 'Staff Notifications', launch: '✗', core: '✓', enterprise: '✓' },
+                  { feature: 'Quarterly Check-In Call', launch: '✗', core: '✓', enterprise: '✓' },
+                  { feature: 'Reputation Benchmarking', launch: '✗', core: '✓', enterprise: '✓' },
+                  { feature: 'Multi-Location Management', launch: '✗', core: '✗', enterprise: '✓' },
+                  { feature: 'Advanced Reporting', launch: '✗', core: '✗', enterprise: '✓' },
+                  { feature: 'Dedicated Account Manager', launch: '✗', core: '✗', enterprise: '✓' },
+                  { feature: 'Custom Integrations', launch: '✗', core: '✗', enterprise: '✓' }
                 ].map((row, rowIndex) => (
                   <tr key={rowIndex} className={`border-b border-cool-gray/20 hover:bg-deep-teal/5 transition-colors ${rowIndex % 2 === 0 ? 'bg-ultra-light-gray' : 'bg-white'}`}>
                     <td className="py-4 px-6 font-semibold text-charcoal border-r border-cool-gray/20">{row.feature}</td>

@@ -51,16 +51,15 @@ export default function About() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
             >
-              About <span className="text-gradient bg-gradient-to-r from-primary-600 to-secondary-600">NovaAIQ</span>
+              About <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan">Core Reputation</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+              className="text-xl md:text-2xl text-light-gray max-w-4xl mx-auto leading-relaxed"
             >
-              We are a team of passionate professionals dedicated to delivering exceptional results 
-              and transforming businesses through innovative digital solutions.
+              Core Reputation was built to give small and mid-sized businesses access to the same powerful reputation technology Fortune 500 companies use—without the insane price tags or smoke-and-mirror sales tactics.
             </motion.p>
           </motion.div>
 
@@ -88,17 +87,13 @@ export default function About() {
 
             <motion.div variants={itemVariants} className="space-y-8">
               <div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Journey</h2>
-                <div className="space-y-4 text-lg text-gray-600 leading-relaxed">
+                <h2 className="text-4xl font-bold text-dark-gray mb-6">Our Mission</h2>
+                <div className="space-y-4 text-lg text-light-gray leading-relaxed">
                   <p>
-                    Founded in 2015, Nexus began as a small team of three passionate individuals with a vision to transform 
-                    how businesses approach digital solutions. Today, we&apos;ve grown into a diverse team of experts serving 
-                    clients across various industries worldwide.
+                    We simplify online reputation management with automation, real-time tools, and AI assistance so you can focus on running your business. Our platform helps you collect reviews faster, respond smarter, and show up stronger in local search.
                   </p>
                   <p>
-                    Our mission is simple: to deliver exceptional value through innovative solutions that drive growth, 
-                    efficiency, and success for our clients. We believe in building long-term partnerships rather than 
-                    just providing services.
+                    Transparency matters to us. That's why we publish our pricing openly, deliver measurable results, and keep the fluff out of our packages. Core Reputation is here to give you the competitive edge to thrive in today's AI-driven search world.
                   </p>
                 </div>
               </div>

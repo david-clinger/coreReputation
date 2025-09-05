@@ -51,17 +51,17 @@ const itemVariants = {
 
 export default function TestimonialsPreview() {
   return (
-    <section className="py-16 bg-ultra-light-gray">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-charcoal">What Our Clients Say</h2>
-          <p className="text-xl text-slate-gray max-w-3xl mx-auto">
+  <section className="py-16 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-16"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">What Our Clients Say</h2>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Real results from real businesses using NovaAIQ to transform their online reputation.
           </p>
         </motion.div>
@@ -77,10 +77,10 @@ export default function TestimonialsPreview() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className={`${index % 2 === 0 ? 'bg-white' : 'bg-ultra-light-gray'} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 relative border border-cool-gray/10`}
+              className={`${index % 2 === 0 ? 'bg-white' : 'bg-gray-100'} rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 relative border border-gray-200`}
             >
               {/* Quote Icon */}
-              <div className="absolute top-6 right-6 text-bright-gold opacity-30">
+              <div className="absolute top-6 right-6 text-gold opacity-30">
                 <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
                 </svg>
@@ -91,7 +91,7 @@ export default function TestimonialsPreview() {
                 {[1, 2, 3, 4, 5].map((star) => (
                   <svg 
                     key={star} 
-                    className="w-5 h-5 text-bright-gold" 
+                    className="w-5 h-5 text-gold" 
                     fill="currentColor" 
                     viewBox="0 0 20 20"
                   >
@@ -101,21 +101,21 @@ export default function TestimonialsPreview() {
               </div>
 
               {/* Quote */}
-              <p className="text-slate-gray text-lg leading-relaxed mb-6 italic">
+              <p className="text-gray-600 text-lg leading-relaxed mb-6 italic">
                 &quot;{testimonial.content}&quot;
               </p>
 
               {/* Author Info */}
               <div className="flex items-center">
-                <div className="w-12 h-12 bg-gradient-to-br from-deep-teal to-bright-gold rounded-full flex items-center justify-center mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary-blue-600 to-gold rounded-full flex items-center justify-center mr-4">
                   <span className="text-white font-bold text-lg">
                     {testimonial.name.charAt(0)}
                   </span>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-charcoal">{testimonial.name}</h4>
-                  <p className="text-slate-gray text-sm">{testimonial.role}</p>
-                  <p className="text-deep-teal text-sm font-medium">{testimonial.business}</p>
+                  <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>
+                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
+                  <p className="text-primary-blue-600 text-sm font-medium">{testimonial.business}</p>
                 </div>
               </div>
             </motion.div>
@@ -129,7 +129,7 @@ export default function TestimonialsPreview() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="text-center"
         >
-          <Link href="/reviews" className="bg-deep-teal text-white px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-200">
+          <Link href="/reviews" className="bg-primary-blue-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-blue-700 transition-all duration-200">
             Read More Testimonials
           </Link>
         </motion.div>

@@ -4,7 +4,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import withAuth from '@/lib/withAuth'
-import { REVIEW_PLATFORMS, getPlatformInfo } from '@/constants/reviewPlatforms'
 
 const reviews = [
   {
@@ -60,6 +59,33 @@ const reviews = [
     rating: 5,
     content: 'Customer review anxiety is gone! Core Reputation handles negative reviews professionally and helps us collect more positive ones. Our community trust has grown significantly.',
     date: '2 months ago'
+  },
+  {
+    id: 7,
+    name: 'Sarah Mitchell',
+    business: 'Mitchell Law Firm',
+    role: 'Managing Partner',
+    rating: 5,
+    content: 'Professional reputation is everything in law. Core Reputation ensures we maintain our excellent online presence while saving us hours of manual review management each month.',
+    date: '2 months ago'
+  },
+  {
+    id: 8,
+    name: 'Tony Ricci',
+    business: 'Ricci\'s Pizzeria',
+    role: 'Restaurant Owner',
+    rating: 5,
+    content: 'From 3.5 to 4.7 stars in 5 months! The AI responses sound just like me talking to customers. Core Reputation has brought our family business into the digital age.',
+    date: '3 months ago'
+  },
+  {
+    id: 9,
+    name: 'Dr. Patricia Lee',
+    business: 'Lee Veterinary Clinic',
+    role: 'Veterinarian',
+    rating: 5,
+    content: 'Pet owners are very emotional about reviews. Core Reputation helps us respond with empathy and professionalism to every situation. Our online reputation reflects our caring approach.',
+    date: '3 months ago'
   }
 ]
 
@@ -106,7 +132,7 @@ function Reviews() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-white to-gray-50">
+      <section className="py-16 bg-gradient-to-br from-white to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -114,10 +140,10 @@ function Reviews() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              Client <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">Reviews</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Client <span className="text-gradient">Reviews</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-light-gray max-w-3xl mx-auto">
               Real stories from businesses that transformed their online reputation with Core Reputation&apos;s 
               AI-powered review management platform.
             </p>
@@ -137,7 +163,7 @@ function Reviews() {
                 variants={itemVariants}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-primary-blue-600 mb-2">{stat.number}</div>
+                <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">{stat.number}</div>
                 <div className="text-gray-600 font-medium">{stat.label}</div>
               </motion.div>
             ))}
@@ -155,7 +181,7 @@ function Reviews() {
               onClick={() => setActiveFilter('all')}
               className={`px-4 py-2 rounded-full font-medium transition-colors ${
                 activeFilter === 'all'
-                  ? 'bg-primary-blue-600 text-white'
+                  ? 'bg-primary-600 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -165,7 +191,7 @@ function Reviews() {
               onClick={() => setActiveFilter('5')}
               className={`px-4 py-2 rounded-full font-medium transition-colors ${
                 activeFilter === '5'
-                  ? 'bg-primary-blue-600 text-white'
+                  ? 'bg-primary-600 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -175,7 +201,7 @@ function Reviews() {
               onClick={() => setActiveFilter('4')}
               className={`px-4 py-2 rounded-full font-medium transition-colors ${
                 activeFilter === '4'
-                  ? 'bg-primary-blue-600 text-white'
+                  ? 'bg-primary-600 text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -199,10 +225,10 @@ function Reviews() {
               <motion.div
                 key={review.id}
                 variants={itemVariants}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 relative border border-gray-200"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 relative"
               >
                 {/* Quote Icon */}
-                <div className="absolute top-6 right-6 text-gold opacity-30">
+                <div className="absolute top-6 right-6 text-primary-200">
                   <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
                   </svg>
@@ -213,7 +239,7 @@ function Reviews() {
                   {[1, 2, 3, 4, 5].map((star) => (
                     <svg 
                       key={star} 
-                      className="w-5 h-5 text-gold" 
+                      className="w-5 h-5 text-yellow-400" 
                       fill="currentColor" 
                       viewBox="0 0 20 20"
                     >
@@ -223,26 +249,26 @@ function Reviews() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-gray-600 text-lg leading-relaxed mb-6 italic">
+                <p className="text-gray-700 text-lg leading-relaxed mb-6 italic">
                   &quot;{review.content}&quot;
                 </p>
 
                 {/* Author Info */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary-blue-600 to-gold rounded-full flex items-center justify-center mr-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
                       <span className="text-white font-bold text-lg">
                         {review.name.charAt(0)}
                       </span>
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">{review.name}</h4>
-                      <p className="text-gray-500 text-sm">{review.role}</p>
-                      <p className="text-primary-blue-600 text-sm font-medium">{review.business}</p>
+                      <p className="text-gray-600 text-sm">{review.role}</p>
+                      <p className="text-primary-600 text-sm font-medium">{review.business}</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-gray-400 text-xs">{review.date}</p>
+                    <p className="text-gray-500 text-xs">{review.date}</p>
                   </div>
                 </div>
               </motion.div>
@@ -259,7 +285,7 @@ function Reviews() {
             >
               <button
                 onClick={showMoreReviews}
-                className="bg-white border-2 border-primary-blue-600 text-primary-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-primary-blue-600 hover:text-white transition-all duration-300"
+                className="btn-outline"
               >
                 Load More Reviews
               </button>
@@ -268,7 +294,7 @@ function Reviews() {
         </div>
       </section>
 
-      {/* Review Platforms Section */}
+      {/* Embedded Reviews Service */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -278,18 +304,69 @@ function Reviews() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">We Monitor All Major Review Platforms</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-dark-gray">We Monitor All Major Review Platforms</h2>
+            <p className="text-xl text-light-gray max-w-3xl mx-auto">
               Our platform integrates with all the review sites that matter to your business, ensuring comprehensive reputation management.
             </p>
           </motion.div>
 
-          <PlatformsGrid containerVariants={containerVariants} itemVariants={itemVariants} />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-2xl shadow-xl p-8"
+          >
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">NovaAIQ Review Analytics</h3>
+              <p className="text-gray-600 mb-6">
+                Our advanced review management platform integrates with all major review sites to provide 
+                comprehensive analytics and automated response management for your business.
+              </p>
+              
+              {/* Placeholder for Review Analytics Dashboard */}
+              <div className="bg-gray-100 rounded-lg p-8 mb-6">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-primary-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-600 mb-4">
+                    Real-time review monitoring and AI-powered response management across all platforms.
+                  </p>
+                  <button className="text-primary-600 font-semibold hover:text-primary-700">
+                    View Live Dashboard →
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap justify-center gap-6">
+                {[
+                  { name: 'Google Reviews', icon: '⭐', count: '4.9/5' },
+                  { name: 'Yelp', icon: '�️', count: '4.8/5' },
+                  { name: 'Facebook', icon: '�', count: '4.9/5' },
+                  { name: 'TripAdvisor', icon: '✈️', count: '5.0/5' }
+                ].map((platform, index) => (
+                  <div key={index} className="text-center">
+                    <div className="text-2xl mb-2">{platform.icon}</div>
+                    <div className="font-semibold text-gray-900">{platform.name}</div>
+                    <div className="text-gray-600">{platform.count}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary-blue-600">
+      <section className="py-16 bg-primary-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -300,14 +377,14 @@ function Reviews() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Transform Your Online Reputation?
             </h2>
-            <p className="text-xl text-white/90 mb-8">
-              Join hundreds of businesses using Core Reputation&apos;s AI-powered platform to manage reviews and boost their online presence.
+            <p className="text-xl text-primary-100 mb-8">
+              Join hundreds of businesses using NovaAIQ&apos;s AI-powered platform to manage reviews and boost their online presence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact" className="bg-gold text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-200">
+              <a href="/contact" className="btn-secondary">
                 Get Started Today
               </a>
-              <a href="/services" className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary-blue-600 transition-all duration-200">
+              <a href="/services" className="btn-outline bg-transparent border-white text-white hover:bg-white hover:text-primary-600">
                 Explore Services
               </a>
             </div>
@@ -315,60 +392,6 @@ function Reviews() {
         </div>
       </section>
     </div>
-  )
-}
-
-function PlatformLogo({ name }) {
-  const info = getPlatformInfo(name)
-  const bg = info?.color || '#1D4ED8' // default blue
-  const domain = info?.domain
-  const favicon = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=64` : null
-
-  return (
-    <div className="w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm"
-         style={{ backgroundColor: bg }}
-    >
-      {favicon ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={favicon} alt={`${name} logo`} className="w-7 h-7 rounded-sm" />
-      ) : (
-        <span className="text-white font-bold text-sm">{name.charAt(0)}</span>
-      )}
-    </div>
-  )
-}
-
-function PlatformsGrid({ containerVariants, itemVariants }) {
-  const platforms = [
-    'Google', 'Facebook', 'Trustpilot', 'Yelp', 'Yellow Pages', 'TripAdvisor',
-    'Yell', 'Zillow', 'Better Business Bureau', 'HomeAdvisor', 'Houzz', 'Amazon',
-    'Booking.com', 'Angies List', 'Service Seeking', 'Apple App Store', 'Apple Podcasts', 'TrustATrader',
-    'Airbnb', 'Hotels.com', 'G2', 'Capterra', 'OpenTable', 'Edmunds',
-    'Checkatrade', 'Vitals', 'WebMD', 'Just Eat', 'MyBuilder', 'VRBO',
-    'Mindbody', 'Legelisten.no', 'Deliveroo', 'Takeaway.com', 'Agoda', 'GetAgent',
-    'Zomato', 'Doctify', 'Healthgrades', 'RateMDs', 'Booksy', 'PatientConnect365',
-    'RealSelf', 'Thuisbezorgd', 'Rover', 'RepairPal', 'Anwalt', 'Advocado', 'Kununu'
-  ]
-
-  return (
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"
-    >
-      {platforms.map((platform, index) => (
-        <motion.div
-          key={platform + index}
-          variants={itemVariants}
-          className="bg-white rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow duration-300 text-center"
-        >
-          <PlatformLogo name={platform} />
-          <h3 className="font-semibold text-gray-900 text-sm">{platform}</h3>
-        </motion.div>
-      ))}
-    </motion.div>
   )
 }
 

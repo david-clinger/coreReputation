@@ -86,10 +86,12 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <div className="h-8 w-8 bg-primary-600 rounded-md flex items-center justify-center mr-2">
-                <span className="text-white font-bold text-lg">N</span>
+                          <div className="flex items-center">
+              <div className="h-8 w-8 bg-primary-blue-600 rounded-md flex items-center justify-center mr-2">
+                <span className="text-white font-bold text-lg">CR</span>
               </div>
-              <span className="font-bold text-xl text-charcoal">Nova<span className="text-deep-teal">AIQ</span></span>
+              <span className="font-bold text-xl text-gray-900">Core <span className="text-primary-blue-600">Reputation</span></span>
+            </div>
             </Link>
           </div>
           
@@ -99,7 +101,7 @@ export default function Navbar() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-slate-gray hover:text-deep-teal transition-colors font-medium"
+                className="text-gray-600 hover:text-primary-blue-600 transition-colors font-medium"
               >
                 {item.name}
               </Link>
@@ -118,10 +120,10 @@ export default function Navbar() {
                     </span>
                   </div>
                   <div className="hidden sm:block">
-                                        <div className="text-sm font-medium text-charcoal">
+                    <div className="text-sm font-medium text-gray-900">
                       {userName || 'User'}
                     </div>
-                    <div className="text-xs text-cool-gray">
+                    <div className="text-xs text-gray-500">
                       {userEmail}
                     </div>
                   </div>
@@ -130,7 +132,7 @@ export default function Navbar() {
                 {/* Logout Button */}
                 <button
                   onClick={handleLogout}
-                  className="inline-flex items-center px-3 py-2 border border-cool-gray/30 rounded-lg text-sm font-medium text-slate-gray bg-white hover:bg-ultra-light-gray hover:border-deep-teal transition-colors"
+                  className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 hover:border-primary-blue-600 transition-colors"
                 >
                   <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -140,10 +142,10 @@ export default function Navbar() {
               </div>
             ) : (
               <>
-                <Link href="/login" className="text-slate-gray hover:text-deep-teal font-medium">
+                <Link href="/login" className="text-gray-600 hover:text-primary-blue-600 font-medium">
                   Login
                 </Link>
-                <Link href="/register" className="bg-deep-teal text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-200 text-sm">
+                <Link href="/register" className="bg-primary-blue-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-opacity-90 transition-all duration-200 text-sm">
                   Sign Up
                 </Link>
               </>
@@ -154,7 +156,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-slate-gray hover:text-deep-teal focus:outline-none"
+              className="text-gray-600 hover:text-primary-blue-600 focus:outline-none"
               aria-label="Toggle menu"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -175,14 +177,14 @@ export default function Navbar() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-cool-gray/20"
+              className="md:hidden bg-white border-t border-light-gray/20"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {menuItems.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="block px-3 py-2 text-slate-gray hover:text-deep-teal hover:bg-ultra-light-gray rounded-md font-medium"
+                    className="block px-3 py-2 text-gray-600 hover:text-primary-blue-600 hover:bg-gray-50 rounded-md font-medium"
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}
@@ -199,10 +201,10 @@ export default function Navbar() {
                           </span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-charcoal truncate">
+                          <div className="text-sm font-medium text-gray-900 truncate">
                             {userName || userEmail.split('@')[0]}
                           </div>
-                          <div className="text-xs text-cool-gray truncate">
+                          <div className="text-xs text-gray-500 truncate">
                             {userEmail}
                           </div>
                         </div>
@@ -214,7 +216,7 @@ export default function Navbar() {
                           handleLogout()
                           setIsOpen(false)
                         }}
-                        className="flex items-center w-full px-3 py-2 text-slate-gray hover:text-deep-teal hover:bg-ultra-light-gray rounded-md font-medium"
+                        className="flex items-center w-full px-3 py-2 text-gray-600 hover:text-primary-blue-600 hover:bg-gray-50 rounded-md font-medium"
                       >
                         <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -226,7 +228,7 @@ export default function Navbar() {
                     <>
                       <Link
                         href="/login"
-                        className="block px-3 py-2 text-slate-gray hover:text-deep-teal rounded-md font-medium"
+                        className="block px-3 py-2 text-light-gray hover:text-primary-blue-600 rounded-md font-medium"
                         onClick={() => setIsOpen(false)}
                       >
                         Login

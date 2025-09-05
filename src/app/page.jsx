@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Hero from '@/components/sections/Hero'
-import WhyNovaAIQ from '@/components/sections/WhyNovaAIQ'
+import WhyCoreReputation from '@/components/sections/WhyCoreReputation'
 import ServicesPreview from '@/components/sections/ServicesPreview'
 import TestimonialsPreview from '@/components/sections/TestimonialsPreview'
 import CTASection from '@/components/sections/CTASection'
@@ -47,7 +47,7 @@ export default function Home() {
     return (
       <div className="min-h-screen bg-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue-600 mx-auto mb-4"></div>
           <p className="text-gray-600">Loading...</p>
         </div>
       </div>
@@ -61,11 +61,12 @@ export default function Home() {
 
   return (
     <>
-      <Hero />
-      <WhyNovaAIQ />
-      <ServicesPreview />
-      <TestimonialsPreview />
-      <CTASection />
+  <Hero />
+  <WhyCoreReputation />
+  <ServicesPreview />
+  <TestimonialsPreview />
+  <CTASection />
     </>
+    
   )
 }
