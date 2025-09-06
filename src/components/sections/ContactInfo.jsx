@@ -7,29 +7,29 @@ const contactMethods = [
   {
     title: "Email Us",
     description: "Send us an email and we'll respond within 24 hours",
-    details: "hello@novaaiiq.com",
+    details: "info@corereputation.com",
     icon: (
       <svg className="w-8 h-8 text-primary-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
       </svg>
     ),
-    link: "mailto:hello@novaaiiq.com"
+    link: "info@corereputation.com"
   },
   {
     title: "Call Us",
     description: "Speak directly with our reputation management experts",
-    details: "+1 (555) 123-4567",
+    details: "(214) 217-8885",
     icon: (
       <svg className="w-8 h-8 text-primary-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
       </svg>
     ),
-    link: "tel:+15551234567"
+    link: "tel:+12142178885"
   },
   {
     title: "Our Address",
-    description: "NovaAIQ Headquarters",
-    details: "123 Innovation Drive, Suite 200\nSan Francisco, CA 94105",
+    description: "Core Reputation",
+    details: "5900 Balcones Drive Suite 27144\nAustin, TX 78731",
     icon: (
       <svg className="w-8 h-8 text-primary-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -122,7 +122,7 @@ export default function ContactInfo() {
       </div>
 
       <div className="mt-8 pt-8 border-t border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow NovaAIQ</h3>
+        <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Core Reputation</h3>
         <div className="flex space-x-4">
           <a href="#" className="text-gray-400 hover:text-primary-blue-600 transition-colors">
             <span className="sr-only">LinkedIn</span>

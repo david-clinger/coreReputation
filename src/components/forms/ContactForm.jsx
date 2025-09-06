@@ -50,7 +50,7 @@ export default function ContactForm({ onSuccess }) {
       <div className="bg-white rounded-2xl shadow-xl p-8 md:p-10">
         <div className="text-center mb-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-2">Start Your Reputation Transformation</h2>
-          <p className="text-gray-600">Get a free consultation on how NovaAIQ can boost your reviews</p>
+          <p className="text-gray-600">Get a free consultation on how Core Reputation can boost your reviews</p>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
