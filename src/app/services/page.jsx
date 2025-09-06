@@ -4,28 +4,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Head from 'next/head'
 import Button from '@/components/ui/Button'
 import withAuth from '@/lib/withAuth'
-
-// Metadata export for SEO
-export const metadata = {
-  title: 'AI-Powered Reputation Management Services',
-  description: 'Transform your online presence with Core Reputation\'s comprehensive services: review management, NAP sync, AI responses, outbound campaigns, Google Posts, and analytics reporting.',
-  keywords: 'reputation management services, AI review responses, Google Business Profile management, NAP synchronization, review collection, online reputation services',
-  openGraph: {
-    title: 'AI-Powered Reputation Management Services | Core Reputation',
-    description: 'Discover Core Reputation\'s full suite of AI-powered services designed to boost your online reviews and reputation.',
-    url: 'https://corereputation.com/services',
-    images: [
-      {
-        url: '/images/services-og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Core Reputation Services Overview',
-      },
-    ],
-  },
-}
 
 const allServices = [
   {
@@ -201,7 +182,30 @@ function Services() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>AI-Powered Reputation Management Services | Core Reputation</title>
+        <meta name="description" content="Comprehensive reputation management services including review monitoring, AI response management, business listings, and automated campaigns. Transform your online presence." />
+        <meta name="keywords" content="reputation management services, AI review management, business listings management, automated review responses, online reputation monitoring" />
+        
+        {/* OpenGraph */}
+        <meta property="og:title" content="Professional Reputation Management Services - Core Reputation" />
+        <meta property="og:description" content="Complete suite of AI-powered reputation management services to help businesses get more 5-star reviews and manage their online presence effectively." />
+        <meta property="og:url" content="https://corereputation.com/services" />
+        <meta property="og:site_name" content="Core Reputation" />
+        <meta property="og:image" content="https://corereputation.com/images/services-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Core Reputation Management Services" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI Reputation Management Services | Core Reputation" />
+        <meta name="twitter:description" content="Professional reputation management with AI-powered review monitoring, response management, and automated campaigns." />
+        <meta name="twitter:image" content="https://corereputation.com/images/services-twitter.jpg" />
+      </Head>
+      <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="min-h-screen flex items-center bg-gradient-to-br from-white via-gray-50 to-primary-blue-50 relative overflow-hidden">
         {/* Background decorations */}
@@ -575,7 +579,8 @@ function Services() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
 

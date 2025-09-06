@@ -3,37 +3,11 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Head from 'next/head'
 import TeamSection from '@/components/sections/TeamSection'
 import ValuesSection from '@/components/sections/ValuesSection'
 import CTASection from '@/components/sections/CTASection'
 import StatsSection from '@/components/sections/StatsSection'
-
-export const metadata = {
-  title: 'About Core Reputation - AI-Powered Reputation Management Experts',
-  description: 'Learn about Core Reputation\'s mission to empower small and mid-sized businesses with enterprise-level reputation management technology at affordable prices.',
-  keywords: 'about core reputation, reputation management company, business review experts, AI reputation technology, online reputation specialists',
-  openGraph: {
-    title: 'About Core Reputation - Leading Reputation Management Experts',
-    description: 'Discover how Core Reputation transforms business reputations with AI-powered technology, helping SMBs compete with enterprise-level solutions.',
-    url: 'https://corereputation.com/about',
-    siteName: 'Core Reputation',
-    images: [
-      {
-        url: 'https://corereputation.com/images/about-og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Core Reputation Team and Mission'
-      }
-    ],
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About Core Reputation - AI Reputation Management Experts',
-    description: 'Enterprise-level reputation management for small and mid-sized businesses. Proven results with AI technology.',
-    images: ['https://corereputation.com/images/about-twitter.jpg']
-  }
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -59,7 +33,30 @@ const itemVariants = {
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>About Core Reputation - AI-Powered Reputation Management Experts</title>
+        <meta name="description" content="Learn about Core Reputation's mission to empower small and mid-sized businesses with enterprise-level reputation management technology at affordable prices." />
+        <meta name="keywords" content="about core reputation, reputation management company, business review experts, AI reputation technology, online reputation specialists" />
+        
+        {/* OpenGraph */}
+        <meta property="og:title" content="About Core Reputation - Leading Reputation Management Experts" />
+        <meta property="og:description" content="Discover how Core Reputation transforms business reputations with AI-powered technology, helping SMBs compete with enterprise-level solutions." />
+        <meta property="og:url" content="https://corereputation.com/about" />
+        <meta property="og:site_name" content="Core Reputation" />
+        <meta property="og:image" content="https://corereputation.com/images/about-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Core Reputation Team and Mission" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Core Reputation - AI Reputation Management Experts" />
+        <meta name="twitter:description" content="Enterprise-level reputation management for small and mid-sized businesses. Proven results with AI technology." />
+        <meta name="twitter:image" content="https://corereputation.com/images/about-twitter.jpg" />
+      </Head>
+      <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 overflow-hidden py-20">
         {/* Background decorations */}
@@ -163,6 +160,7 @@ export default function About() {
 
       {/* CTA Section */}
       <CTASection />
-    </div>
+      </div>
+    </>
   )
 }

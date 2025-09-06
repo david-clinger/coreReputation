@@ -3,31 +3,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-
-export const metadata = {
-  title: 'Legal Documents - Terms of Service & Privacy Policy | Core Reputation',
-  description: 'Review Core Reputation\'s legal documents including Terms of Service, Privacy Policy, Cookie Policy, and data protection information.',
-  keywords: 'legal documents, terms of service, privacy policy, cookie policy, data protection, GDPR compliance',
-  openGraph: {
-    title: 'Legal Documents - Core Reputation Terms & Privacy',
-    description: 'Access our comprehensive legal documents including Terms of Service, Privacy Policy, and data protection policies.',
-    url: 'https://corereputation.com/legal',
-    siteName: 'Core Reputation',
-    images: [
-      {
-        url: 'https://corereputation.com/images/legal-og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Core Reputation Legal Documents'
-      }
-    ],
-    type: 'website'
-  },
-  robots: {
-    index: true,
-    follow: true
-  }
-}
+import Head from 'next/head'
 
 const legalSections = [
   {
@@ -132,7 +108,27 @@ const itemVariants = {
 
 export default function Legal() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>Legal Documents - Terms of Service & Privacy Policy | Core Reputation</title>
+        <meta name="description" content="Review Core Reputation's legal documents including Terms of Service, Privacy Policy, Cookie Policy, and data protection information." />
+        <meta name="keywords" content="legal documents, terms of service, privacy policy, cookie policy, data protection, GDPR compliance" />
+        
+        {/* OpenGraph */}
+        <meta property="og:title" content="Legal Documents - Core Reputation Terms & Privacy" />
+        <meta property="og:description" content="Access our comprehensive legal documents including Terms of Service, Privacy Policy, and data protection policies." />
+        <meta property="og:url" content="https://corereputation.com/legal" />
+        <meta property="og:site_name" content="Core Reputation" />
+        <meta property="og:image" content="https://corereputation.com/images/legal-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Core Reputation Legal Documents" />
+        <meta property="og:type" content="website" />
+        
+        {/* Robots */}
+        <meta name="robots" content="index, follow" />
+      </Head>
+      <div className="min-h-screen bg-white">
       {/* Header Section */}
       <section className="py-16 bg-gradient-to-br from-white to-primary-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -319,6 +315,7 @@ export default function Legal() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }

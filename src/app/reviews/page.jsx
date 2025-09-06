@@ -3,35 +3,9 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Head from 'next/head'
 import withAuth from '@/lib/withAuth'
 import { REVIEW_PLATFORMS, getPlatformInfo } from '@/constants/reviewPlatforms'
-
-export const metadata = {
-  title: 'Client Reviews & Success Stories | Core Reputation',
-  description: 'Read authentic client reviews and success stories from businesses using Core Reputation\'s AI-powered review management platform. 98% client satisfaction rate.',
-  keywords: 'client reviews, success stories, customer testimonials, reputation management results, business reviews, Core Reputation testimonials',
-  openGraph: {
-    title: 'Client Reviews - Real Success Stories with Core Reputation',
-    description: 'Discover how businesses transformed their online reputation with Core Reputation. Read authentic reviews from 500+ satisfied clients.',
-    url: 'https://corereputation.com/reviews',
-    siteName: 'Core Reputation',
-    images: [
-      {
-        url: 'https://corereputation.com/images/reviews-og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Core Reputation Client Success Stories'
-      }
-    ],
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Client Reviews - Core Reputation Success Stories',
-    description: '98% client satisfaction rate. Read authentic reviews from businesses that transformed their online reputation with AI.',
-    images: ['https://corereputation.com/images/reviews-twitter.jpg']
-  }
-}
 
 const reviews = [
   {
@@ -166,7 +140,30 @@ function Reviews() {
   const counts = getCounts()
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>Client Reviews & Success Stories | Core Reputation</title>
+        <meta name="description" content="Read authentic client reviews and success stories from businesses using Core Reputation's AI-powered review management platform. 98% client satisfaction rate." />
+        <meta name="keywords" content="client reviews, success stories, customer testimonials, reputation management results, business reviews, Core Reputation testimonials" />
+        
+        {/* OpenGraph */}
+        <meta property="og:title" content="Client Reviews - Real Success Stories with Core Reputation" />
+        <meta property="og:description" content="Discover how businesses transformed their online reputation with Core Reputation. Read authentic reviews from 500+ satisfied clients." />
+        <meta property="og:url" content="https://corereputation.com/reviews" />
+        <meta property="og:site_name" content="Core Reputation" />
+        <meta property="og:image" content="https://corereputation.com/images/reviews-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Core Reputation Client Success Stories" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Client Reviews - Core Reputation Success Stories" />
+        <meta name="twitter:description" content="98% client satisfaction rate. Read authentic reviews from businesses that transformed their online reputation with AI." />
+        <meta name="twitter:image" content="https://corereputation.com/images/reviews-twitter.jpg" />
+      </Head>
+      <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 overflow-hidden py-20">
         {/* Background decorations */}
@@ -531,7 +528,8 @@ function Reviews() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
 

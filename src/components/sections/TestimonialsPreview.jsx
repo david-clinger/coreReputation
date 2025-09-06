@@ -9,7 +9,7 @@ const testimonials = [
     name: "Jennifer Martinez",
     role: "Restaurant Owner",
     business: "Bella Vista Bistro",
-    content: "NovaAIQ helped us go from 3.2 to 4.8 stars on Google in just 2 months. The AI responses are so natural, customers think I wrote them personally!",
+    content: "CoreReputation helped us go from 3.2 to 4.8 stars on Google in just 2 months. The AI responses are so natural, customers think I wrote them personally!",
     rating: 5
   },
   {
@@ -23,7 +23,7 @@ const testimonials = [
     name: "Lisa Chen",
     role: "Spa Manager",
     business: "Serenity Day Spa",
-    content: "The automated Google posts keep our profile fresh and engaging. Our online visibility has increased dramatically since using NovaAIQ.",
+    content: "The automated Google posts keep our profile fresh and engaging. Our online visibility has increased dramatically since using CoreReputation.",
     rating: 5
   }
 ]
@@ -77,7 +77,7 @@ export default function TestimonialsPreview() {
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-            Real results from real businesses using NovaAIQ to transform their online reputation and drive unprecedented growth.
+            Real results from real businesses using CoreReputation to transform their online reputation and drive unprecedented growth.
           </p>
         </motion.div>
         

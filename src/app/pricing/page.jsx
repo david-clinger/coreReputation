@@ -4,34 +4,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Head from 'next/head'
 import withAuth from '@/lib/withAuth'
-
-export const metadata = {
-  title: 'Pricing Plans - Affordable AI Reputation Management Solutions | Core Reputation',
-  description: 'Choose from flexible pricing plans for AI-powered reputation management. From $199/month for Launch plan to custom Enterprise solutions. Compare features and save 17% annually.',
-  keywords: 'reputation management pricing, AI review management costs, business review software pricing, Core Reputation plans, affordable reputation solutions',
-  openGraph: {
-    title: 'Pricing Plans - AI Reputation Management from $199/month',
-    description: 'Transparent pricing for powerful reputation management. Launch ($199), Core ($399), or custom Enterprise plans. All include AI features and expert support.',
-    url: 'https://corereputation.com/pricing',
-    siteName: 'Core Reputation',
-    images: [
-      {
-        url: 'https://corereputation.com/images/pricing-og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Core Reputation Pricing Plans Comparison'
-      }
-    ],
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Core Reputation Pricing - AI Reputation Management Plans',
-    description: 'Affordable AI reputation management starting at $199/month. Compare Launch, Core, and Enterprise plans with transparent pricing.',
-    images: ['https://corereputation.com/images/pricing-twitter.jpg']
-  }
-}
 
 const pricingPlans = [
   {
@@ -166,7 +140,30 @@ function Pricing() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>Pricing Plans - Affordable AI Reputation Management Solutions | Core Reputation</title>
+        <meta name="description" content="Choose from flexible pricing plans for AI-powered reputation management. From $199/month for Launch plan to custom Enterprise solutions. Compare features and save 17% annually." />
+        <meta name="keywords" content="reputation management pricing, AI review management costs, business review software pricing, Core Reputation plans, affordable reputation solutions" />
+        
+        {/* OpenGraph */}
+        <meta property="og:title" content="Pricing Plans - AI Reputation Management from $199/month" />
+        <meta property="og:description" content="Transparent pricing for powerful reputation management. Launch ($199), Core ($399), or custom Enterprise plans. All include AI features and expert support." />
+        <meta property="og:url" content="https://corereputation.com/pricing" />
+        <meta property="og:site_name" content="Core Reputation" />
+        <meta property="og:image" content="https://corereputation.com/images/pricing-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Core Reputation Pricing Plans Comparison" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Core Reputation Pricing - AI Reputation Management Plans" />
+        <meta name="twitter:description" content="Affordable AI reputation management starting at $199/month. Compare Launch, Core, and Enterprise plans with transparent pricing." />
+        <meta name="twitter:image" content="https://corereputation.com/images/pricing-twitter.jpg" />
+      </Head>
+      <div className="min-h-screen bg-white">
       {/* Header Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 overflow-hidden py-20">
         {/* Background decorations */}
@@ -601,7 +598,8 @@ function Pricing() {
           </motion.div>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
 

@@ -3,35 +3,9 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Head from 'next/head'
 import ContactForm from '@/components/forms/ContactForm'
 import ContactInfo from '@/components/sections/ContactInfo'
-
-export const metadata = {
-  title: 'Contact Core Reputation - Get Expert Reputation Management Help',
-  description: 'Contact Core Reputation for a free consultation on AI-powered reputation management solutions. Expert team responds within 24 hours.',
-  keywords: 'contact core reputation, reputation management consultation, business review help, AI reputation experts, free consultation',
-  openGraph: {
-    title: 'Contact Core Reputation - Free Consultation Available',
-    description: 'Ready to improve your online reputation? Contact our AI reputation management experts for a free consultation and personalized strategy.',
-    url: 'https://corereputation.com/contact',
-    siteName: 'Core Reputation',
-    images: [
-      {
-        url: 'https://corereputation.com/images/contact-og.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Contact Core Reputation Team'
-      }
-    ],
-    type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contact Core Reputation - Expert Help Available',
-    description: 'Get expert reputation management help. Free consultation and 24-hour response guarantee.',
-    images: ['https://corereputation.com/images/contact-twitter.jpg']
-  }
-}
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -62,7 +36,30 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <Head>
+        <title>Contact Core Reputation - Get Expert Reputation Management Help</title>
+        <meta name="description" content="Contact Core Reputation for a free consultation on AI-powered reputation management solutions. Expert team responds within 24 hours." />
+        <meta name="keywords" content="contact core reputation, reputation management consultation, business review help, AI reputation experts, free consultation" />
+        
+        {/* OpenGraph */}
+        <meta property="og:title" content="Contact Core Reputation - Free Consultation Available" />
+        <meta property="og:description" content="Ready to improve your online reputation? Contact our AI reputation management experts for a free consultation and personalized strategy." />
+        <meta property="og:url" content="https://corereputation.com/contact" />
+        <meta property="og:site_name" content="Core Reputation" />
+        <meta property="og:image" content="https://corereputation.com/images/contact-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Contact Core Reputation Team" />
+        <meta property="og:type" content="website" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Contact Core Reputation - Expert Help Available" />
+        <meta name="twitter:description" content="Get expert reputation management help. Free consultation and 24-hour response guarantee." />
+        <meta name="twitter:image" content="https://corereputation.com/images/contact-twitter.jpg" />
+      </Head>
+      <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center bg-gradient-to-br from-white to-gray-50 overflow-hidden py-20">
         {/* Background decorations */}
@@ -248,6 +245,7 @@ export default function Contact() {
           )}
         </div>
       </section>
-    </div>
+      </div>
+    </>
   )
 }
