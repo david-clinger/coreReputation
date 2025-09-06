@@ -37,7 +37,7 @@ export default function CTASection() {
           </h2>
           
           <p className="text-xl md:text-2xl text-white/90 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Join hundreds of businesses already using NovaAIQ to build stellar reputations, 
+            Join hundreds of businesses already using CoreReputation to build stellar reputations, 
             collect more 5-star reviews, and drive unprecedented growth.
           </p>
           

@@ -323,7 +323,7 @@ function Reviews() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">NovaAIQ Review Analytics</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">CoreReputationn Review Analytics</h3>
               <p className="text-gray-600 mb-6">
                 Our advanced review management platform integrates with all major review sites to provide 
                 comprehensive analytics and automated response management for your business.
@@ -378,7 +378,7 @@ function Reviews() {
               Ready to Transform Your Online Reputation?
             </h2>
             <p className="text-xl text-primary-100 mb-8">
-              Join hundreds of businesses using NovaAIQ&apos;s AI-powered platform to manage reviews and boost their online presence.
+              Join hundreds of businesses using CoreReputation&apos;s AI-powered platform to manage reviews and boost their online presence.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/contact" className="btn-secondary">

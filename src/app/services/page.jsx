@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Head from 'next/head'
 import Button from '@/components/ui/Button'
-import withAuth from '@/lib/withAuth'
+// import withAuth from '@/lib/withAuth'
 
 const allServices = [
   {
@@ -245,13 +245,13 @@ function Services() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="flex flex-wrap justify-center gap-8"
           >
             {allServices.map((service, index) => (
               <motion.div
                 key={service.id}
                 variants={itemVariants}
-                className={`bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 border cursor-pointer group transform hover:-translate-y-2 ${
+                className={`w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 border cursor-pointer group transform hover:-translate-y-2 text-center ${
                   activeService.id === service.id 
                     ? 'border-primary-blue-600 bg-gradient-to-br from-primary-blue-50 to-white ring-2 ring-primary-blue-200' 
                     : 'border-gray-100 hover:border-primary-blue-200'
@@ -584,4 +584,4 @@ function Services() {
   )
 }
 
-export default withAuth(Services)
+export default Services

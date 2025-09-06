@@ -83,8 +83,9 @@ export default function Navbar() {
   return (
     <nav className="bg-white/95 backdrop-blur-sm shadow-lg border-b border-gray-100 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
-          <div className="flex items-center">
+        <div className="flex items-center justify-between h-20 relative">
+          {/* Logo Left */}
+          <div className="flex items-center flex-shrink-0">
             <Link href="/" className="flex-shrink-0 flex items-center group">
               <div className="flex items-center">
                 <div className="h-10 w-10 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-xl flex items-center justify-center mr-3 shadow-lg group-hover:scale-105 transition-transform duration-300">
@@ -97,9 +98,9 @@ export default function Navbar() {
               </div>
             </Link>
           </div>
-          
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+
+          {/* Centered Menu */}
+          <div className="hidden md:flex absolute left-1/2 top-0 h-full -translate-x-1/2 items-center space-x-8">
             {menuItems.map((item) => (
               <Link
                 key={item.name}
@@ -111,50 +112,11 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
-          
-          {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
-            {isLoggedIn ? (
-              <div className="flex items-center space-x-4">
-                {/* User Profile */}
-                <div className="flex items-center space-x-3 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl px-4 py-3 shadow-sm border border-gray-200">
-                  <div className="w-10 h-10 bg-gradient-to-br from-primary-blue-600 to-teal-cyan rounded-xl flex items-center justify-center shadow-lg">
-                    <span className="text-white text-sm font-bold">
-                      {(userName || userEmail).charAt(0).toUpperCase()}
-                    </span>
-                  </div>
-                  <div className="hidden sm:block">
-                    <div className="text-sm font-bold text-gray-900">
-                      {userName || 'User'}
-                    </div>
-                    <div className="text-xs text-gray-500">
-                      {userEmail}
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Logout Button */}
-                <button
-                  onClick={handleLogout}
-                  className="inline-flex items-center px-4 py-3 border border-gray-300 rounded-2xl text-sm font-semibold text-gray-700 bg-white hover:bg-gradient-to-br hover:from-red-50 hover:to-red-100 hover:border-red-300 hover:text-red-600 transition-all duration-300 shadow-sm hover:shadow-md"
-                >
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                  </svg>
-                  Logout
-                </button>
-              </div>
-            ) : (
-              <>
-                <Link href="/login" className="text-gray-600 hover:text-primary-blue-600 font-semibold text-lg transition-colors duration-300">
-                  Login
-                </Link>
-                <Link href="/register" className="bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white px-6 py-3 rounded-2xl font-bold hover:from-primary-blue-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
-                  Sign Up
-                </Link>
-              </>
-            )}
-          </div>
+
+          {/* Right Side Placeholder for Auth Buttons (if enabled) */}
+          {/* <div className="hidden md:flex items-center space-x-4 ml-auto">
+            ...existing code...
+          </div> */}
           
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">

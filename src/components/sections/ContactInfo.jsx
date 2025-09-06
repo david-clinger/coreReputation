@@ -121,7 +121,7 @@ export default function ContactInfo() {
         </div>
       </div>
 
-      <div className="mt-8 pt-8 border-t border-gray-200">
+      {/* <div className="mt-8 pt-8 border-t border-gray-200">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Follow Core Reputation</h3>
         <div className="flex space-x-4">
           <a href="#" className="text-gray-400 hover:text-primary-blue-600 transition-colors">
@@ -137,7 +137,7 @@ export default function ContactInfo() {
             </svg>
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

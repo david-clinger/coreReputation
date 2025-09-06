@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { getServiceById } from '../../sections/servicesData'
 import Button from '../../components/ui/Button'
 import Card from '../../components/ui/Card'
-import withAuth from '@/lib/withAuth'
+// import withAuth from '@/lib/withAuth'
 
 function ServiceDetailsContent() {
   const searchParams = useSearchParams()
@@ -634,4 +634,4 @@ function ServiceDetails() {
   )
 }
 
-export default withAuth(ServiceDetails)
+export default ServiceDetails

@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Head from 'next/head'
-import withAuth from '@/lib/withAuth'
+// import withAuth from '@/lib/withAuth'
 
 const pricingPlans = [
   {
@@ -534,7 +534,7 @@ function Pricing() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Everything you need to know about getAIIQ pricing and plans.
+              Everything you need to know about CoreReputation pricing and plans.
             </p>
           </motion.div>
 
@@ -603,4 +603,4 @@ function Pricing() {
   )
 }
 
-export default withAuth(Pricing)
+export default Pricing

@@ -101,7 +101,7 @@ export const servicesData = {
     ],
 
     testimonial: {
-      quote: "Since implementing getAIIQ's smart review system, our Google rating went from 3.8 to 4.6 stars in just 3 months. We're getting 5x more positive reviews!",
+      quote: "Since implementing Core Reputation's smart review system, our Google rating went from 3.8 to 4.6 stars in just 3 months. We're getting 5x more positive reviews!",
       author: "Sarah Martinez",
       title: "Owner, Martinez Family Restaurant",
       avatar: "/images/testimonials/sarah-martinez.jpg"
@@ -183,7 +183,7 @@ export const servicesData = {
     ],
 
     pricing: {
-      startsAt: "$199",
+      startsAt: "$399",
       includedIn: ["Launch", "Pro", "Enterprise"],
       note: "NAP sync included in all plans with enhanced monitoring in Pro/Enterprise"
     },
@@ -215,7 +215,7 @@ export const servicesData = {
     ],
 
     testimonial: {
-      quote: "Our local search visibility improved dramatically after getAIIQ synchronized our listings. We're now showing up consistently across all platforms.",
+      quote: "Our local search visibility improved dramatically after CoreReputation synchronized our listings. We're now showing up consistently across all platforms.",
       author: "Michael Chen",
       title: "Manager, Chen's Auto Repair",
       avatar: "/images/testimonials/michael-chen.jpg"
@@ -462,7 +462,7 @@ export const servicesData = {
     ],
 
     testimonial: {
-      quote: "Our review volume increased by 400% in just two months with getAIIQ's outbound campaigns. The automation saves us so much time!",
+      quote: "Our review volume increased by 400% in just two months with CoreReputation's outbound campaigns. The automation saves us so much time!",
       author: "David Park",
       title: "Owner, Park's Home Services",
       avatar: "/images/testimonials/david-park.jpg"
@@ -597,7 +597,7 @@ export const servicesData = {
     ],
 
     testimonial: {
-      quote: "Our Google posts get 3x more engagement since getAIIQ started managing them. The professional content really makes a difference!",
+      quote: "Our Google posts get 3x more engagement since CoreReputation started managing them. The professional content really makes a difference!",
       author: "Jennifer Lee",
       title: "Marketing Manager, Lee's Fitness Center",
       avatar: "/images/testimonials/jennifer-lee.jpg"

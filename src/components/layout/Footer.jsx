@@ -94,7 +94,7 @@ export default function Footer() {
         </div>
         
         <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-lg font-medium">© {currentYear} Core Reputation. All rights reserved.</p>
+          <p className="text-gray-400 text-lg font-medium">© 2024 Core Reputation. All rights reserved.</p>
           <div className="flex space-x-8 mt-6 md:mt-0">
             <Link href="/legal#privacy" className="text-gray-400 hover:text-primary-blue-400 text-lg font-medium transition-colors duration-300 hover:translate-x-1 transform">Privacy Policy</Link>
             <Link href="/legal#terms" className="text-gray-400 hover:text-primary-blue-400 text-lg font-medium transition-colors duration-300 hover:translate-x-1 transform">Terms of Service</Link>

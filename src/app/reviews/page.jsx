@@ -4,7 +4,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Head from 'next/head'
-import withAuth from '@/lib/withAuth'
+// import withAuth from '@/lib/withAuth'
 import { REVIEW_PLATFORMS, getPlatformInfo } from '@/constants/reviewPlatforms'
 
 const reviews = [
@@ -41,7 +41,7 @@ const reviews = [
     business: 'Rodriguez Auto Repair',
     role: 'Shop Owner',
     rating: 4,
-    content: 'Core Reputation helped us go from 3.2 to 4.8 stars on Google in just 4 months. The review invitation system and smart response generation has brought us so many new customers.',
+    content: 'Core Reputation helped us go from 3.8 to 4.1 stars on Google in just 4 months. The review invitation system and smart response generation has brought us so many new customers.',
     date: '1 month ago'
   },
   {
@@ -587,4 +587,4 @@ function PlatformsGrid({ containerVariants, itemVariants }) {
   )
 }
 
-export default withAuth(Reviews)
+export default Reviews

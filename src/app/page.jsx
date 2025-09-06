@@ -76,49 +76,49 @@ export default function Home() {
     }
   }
 
-  useEffect(() => {
-    // Check if user is logged in
-    const checkAuth = () => {
-      const loggedIn = localStorage.getItem('isLoggedIn')
-      if (loggedIn === 'true') {
-        setIsLoggedIn(true)
-      } else {
-        // Redirect to login page if not authenticated
-        router.push('/login')
-        return
-      }
-      setIsLoading(false)
-    }
+  // useEffect(() => {
+  //   // Check if user is logged in
+  //   const checkAuth = () => {
+  //     const loggedIn = localStorage.getItem('isLoggedIn')
+  //     if (loggedIn === 'true') {
+  //       setIsLoggedIn(true)
+  //     } else {
+  //       // Redirect to login page if not authenticated
+  //       router.push('/login')
+  //       return
+  //     }
+  //     setIsLoading(false)
+  //   }
 
-    checkAuth()
+  //   checkAuth()
     
-    // Listen for auth events
-    const handleAuthChange = () => checkAuth()
-    addAuthListener(AUTH_EVENTS.LOGIN, handleAuthChange)
-    addAuthListener(AUTH_EVENTS.LOGOUT, handleAuthChange)
+  //   // Listen for auth events
+  //   const handleAuthChange = () => checkAuth()
+  //   addAuthListener(AUTH_EVENTS.LOGIN, handleAuthChange)
+  //   addAuthListener(AUTH_EVENTS.LOGOUT, handleAuthChange)
     
-    return () => {
-      removeAuthListener(AUTH_EVENTS.LOGIN, handleAuthChange)
-      removeAuthListener(AUTH_EVENTS.LOGOUT, handleAuthChange)
-    }
-  }, [router])
+  //   return () => {
+  //     removeAuthListener(AUTH_EVENTS.LOGIN, handleAuthChange)
+  //     removeAuthListener(AUTH_EVENTS.LOGOUT, handleAuthChange)
+  //   }
+  // }, [router])
 
-  // Show loading spinner while checking authentication
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading...</p>
-        </div>
-      </div>
-    )
-  }
+  // // Show loading spinner while checking authentication
+  // if (isLoading) {
+  //   return (
+  //     <div className="min-h-screen bg-white flex items-center justify-center">
+  //       <div className="text-center">
+  //         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-blue-600 mx-auto mb-4"></div>
+  //         <p className="text-gray-600">Loading...</p>
+  //       </div>
+  //     </div>
+  //   )
+  // }
 
-  // Only render the home page if user is logged in
-  if (!isLoggedIn) {
-    return null // Will redirect to login
-  }
+  // // Only render the home page if user is logged in
+  // if (!isLoggedIn) {
+  //   return null // Will redirect to login
+  // }
 
   return (
     <>
