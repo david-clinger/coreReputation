@@ -8,6 +8,33 @@ import ValuesSection from '@/components/sections/ValuesSection'
 import CTASection from '@/components/sections/CTASection'
 import StatsSection from '@/components/sections/StatsSection'
 
+export const metadata = {
+  title: 'About Core Reputation - AI-Powered Reputation Management Experts',
+  description: 'Learn about Core Reputation\'s mission to empower small and mid-sized businesses with enterprise-level reputation management technology at affordable prices.',
+  keywords: 'about core reputation, reputation management company, business review experts, AI reputation technology, online reputation specialists',
+  openGraph: {
+    title: 'About Core Reputation - Leading Reputation Management Experts',
+    description: 'Discover how Core Reputation transforms business reputations with AI-powered technology, helping SMBs compete with enterprise-level solutions.',
+    url: 'https://corereputation.com/about',
+    siteName: 'Core Reputation',
+    images: [
+      {
+        url: 'https://corereputation.com/images/about-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Core Reputation Team and Mission'
+      }
+    ],
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About Core Reputation - AI Reputation Management Experts',
+    description: 'Enterprise-level reputation management for small and mid-sized businesses. Proven results with AI technology.',
+    images: ['https://corereputation.com/images/about-twitter.jpg']
+  }
+}
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {

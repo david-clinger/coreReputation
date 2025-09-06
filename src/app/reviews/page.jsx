@@ -6,6 +6,33 @@ import { motion } from 'framer-motion'
 import withAuth from '@/lib/withAuth'
 import { REVIEW_PLATFORMS, getPlatformInfo } from '@/constants/reviewPlatforms'
 
+export const metadata = {
+  title: 'Client Reviews & Success Stories | Core Reputation',
+  description: 'Read authentic client reviews and success stories from businesses using Core Reputation\'s AI-powered review management platform. 98% client satisfaction rate.',
+  keywords: 'client reviews, success stories, customer testimonials, reputation management results, business reviews, Core Reputation testimonials',
+  openGraph: {
+    title: 'Client Reviews - Real Success Stories with Core Reputation',
+    description: 'Discover how businesses transformed their online reputation with Core Reputation. Read authentic reviews from 500+ satisfied clients.',
+    url: 'https://corereputation.com/reviews',
+    siteName: 'Core Reputation',
+    images: [
+      {
+        url: 'https://corereputation.com/images/reviews-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Core Reputation Client Success Stories'
+      }
+    ],
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Client Reviews - Core Reputation Success Stories',
+    description: '98% client satisfaction rate. Read authentic reviews from businesses that transformed their online reputation with AI.',
+    images: ['https://corereputation.com/images/reviews-twitter.jpg']
+  }
+}
+
 const reviews = [
   {
     id: 1,

@@ -4,6 +4,31 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+export const metadata = {
+  title: 'Legal Documents - Terms of Service & Privacy Policy | Core Reputation',
+  description: 'Review Core Reputation\'s legal documents including Terms of Service, Privacy Policy, Cookie Policy, and data protection information.',
+  keywords: 'legal documents, terms of service, privacy policy, cookie policy, data protection, GDPR compliance',
+  openGraph: {
+    title: 'Legal Documents - Core Reputation Terms & Privacy',
+    description: 'Access our comprehensive legal documents including Terms of Service, Privacy Policy, and data protection policies.',
+    url: 'https://corereputation.com/legal',
+    siteName: 'Core Reputation',
+    images: [
+      {
+        url: 'https://corereputation.com/images/legal-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Core Reputation Legal Documents'
+      }
+    ],
+    type: 'website'
+  },
+  robots: {
+    index: true,
+    follow: true
+  }
+}
+
 const legalSections = [
   {
     id: 'terms',

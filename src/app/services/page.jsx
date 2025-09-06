@@ -7,6 +7,26 @@ import Link from 'next/link'
 import Button from '@/components/ui/Button'
 import withAuth from '@/lib/withAuth'
 
+// Metadata export for SEO
+export const metadata = {
+  title: 'AI-Powered Reputation Management Services',
+  description: 'Transform your online presence with Core Reputation\'s comprehensive services: review management, NAP sync, AI responses, outbound campaigns, Google Posts, and analytics reporting.',
+  keywords: 'reputation management services, AI review responses, Google Business Profile management, NAP synchronization, review collection, online reputation services',
+  openGraph: {
+    title: 'AI-Powered Reputation Management Services | Core Reputation',
+    description: 'Discover Core Reputation\'s full suite of AI-powered services designed to boost your online reviews and reputation.',
+    url: 'https://corereputation.com/services',
+    images: [
+      {
+        url: '/images/services-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Core Reputation Services Overview',
+      },
+    ],
+  },
+}
+
 const allServices = [
   {
     id: 'nap-sync',

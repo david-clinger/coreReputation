@@ -6,6 +6,33 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import withAuth from '@/lib/withAuth'
 
+export const metadata = {
+  title: 'Pricing Plans - Affordable AI Reputation Management Solutions | Core Reputation',
+  description: 'Choose from flexible pricing plans for AI-powered reputation management. From $199/month for Launch plan to custom Enterprise solutions. Compare features and save 17% annually.',
+  keywords: 'reputation management pricing, AI review management costs, business review software pricing, Core Reputation plans, affordable reputation solutions',
+  openGraph: {
+    title: 'Pricing Plans - AI Reputation Management from $199/month',
+    description: 'Transparent pricing for powerful reputation management. Launch ($199), Core ($399), or custom Enterprise plans. All include AI features and expert support.',
+    url: 'https://corereputation.com/pricing',
+    siteName: 'Core Reputation',
+    images: [
+      {
+        url: 'https://corereputation.com/images/pricing-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Core Reputation Pricing Plans Comparison'
+      }
+    ],
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Core Reputation Pricing - AI Reputation Management Plans',
+    description: 'Affordable AI reputation management starting at $199/month. Compare Launch, Core, and Enterprise plans with transparent pricing.',
+    images: ['https://corereputation.com/images/pricing-twitter.jpg']
+  }
+}
+
 const pricingPlans = [
   {
     name: 'Launch',

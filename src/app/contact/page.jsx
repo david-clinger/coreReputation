@@ -6,6 +6,33 @@ import { motion } from 'framer-motion'
 import ContactForm from '@/components/forms/ContactForm'
 import ContactInfo from '@/components/sections/ContactInfo'
 
+export const metadata = {
+  title: 'Contact Core Reputation - Get Expert Reputation Management Help',
+  description: 'Contact Core Reputation for a free consultation on AI-powered reputation management solutions. Expert team responds within 24 hours.',
+  keywords: 'contact core reputation, reputation management consultation, business review help, AI reputation experts, free consultation',
+  openGraph: {
+    title: 'Contact Core Reputation - Free Consultation Available',
+    description: 'Ready to improve your online reputation? Contact our AI reputation management experts for a free consultation and personalized strategy.',
+    url: 'https://corereputation.com/contact',
+    siteName: 'Core Reputation',
+    images: [
+      {
+        url: 'https://corereputation.com/images/contact-og.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Contact Core Reputation Team'
+      }
+    ],
+    type: 'website'
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Core Reputation - Expert Help Available',
+    description: 'Get expert reputation management help. Free consultation and 24-hour response guarantee.',
+    images: ['https://corereputation.com/images/contact-twitter.jpg']
+  }
+}
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {

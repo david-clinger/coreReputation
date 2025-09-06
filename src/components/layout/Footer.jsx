@@ -80,13 +80,15 @@ export default function Footer() {
               <svg className="w-5 h-5 text-yellow-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
-              Support
+              Company
             </h3>
             <ul className="space-y-3">
+              <li><Link href="/about" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">About Us</Link></li>
+              <li><Link href="/reviews" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Client Reviews</Link></li>
               <li><Link href="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Contact Us</Link></li>
-              <li><Link href="/help" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Help Center</Link></li>
-              <li><Link href="/privacy" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Terms of Service</Link></li>
+              <li><Link href="/legal" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Legal Documents</Link></li>
+              <li><Link href="/legal#privacy" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Privacy Policy</Link></li>
+              <li><Link href="/legal#terms" className="text-gray-300 hover:text-yellow-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Terms of Service</Link></li>
             </ul>
           </div>
         </div>
@@ -94,8 +96,9 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-lg font-medium">© {currentYear} Core Reputation. All rights reserved.</p>
           <div className="flex space-x-8 mt-6 md:mt-0">
-            <Link href="/privacy" className="text-gray-400 hover:text-primary-blue-400 text-lg font-medium transition-colors duration-300 hover:translate-x-1 transform">Privacy Policy</Link>
-            <Link href="/terms" className="text-gray-400 hover:text-primary-blue-400 text-lg font-medium transition-colors duration-300 hover:translate-x-1 transform">Terms of Service</Link>
+            <Link href="/legal#privacy" className="text-gray-400 hover:text-primary-blue-400 text-lg font-medium transition-colors duration-300 hover:translate-x-1 transform">Privacy Policy</Link>
+            <Link href="/legal#terms" className="text-gray-400 hover:text-primary-blue-400 text-lg font-medium transition-colors duration-300 hover:translate-x-1 transform">Terms of Service</Link>
+            <Link href="/sitemap.xml" className="text-gray-400 hover:text-primary-blue-400 text-lg font-medium transition-colors duration-300 hover:translate-x-1 transform">Sitemap</Link>
           </div>
         </div>
       </div>
