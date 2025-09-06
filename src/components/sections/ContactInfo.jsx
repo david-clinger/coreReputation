@@ -28,7 +28,7 @@ const contactMethods = [
   },
   {
     title: "Our Address",
-    description: "Core Reputation",
+    description: <span className="font-bold">Core Reputation</span>,
     details: "5900 Balcones Drive Suite 27144\nAustin, TX 78731",
     icon: (
       <svg className="w-8 h-8 text-primary-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
