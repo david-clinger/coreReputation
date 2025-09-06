@@ -19,16 +19,14 @@ export const serviceImages = {
 
 // Team Images
 export const teamImages = {
-  ceo: '/images/team/ceo.jpg',
-  cto: '/images/team/cto.jpg',
-  leadDeveloper: '/images/team/lead-developer.jpg',
-  designer: '/images/team/designer.jpg',
-  marketingHead: '/images/team/marketing-head.jpg',
-  projectManager: '/images/team/project-manager.jpg',
+  founder: '/images/CarterBeckett.jpeg',
+  communicationsLead: '/images/ChristiClinger.jpeg',
+  attorney: '/images/StacyLittle.jpeg',
+  webDeveloper: '/images/AbdulRaheem.jpeg'
 }
 
 // Testimonial Images
-export const testimonialImages = {
+export const testimonialImages = {  
   client1: '/images/testimonials/client-1.jpg',
   client2: '/images/testimonials/client-2.jpg',
   client3: '/images/testimonials/client-3.jpg',

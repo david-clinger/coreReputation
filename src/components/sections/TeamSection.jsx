@@ -3,31 +3,32 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import images from '@/constants/images'
 
 const teamMembers = [
   {
-    name: "Sarah Johnson",
-    role: "CEO & Founder",
-    bio: "With over 15 years of experience in the industry, Sarah leads our vision and strategy.",
-    image: "/images/team1.jpg"
+    name: "Carter Beckett",
+    role: "Founder",
+    bio: "Founder guiding CoreReputation with experience in communications, strategy and reputation management.",
+    image: images.team.founder
   },
   {
-    name: "Michael Chen",
-    role: "Technical Director",
-    bio: "Michael specializes in software architecture and leads our development team.",
-    image: "/images/team2.jpg"
+    name: "Christi Dobson",
+    role: "Communications and Client Success",
+    bio: "Ensures client success through strong communication, creativity and attentive project support.",
+    image: images.team.communicationsLead
   },
   {
-    name: "Emily Rodriguez",
-    role: "Creative Director",
-    bio: "Emily brings creative vision and design excellence to all our projects.",
-    image: "/images/team3.jpg"
+    name: "Stacy Little",
+    role: "Attorney",
+    bio: "Provides trusted legal insight, ensuring compliance and protecting client interests.",
+    image: images.team.attorney
   },
   {
-    name: "David Kim",
-    role: "Marketing Lead",
-    bio: "David develops innovative marketing strategies that drive growth for our clients.",
-    image: "/images/team4.jpg"
+    name: "Abdul Raheem",
+    role: "Web Development and Design",
+    bio: "Builds sleek, functional websites with technical expertise and creative vision.",
+    image: images.team.webDeveloper
   }
 ]
 
@@ -83,16 +84,19 @@ export default function TeamSection() {
               className="card p-6 text-center group hover:shadow-lg transition-shadow"
             >
               <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-gray-200">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-primary-200 flex items-center justify-center">
-                  <span className="text-primary-blue-600 text-2xl font-bold">
-                    {member.name.charAt(0)}
-                  </span>
-                </div>
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  sizes="128px"
+                  className="transition-transform duration-300 group-hover:scale-110"
+                />
               </div>
               <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
               <p className="text-primary-600 font-medium mb-4">{member.role}</p>
               <p className="text-gray-600 text-sm">{member.bio}</p>
-              <div className="flex justify-center space-x-4 mt-6 pt-4 border-t border-gray-100">
+              {/* <div className="flex justify-center space-x-4 mt-6 pt-4 border-t border-gray-100">
                 <a href="#" className="text-gray-400 hover:text-primary-blue-600 transition-colors">
                   <span className="sr-only">LinkedIn</span>
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -111,7 +115,7 @@ export default function TeamSection() {
                     <path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.725v15.438h24v-15.438l-12 9.725z" />
                   </svg>
                 </a>
-              </div>
+              </div> */}
             </motion.div>
           ))}
         </motion.div>
