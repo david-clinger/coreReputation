@@ -9,7 +9,7 @@ const testimonials = [
     name: "Jennifer Martinez",
     role: "Restaurant Owner",
     business: "Bella Vista Bistro",
-    content: "CoreReputation helped us go from 3.2 to 4.8 stars on Google in just 2 months. The AI responses are so natural, customers think I wrote them personally!",
+    content: "CoreReputation helped us go from 3.8 to 4.1 stars on Google in just 2 months. The AI responses are so natural, customers think I wrote them personally!",
     rating: 5
   },
   {
