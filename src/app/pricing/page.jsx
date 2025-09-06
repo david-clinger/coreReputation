@@ -18,12 +18,9 @@ const pricingPlans = [
     features: [
       'QR Review Funnel – Push 4–5★ reviews to Google; route 3★ and below privately',
       'Review Monitoring Dashboard – Manage all reviews in one place',
-      'AI-Drafted Response Suggestions – Smart, ready-to-use reply templates',
+      'Basic AI-Drafted Response Suggestions – Smart, ready-to-use reply templates',
       'Review Alert Notifications – Instant email/text alerts for every new review',
       'Basic Review Filtering – Route reviews automatically based on star rating',
-      'Monthly Review Summary – Simple reporting on review activity',
-      'Support Library Access – Step-by-step guides & tutorials for your team',
-      'Monthly Tips Email – Expert strategies to keep reviews flowing',
       'Secure Cloud Hosting – All your data encrypted and backed up',
       'Phone & Email Support – 1 business day response time'
     ],
@@ -39,16 +36,14 @@ const pricingPlans = [
     recommended: true,
     hidden: false,
     features: [
-      'Includes everything in Launch, plus:',
+    <span style={{fontSize: '1.15rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem'}}>Includes everything in Launch, plus:</span>,
       'Outbound Review Campaigns – Custom review request forms via email, SMS, or WhatsApp',
-      'Custom Review Generation Pages – Branded landing pages for collecting reviews',
       'AI Response Assist (Expanded) – Intelligent drafts tuned to your brand\'s tone',
       'Branded SMS/Email Templates – Pre-built, customizable campaigns to fit your look',
       'Review Trend Graphs – Visualize growth, volume, and ratings in one dashboard',
       'Customer Sentiment Snapshot – Instant breakdown of positive vs negative feedback',
       'Staff Notifications – Send review alerts to the right team members automatically',
       'Quarterly Check-In Call – Scheduled optimization session every 90 days',
-      'Reputation Benchmarking – Compare your reviews to local competitors & industry averages',
       'Priority Support – Responses within 4 business hours'
     ],
     cta: 'Go Core',
@@ -62,7 +57,7 @@ const pricingPlans = [
     popular: false,
     hidden: false,
     features: [
-      'Includes everything in Core, plus:',
+    <span style={{fontSize: '1.15rem', fontWeight: 600, display: 'block', marginBottom: '0.5rem'}}>Includes everything in Core, plus:</span>,
       'Multi-Location Management – Consolidated oversight across all locations',
       'Advanced Reporting – Cross-location insights and exportable reports',
       'Dedicated Account Manager – One point of contact for strategy and support',
@@ -94,10 +89,10 @@ const faqItems = [
     question: "Can I cancel my subscription anytime?",
     answer: "Yes, you can cancel your subscription at any time. There are no cancellation fees."
   },
-  {
-    question: "Is the Essential plan really hidden?",
-    answer: "The Essential plan is our basic offering that's perfect for businesses who just need simple Google review collection. While we don't prominently feature it, it's available upon request."
-  }
+  // {
+  //   question: "Is the Essential plan really hidden?",
+  //   answer: "The Essential plan is our basic offering that's perfect for businesses who just need simple Google review collection. While we don't prominently feature it, it's available upon request."
+  // }
 ]
 
 const containerVariants = {
@@ -325,17 +320,27 @@ function Pricing() {
                 </div>
 
                 <ul className="space-y-4 mb-10 flex-grow">
-                  {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start group">
-                      <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-primary-blue-600 to-teal-cyan flex items-center justify-center mr-3 mt-0.5 shadow-md group-hover:scale-110 transition-transform duration-200">
-                        <svg className="w-3.5 h-3.5 text-white font-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-900 transition-colors duration-200">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                  {plan.features.map((feature, featureIndex) => {
+                    // Remove check icon for header lines
+                    const isHeader = typeof feature === 'string' ? false : true;
+                    return (
+                      <li key={featureIndex} className="flex items-start group">
+                        {isHeader ? (
+                          <span className="text-gray-900 text-base font-semibold leading-relaxed w-full">{feature}</span>
+                        ) : (
+                          <>
+                            <div className="flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r from-primary-blue-600 to-teal-cyan flex items-center justify-center mr-3 mt-0.5 shadow-md group-hover:scale-110 transition-transform duration-200">
+                              <svg className="w-3.5 h-3.5 text-white font-bold" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                            </div>
+                            <span className="text-gray-700 text-sm leading-relaxed group-hover:text-gray-900 transition-colors duration-200">{feature}</span>
+                          </>
+                        )}
+                      </li>
+                    );
+                  })}
+                  </ul>
 
                 {plan.addons && (
                   <div className="mb-8 p-6 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl border border-gray-100">
@@ -446,18 +451,15 @@ function Pricing() {
                 {[
                   { feature: 'QR Review Funnel', launch: '✓', core: '✓', enterprise: '✓' },
                   { feature: 'Review Monitoring Dashboard', launch: '✓', core: '✓', enterprise: '✓' },
-                  { feature: 'AI Response Suggestions', launch: '✓', core: '✓ (Expanded)', enterprise: '✓ (Expanded)' },
+                  { feature: 'AI Response Suggestions', launch: '✓ (Basic)', core: '✓ (Expanded)', enterprise: '✓ (Expanded)' },
                   { feature: 'Review Alert Notifications', launch: '✓', core: '✓', enterprise: '✓' },
                   { feature: 'Basic Review Filtering', launch: '✓', core: '✓', enterprise: '✓' },
-                  { feature: 'Monthly Review Summary', launch: '✓', core: '✓', enterprise: '✓' },
                   { feature: 'Phone & Email Support', launch: '✓ (1 business day)', core: '✓ (4 hours)', enterprise: '✓ (Dedicated)' },
                   { feature: 'Outbound Review Campaigns', launch: '✗', core: '✓', enterprise: '✓' },
-                  { feature: 'Custom Review Pages', launch: '✗', core: '✓', enterprise: '✓' },
                   { feature: 'Review Trend Graphs', launch: '✗', core: '✓', enterprise: '✓' },
                   { feature: 'Customer Sentiment Snapshot', launch: '✗', core: '✓', enterprise: '✓' },
                   { feature: 'Staff Notifications', launch: '✗', core: '✓', enterprise: '✓' },
                   { feature: 'Quarterly Check-In Call', launch: '✗', core: '✓', enterprise: '✓' },
-                  { feature: 'Reputation Benchmarking', launch: '✗', core: '✓', enterprise: '✓' },
                   { feature: 'Multi-Location Management', launch: '✗', core: '✗', enterprise: '✓' },
                   { feature: 'Advanced Reporting', launch: '✗', core: '✗', enterprise: '✓' },
                   { feature: 'Dedicated Account Manager', launch: '✗', core: '✗', enterprise: '✓' },

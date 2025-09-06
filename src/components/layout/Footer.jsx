@@ -69,8 +69,8 @@ export default function Footer() {
               Plans
             </h3>
             <ul className="space-y-3">
+              <li><Link href="/pricing" className="text-gray-300 hover:text-teal-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Launch Plan</Link></li>
               <li><Link href="/pricing" className="text-gray-300 hover:text-teal-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Core Plan</Link></li>
-              <li><Link href="/pricing" className="text-gray-300 hover:text-teal-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Pro Plan</Link></li>
               <li><Link href="/pricing" className="text-gray-300 hover:text-teal-400 transition-colors duration-300 hover:translate-x-2 transform inline-block font-medium">Enterprise</Link></li>
             </ul>
           </div>
