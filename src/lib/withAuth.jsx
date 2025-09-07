@@ -16,7 +16,7 @@ const withAuth = (WrappedComponent) => {
         if (loggedIn === 'true') {
           setIsLoggedIn(true)
         } else {
-          router.push('/login')
+          setIsLoggedIn(false)
         }
         setIsLoading(false)
       }

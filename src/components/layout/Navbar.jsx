@@ -68,7 +68,7 @@ export default function Navbar() {
     dispatchAuthEvent(AUTH_EVENTS.LOGOUT)
     
     // Redirect to login page
-    router.push('/login')
+  router.push('/')
   }
 
   const menuItems = [
@@ -191,22 +191,15 @@ export default function Navbar() {
                       </button>
                     </>
                   ) : (
-                    <>
+                    <div className="px-4 py-2">
                       <Link
-                        href="/login"
+                        href="/contact"
                         className="block px-4 py-3 text-gray-600 hover:text-primary-blue-600 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105"
                         onClick={() => setIsOpen(false)}
                       >
-                        Login
+                        Contact Sales
                       </Link>
-                      <Link
-                        href="/register"
-                        className="block px-4 py-3 mt-2 bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white rounded-xl font-bold text-center transition-all duration-300 transform hover:scale-105 shadow-lg"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Sign Up
-                      </Link>
-                    </>
+                    </div>
                   )}
                 </div>
               </div>
