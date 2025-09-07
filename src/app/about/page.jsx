@@ -156,7 +156,7 @@ export default function About() {
       <ValuesSection />
 
       {/* Team Section */}
-      <TeamSection />
+      {/* <TeamSection /> */}
 
       {/* CTA Section */}
       <CTASection />
