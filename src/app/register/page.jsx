@@ -80,9 +80,9 @@
 //       }
 
 //       console.log('Registration successful:', data.message)
-      
+//       
 //       // Show success message
-								router.push('/')
+//                                 router.push('/')
       
 //       // Auto-redirect to login after 3 seconds
 //       setTimeout(() => {
