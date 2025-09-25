@@ -1,5 +1,6 @@
 // /src/app/api/contact/route.js
 import { NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
 
 // Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic'
@@ -47,7 +48,35 @@ export async function POST(request) {
     }
 
     // Also send email notification (optional backup)
-    // You could use nodemailer, SendGrid, or any other email service here
+    try {
+      // Create transporter using env variables
+      const transporter = nodemailer.createTransport({
+        host: process.env.EMAIL_HOST,
+        port: Number(process.env.EMAIL_PORT) || 587,
+        secure: process.env.EMAIL_SECURE === 'true', // false for STARTTLS
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASSWORD,
+        },
+      })
+
+      // Compose message
+      const mailOptions = {
+        from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+        to: process.env.EMAIL_RECEIVER,
+        subject: `Website contact: ${data.subject}`,
+        text: `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'N/A'}\n\nMessage:\n${data.message}`,
+      }
+
+      // Send email (don't block overall success if it fails)
+      transporter.sendMail(mailOptions).then(info => {
+        console.log('Contact email sent:', info.messageId)
+      }).catch(err => {
+        console.error('Contact email error:', err)
+      })
+    } catch (mailErr) {
+      console.error('Email setup error:', mailErr)
+    }
     
     return NextResponse.json({
       message: 'Contact form submitted successfully',
