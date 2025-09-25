@@ -71,14 +71,14 @@ export default function About() {
             className="space-y-8"
           >
             {/* Badge */}
-            <motion.div 
+            {/* <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
               className="inline-flex items-center px-4 py-2 rounded-full bg-primary-blue-50 border border-primary-blue-200"
             >
               <span className="text-primary-blue-600 text-sm font-medium">🚀 Transforming Business Reputation Since 2015</span>
-            </motion.div>
+            </motion.div> */}
             
             {/* Main Heading */}
             <motion.h1
