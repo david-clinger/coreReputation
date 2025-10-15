@@ -11,7 +11,7 @@ const pricingPlans = [
   {
     name: 'Launch',
     tagline: 'The starting point for managing your reputation.',
-    price: '$199',
+    price: '$99',
     period: '/month',
     popular: false,
     hidden: false,
@@ -30,7 +30,7 @@ const pricingPlans = [
   {
     name: 'Core',
     tagline: 'Automation plus the tools to actively grow your reputation.',
-    price: '$399',
+    price: '$159',
     period: '/month',
     popular: true,
     recommended: true,
