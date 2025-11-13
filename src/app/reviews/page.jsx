@@ -67,7 +67,7 @@ const reviews = [
 
 const stats = [
   { number: '98%', label: 'Client Satisfaction' },
-  { number: '500+', label: 'Businesses Served' },
+  
   { number: '4.9/5', label: 'Average Rating Improvement' },
   { number: '2min', label: 'Avg Response Time' }
 ]
@@ -227,7 +227,7 @@ function Reviews() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+            className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-16"
           >
             {stats.map((stat, index) => (
               <motion.div
