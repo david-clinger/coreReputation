@@ -145,7 +145,7 @@ export default function TestimonialsPreview() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="bg-white rounded-3xl p-10 shadow-2xl mb-16"
         >
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="group">
               <div className="text-4xl font-bold text-primary-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300">98%</div>
               <p className="text-gray-600">Client Satisfaction</p>
@@ -158,10 +158,7 @@ export default function TestimonialsPreview() {
               <div className="text-4xl font-bold text-primary-blue-600 mb-2 group-hover:scale-110 transition-transform duration-300">4.8</div>
               <p className="text-gray-600">Average Rating</p>
             </div>
-            <div className="group">
-              <div className="text-4xl font-bold text-teal-cyan mb-2 group-hover:scale-110 transition-transform duration-300">500+</div>
-              <p className="text-gray-600">Happy Clients</p>
-            </div>
+            
           </div>
         </motion.div>
         

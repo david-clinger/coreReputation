@@ -91,12 +91,8 @@ export default function CTASection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto"
+            className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto"
           >
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2">500+</div>
-              <p className="text-white/80">Businesses Transformed</p>
-            </div>
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold text-yellow-300 mb-2">98%</div>
               <p className="text-white/80">Client Satisfaction</p>

@@ -148,7 +148,7 @@ function Reviews() {
         
         {/* OpenGraph */}
         <meta property="og:title" content="Client Reviews - Real Success Stories with Core Reputation" />
-        <meta property="og:description" content="Discover how businesses transformed their online reputation with Core Reputation. Read authentic reviews from 500+ satisfied clients." />
+        <meta property="og:description" content="Discover how businesses transformed their online reputation with Core Reputation. " />
         <meta property="og:url" content="https://corereputation.com/reviews" />
         <meta property="og:site_name" content="Core Reputation" />
         <meta property="og:image" content="https://corereputation.com/images/reviews-og.jpg" />

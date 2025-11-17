@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-100 rounded-full blur-3xl opacity-30 -translate-y-32 -translate-x-32" />
       <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-yellow-100 rounded-full blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2" />
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -40,11 +40,11 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-gray-900 leading-tight"
             >
-              Transform Your{' '}
+              Your Reputation{' '}
               <span className="text-gradient bg-gradient-to-r from-primary-blue-600 to-teal-cyan bg-clip-text text-transparent">
-                Online Reputation
+                is the new Revenue
               </span>{' '}
-              Into 5-Star Success
+              Engine, Ignite It
             </motion.h1>
             
             <motion.p
