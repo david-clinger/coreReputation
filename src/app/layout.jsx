@@ -1,6 +1,7 @@
 // src/app/layout.jsx
 import { Inter } from 'next/font/google'
 import './globals.css'
+import Script from 'next/script'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 
@@ -140,6 +141,19 @@ export default function RootLayout({ children }) {
         <div id="global-loading" className="fixed top-0 left-0 w-full h-1 bg-primary-blue-200 z-50 opacity-0 transition-opacity">
           <div className="h-full bg-primary-blue-600 animate-pulse w-1/2"></div>
         </div>
+
+        {/* LeadConnector chat widget (loads the chat UI client-side) */}
+        {/* <Script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="69693eab9ec20139565832c8"
+          strategy="afterInteractive"
+        /> */}
+        <script 
+        src="https://widgets.leadconnectorhq.com/loader.js"  
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" 
+        data-widget-id="696aae81d66fc3a33288278d"   > 
+       </script>
       </body>
     </html>
   )

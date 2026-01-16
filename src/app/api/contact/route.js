@@ -1,9 +1,58 @@
 // /src/app/api/contact/route.js
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
 
 // Force dynamic rendering for this API route
 export const dynamic = 'force-dynamic'
+
+// Send email using Brevo HTTP API (works even when SMTP is blocked)
+async function sendEmailWithBrevo(data) {
+  const brevoApiKey = process.env.BREVO_API_KEY
+  const receiverEmail = process.env.EMAIL_RECEIVER || 'abdulraheemfiverr69@gmail.com'
+  const senderEmail = process.env.EMAIL_FROM || 'noreply@corereputation.com'
+  const senderName = process.env.EMAIL_DISPLAY_NAME || 'Core Reputation'
+
+  const emailData = {
+    sender: {
+      name: senderName,
+      email: senderEmail,
+    },
+    to: [
+      {
+        email: receiverEmail,
+        name: 'Admin',
+      },
+    ],
+    subject: `Website Contact: ${data.subject}`,
+    htmlContent: `
+      <h2>New Contact Form Submission</h2>
+      <p><strong>Name:</strong> ${data.name}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Company:</strong> ${data.company || 'N/A'}</p>
+      <p><strong>Subject:</strong> ${data.subject}</p>
+      <hr>
+      <p><strong>Message:</strong></p>
+      <p>${data.message.replace(/\n/g, '<br>')}</p>
+    `,
+    textContent: `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'N/A'}\nSubject: ${data.subject}\n\nMessage:\n${data.message}`,
+  }
+
+  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'accept': 'application/json',
+      'api-key': brevoApiKey,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(emailData),
+  })
+
+  if (!response.ok) {
+    const errorText = await response.text()
+    throw new Error(`Brevo API error: ${response.status} - ${errorText}`)
+  }
+
+  return await response.json()
+}
 
 export async function POST(request) {
   try {
@@ -33,49 +82,30 @@ export async function POST(request) {
     }
 
     // Send to Zoho CRM (you'll need to configure Zoho CRM API credentials)
-    const zohoResponse = await fetch('https://www.zohoapis.com/crm/v2/Leads', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Zoho-oauthtoken ${process.env.ZOHO_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(zohoData)
-    })
+    try {
+      const zohoResponse = await fetch('https://www.zohoapis.com/crm/v2/Leads', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Zoho-oauthtoken ${process.env.ZOHO_ACCESS_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(zohoData)
+      })
 
-    if (!zohoResponse.ok) {
-      console.error('Zoho CRM error:', await zohoResponse.text())
-      // Continue processing even if Zoho fails
+      if (!zohoResponse.ok) {
+        console.error('Zoho CRM error:', await zohoResponse.text())
+      }
+    } catch (zohoErr) {
+      console.error('Zoho CRM connection error:', zohoErr.message)
     }
 
-    // Also send email notification (optional backup)
+    // Send email notification using Brevo API
     try {
-      // Create transporter using env variables
-      const transporter = nodemailer.createTransport({
-        host: process.env.EMAIL_HOST,
-        port: Number(process.env.EMAIL_PORT) || 587,
-        secure: process.env.EMAIL_SECURE === 'true', // false for STARTTLS
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASSWORD,
-        },
-      })
-
-      // Compose message
-      const mailOptions = {
-        from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-        to: process.env.EMAIL_RECEIVER,
-        subject: `Website contact: ${data.subject}`,
-        text: `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company || 'N/A'}\n\nMessage:\n${data.message}`,
-      }
-
-      // Send email (don't block overall success if it fails)
-      transporter.sendMail(mailOptions).then(info => {
-        console.log('Contact email sent:', info.messageId)
-      }).catch(err => {
-        console.error('Contact email error:', err)
-      })
-    } catch (mailErr) {
-      console.error('Email setup error:', mailErr)
+      const emailResult = await sendEmailWithBrevo(data)
+      console.log('Contact email sent via Brevo:', emailResult.messageId)
+    } catch (emailErr) {
+      console.error('Email error:', emailErr.message)
+      // Don't fail the request if email fails
     }
     
     return NextResponse.json({
