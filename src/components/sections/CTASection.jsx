@@ -74,7 +74,7 @@ export default function CTASection() {
               </svg>
             </Link>
             
-            <Link 
+            {/* <Link 
               href="/pricing" 
               className="border-2 border-white/30 bg-white/10 backdrop-blur-sm text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-primary-blue-600 transition-all duration-300 transform hover:scale-105 inline-flex items-center group"
             >
@@ -82,7 +82,7 @@ export default function CTASection() {
               <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
-            </Link>
+            </Link> */}
           </div>
 
           {/* Bottom Stats */}

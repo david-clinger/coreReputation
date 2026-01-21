@@ -385,7 +385,7 @@ function Services() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
-                <Link 
+                {/* <Link 
                   href="/pricing" 
                   className="bg-white border-2 border-primary-blue-600 text-primary-blue-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-primary-blue-50 hover:border-primary-blue-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl text-center flex items-center justify-center group"
                 >
@@ -393,7 +393,7 @@ function Services() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                   </svg>
                   View Pricing
-                </Link>
+                </Link> */}
               </div>
             </div>
 
@@ -566,7 +566,7 @@ function Services() {
                 </svg>
                 Get Free Consultation
               </Link>
-              <Link
+              {/* <Link
                 href="/pricing"
                 className="bg-transparent border-2 border-white text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-white hover:text-primary-blue-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center group"
               >
@@ -574,7 +574,7 @@ function Services() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
                 View Pricing
-              </Link>
+              </Link> */}
             </div>
           </motion.div>
         </div>

@@ -64,7 +64,7 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
             >
               <Link 
-                href="/pricing" 
+                href="/contact" 
                 className="bg-gradient-to-r from-primary-blue-600 to-teal-cyan text-white px-10 py-4 rounded-2xl font-bold text-lg hover:from-primary-blue-700 hover:to-teal-700 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl text-center flex items-center justify-center group"
               >
                 Get Started

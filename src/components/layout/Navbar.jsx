@@ -74,7 +74,7 @@ export default function Navbar() {
   const menuItems = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
-    { name: 'Packages', href: '/pricing' },
+    // { name: 'Packages', href: '/pricing' },
     { name: 'Testimonials', href: '/reviews' },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },
