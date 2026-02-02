@@ -58,7 +58,8 @@ echo -e "${GREEN}Cleaned .next and node_modules/.cache${NC}"
 
 # Step 7: Build the Next.js application
 echo -e "${YELLOW}[7/10] Building Next.js application...${NC}"
-npm run build || { echo -e "${RED}Build failed! Check the output above.${NC}"; exit 1; }
+# Limit Node.js memory to prevent OOM on small droplets
+NODE_OPTIONS="--max-old-space-size=768" npm run build || { echo -e "${RED}Build failed! Check the output above.${NC}"; exit 1; }
 echo -e "${GREEN}Build completed successfully${NC}"
 
 # Step 8: Clear nginx proxy cache
